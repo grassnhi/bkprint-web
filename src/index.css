@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Andika:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-andika: Andika;
+  --text-single-300-bold: "DM Sans";
+
+  /* font sizes */
+  --font-size-lg: 18px;
+  --text-single-300-bold-size: 20px;
+  --text-single-300-regular-size: 20px;
+  --font-size-6xl: 25px;
+
+  /* Colors */
+  --neutral-colors-white: #fff;
+  --neutral-colors-text-gray: #9795b5;
+  --neutral-colors-headings-black: #5d5a88;
+  --neutral-colors-color-400: #f2f1fa;
+  --color-lightsteelblue: #adabc3;
+
+  /* Gaps */
+  --gap-5xs: 8px;
+
+  /* Paddings */
+  --padding-9xl: 28px;
+  --padding-37xl: 56px;
+
+  /* Border radiuses */
+  --br-25xl-9: 44.9px;
+  --br-28xl-3: 47.3px;
+
+  /* Effects */
+  --button-shadows-button-white-01: 0px 4px 10px rgba(20, 20, 43, 0.04);
+}
