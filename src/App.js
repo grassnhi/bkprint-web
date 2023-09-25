@@ -1,8 +1,12 @@
 import React from "react";
 
-const App = () => {
+import Routing from "./backend/route";
+
+function App() {
   return (
-    <h1> App </h1>
+    <>
+      <Routing />
+    </>
   );
 }
 
