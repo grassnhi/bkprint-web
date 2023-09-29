@@ -8,7 +8,7 @@ Welcome to the BK Fast Automated Printing Service website, a smart printing serv
 
 Current Version: v1.0.0
 
-For a detailed history of changes and updates, please refer to the [CHANGELOG.md](add link later) file.
+For a detailed history of changes and updates, please refer to the [CHANGELOG.md](https://github.com/grassnhi/bkprint-web/blob/main/CHANGELOG.md) file.
 
 ## Features
 
