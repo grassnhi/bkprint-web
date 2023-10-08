@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/grassnhi/bkprint-web/compare/v1.1.0...v1.2.0) (2023-10-08)
+
+
+### Features
+
+* **route:** add router for current pages. ([7c1c091](https://github.com/grassnhi/bkprint-web/commit/7c1c091bdb77a18cfa5342757f1a407788f4d783))
+* **utils:** add password module for login page. ([7301af8](https://github.com/grassnhi/bkprint-web/commit/7301af8c869214a9aa4de197c338ea342bbd5e48))
+
 ## [1.1.0](https://github.com/grassnhi/bkprint-web/compare/v1.0.0...v1.1.0) (2023-09-30)
 
 
