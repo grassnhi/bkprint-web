@@ -1,0 +1,136 @@
+.upTable {
+  width: 526px;
+  height: 799px;
+  border: 2px solid #483ea8;
+  font-family: var(--font-andika);
+}
+.tableTitle {
+  color: #0f0f0f;
+  position: absolute;
+  top: 20px;
+  left: 164px;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Andika;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+.intruc {
+  position: absolute;
+  padding-top: 5px;
+  top: 84px;
+  left: 134px;
+  width: 259px;
+  height: 39px;
+  color: #b80000;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.iconBox {
+  position: absolute;
+  top: 154px;
+  left: 46.22px;
+  width: 433px;
+  height: 260px;
+  border-radius: 4px;
+  border: 1px dashed rgba(56, 78, 183, 0.3);
+  background: #f8f8ff;
+}
+.cloud {
+  position: absolute;
+  top: 31px;
+  left: 147px;
+  width: 139px;
+  overflow: cover;
+  height: 119px;
+}
+.dtext {
+  color: #483ea8;
+}
+.text1 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  position: absolute;
+  top: 174px;
+  left: 110px;
+  color: #0f0f0f;
+}
+.text2 {
+  position: absolute;
+  top: 208px;
+  left: 25px;
+}
+.form {
+  position: absolute;
+  top: 441px;
+  left: 46px;
+  width: 433px;
+  height: 319px;
+}
+.loading {
+  color: #676767;
+  text-align: center;
+  font-family: Andika;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.oneBtn {
+  width: 433px;
+  top: 5px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 0.5px solid #9a9a9a;
+  background: #fff;
+  text-align: left;
+  font-family: var(--font-andika);
+}
+.complete {
+  position: absolute;
+  top: 115px;
+  color: #676767;
+  text-align: center;
+  font-family: Andika;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.c1 {
+  position: absolute;
+  width: 430px;
+  top: 150px;
+  border-radius: 4px;
+  border: 0.5px solid #9a9a9a;
+  background: #fff;
+  text-align: left;
+  font-family: var(--font-andika);
+  height: 30px;
+}
+#finish {
+  position: absolute;
+  top: 250px;
+  display: flex;
+  width: 433px;
+  height: 58px;
+  padding: 9px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #483ea8;
+  font-family: var(--font-andika);
+  color: white;
+}
