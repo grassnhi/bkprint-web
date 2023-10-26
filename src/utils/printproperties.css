@@ -1,0 +1,87 @@
+.bigbox {
+  width: 526px;
+  height: 799px;
+  border: 2px solid #483ea8;
+  font-family: var(--font-andika);
+}
+.properTitle {
+  color: #0f0f0f;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Andika;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.br {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  overflow: cover;
+  width: 330px;
+  border: 1px solid black;
+}
+.pageSize,
+.numbersPage,
+.pageSide {
+  position: absolute;
+  width: 526px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.text {
+  color: #000;
+  font-family: Andika;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: underline;
+  margin: 0 3rem;
+}
+.d1 {
+  width: 260px;
+  font-size: 1.5rem;
+}
+.pageSide {
+  position: absolute;
+  top: 300px;
+}
+.numbersPage {
+  position: absolute;
+  top: 500px;
+}
+.number {
+  width: 260px;
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  background-color: #5d5a88b2;
+  color: white;
+  font-size: 40px;
+}
+.number::placeholder {
+  font-size: 20px;
+  font-family: var(--font-andika);
+  text-align: left;
+}
+#finish {
+  position: absolute;
+  top: 700px;
+  left: 28px;
+  display: flex;
+  width: 471px;
+  height: 58px;
+  padding: 9px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #483ea8;
+  font-family: var(--font-andika);
+  color: white;
+}
