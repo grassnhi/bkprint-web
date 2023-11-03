@@ -1,0 +1,148 @@
+.paymentContainer {
+  position: relative;
+  background-color: var(--neutral-colors-white);
+  font-family: Andika;
+  height: 1714px;
+  width: 100vw;
+  overflow: hidden;
+  color: #5d5a88;
+}
+.paymentIntro {
+  position: absolute;
+  top: 129px;
+  left: 599px;
+  width: 723px;
+  height: 99px;
+  color: #000;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Andika;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.paymentNotice {
+  position: absolute;
+  top: 228px;
+  left: 615px;
+  width: 706.818px;
+  color: var(--neutral-colors-text-gray, #9795b5);
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Andika;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 120% */
+}
+.paymentTable {
+  position: absolute;
+  top: 292px;
+  border: 1px solid black;
+  left: 443px;
+}
+.huhu1 {
+  text-align: center;
+  font-family: var(--font-andika);
+  color: #5d5a88;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.huhu1,
+.huhu2 {
+  width: 517px;
+  color: #000;
+  font-family: Andika;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: 1px solid black;
+}
+.zero {
+  display: flex;
+  margin: 0 7px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  align-items: flex-start;
+}
+.huhu2Tex {
+  position: relative;
+  top: -130px;
+  left: 20px;
+}
+.huhu2Select {
+  position: relative;
+  top: -130px;
+  left: 50px;
+  width: 260px;
+  height: 42px;
+  color: var(--Black, #313144);
+  font-family: Andika;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 100% */
+  letter-spacing: 0.54px;
+  cursor: pointer;
+}
+.huhu2Tex1 {
+  position: relative;
+  left: -365px;
+  top: 45px;
+}
+.huhu2Input {
+  position: relative;
+  left: 50px;
+  top: -10px;
+  width: 90px;
+  text-align: center;
+  color: white;
+  font-family: Andika;
+  background-color: #5d5a88;
+  border: none;
+  border-radius: 20px;
+}
+.huhu2Tex2 {
+  position: relative;
+  left: -52px;
+  top: 20px;
+}
+.bubu {
+  position: relative;
+  top: 25px;
+  font-family: Andika;
+  background-color: #5d5a88;
+  border: none;
+  border-radius: 20px;
+}
+.paymentDone {
+  position: relative;
+  top: 100px;
+  left: -1px;
+  width: 433px;
+  height: 58px;
+  padding: 9px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  background: #483ea8;
+  color: #fff;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 90% */
+  text-transform: uppercase;
+  border: none;
+}
+.paymentDone:hover {
+  background-color: #6a62aa;
+}
+.paymentDone:active {
+  background-color: #10009c;
+}
