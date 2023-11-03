@@ -1,6 +1,5 @@
 import React from "react";
 import "./printproperties.css";
-import { Dropdown } from "react-dropdown-now";
 import { Button } from "antd";
 
 const Printproperties = () => {
@@ -10,31 +9,20 @@ const Printproperties = () => {
       <hr className="br" />
       <div className="pageSize">
         <div className="text">Cỡ giấy</div>
-        <Dropdown
-          placeholder="Chọn loại giấy "
-          className="d1"
-          options={["A3 (297 × 420)mm", "A4 (210 × 297)mm", "A5 (148 × 210)mm"]}
-          onChange={(value) => console.log("change!", value)}
-          onSelect={(value) => console.log("selected!", value)} // always fires once a selection happens even if there is no change
-          onClose={(closedBySelection) =>
-            console.log("closedBySelection?:", closedBySelection)
-          }
-          onOpen={() => console.log("open!")}
-        ></Dropdown>
+        <select className="chooseSize">
+          <option value="">Chọn loại giấy</option>
+          <option value="A3 (297 x 420)mm">A3 (297 x 420)mm</option>
+          <option value="A4 (210 x 297)mm">A4 (210 x 297)mm</option>
+          <option value="A5 (148 x 210)mm">A5 (148 x 210)mm</option>
+        </select>
       </div>
       <div className="pageSide">
         <div className="text">Số mặt</div>
-        <Dropdown
-          placeholder="Chọn số mặt "
-          className="d1"
-          options={["In một mặt", "In hai mặt"]}
-          onChange={(value) => console.log("change!", value)}
-          onSelect={(value) => console.log("selected!", value)} // always fires once a selection happens even if there is no change
-          onClose={(closedBySelection) =>
-            console.log("closedBySelection?:", closedBySelection)
-          }
-          onOpen={() => console.log("open!")}
-        ></Dropdown>
+        <select className="chooseSize">
+          <option value="">Chọn số mặt</option>
+          <option value="In một mặt">In một mặt</option>
+          <option value="In hai mặt">In hai mặt</option>
+        </select>
       </div>
       <div className="numbersPage">
         <div className="text">Số bản in</div>
@@ -42,6 +30,8 @@ const Printproperties = () => {
           className="number"
           placeholder="Nhập tại đây"
           type="number"
+          min={0}
+          max={10}
         ></input>
       </div>
       <Button id="finish" block>

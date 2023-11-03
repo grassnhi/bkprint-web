@@ -26,7 +26,7 @@
 .numbersPage,
 .pageSide {
   position: absolute;
-  width: 526px;
+  width: 490px;
   height: auto;
   display: flex;
   align-items: center;
@@ -42,13 +42,20 @@
   text-decoration: underline;
   margin: 0 3rem;
 }
-.d1 {
-  width: 260px;
-  font-size: 1.5rem;
-}
+
 .pageSide {
   position: absolute;
   top: 300px;
+}
+.chooseSize {
+  width: 260px;
+  height: 50px;
+  font-family: Andika;
+  border: none;
+  font-size: medium;
+  cursor: pointer;
+  background-color: #747386b2;
+  color: white;
 }
 .numbersPage {
   position: absolute;
@@ -57,16 +64,19 @@
 .number {
   width: 260px;
   border: none;
-  border-radius: 10px;
+
   height: 50px;
-  background-color: #5d5a88b2;
+  background-color: #747386b2;
   color: white;
   font-size: 40px;
 }
 .number::placeholder {
-  font-size: 20px;
+  font-size: medium;
   font-family: var(--font-andika);
   text-align: left;
+  align-items: center;
+  color: white;
+  justify-content: center;
 }
 #finish {
   position: absolute;

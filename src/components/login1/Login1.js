@@ -28,9 +28,9 @@ const Login1 = () => {
         <div className="name">BK Fast Automated Printing Service </div>
       </div>
 
-      <div className="contain1">
-        <span className="text">Dịch vụ xác thực tập trung</span>
-        <span className="text1">BKPrint</span>
+      <div className="contain1v">
+        <span className="textv">Dịch vụ xác thực tập trung</span>
+        <span className="text1v">BKPrint</span>
       </div>
       <div className="contain2">
         <p className="notice1">
