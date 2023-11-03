@@ -9,10 +9,13 @@ const Password = () => {
     setPasswordShown(!PasswordShown);
   };
   return (
-    <div className="pa">
+    <div className="pav">
       <input
+        className="pav1"
         type={PasswordShown ? "text" : "password"}
         placeholder="Mật khẩu"
+        maxLength={16}
+        minLength={4}
       />
       <img onClick={togglePassword} src={logo} />
     </div>

@@ -28,11 +28,11 @@ const AdminLogin1 = () => {
         <div className="name">BK Fast Automated Printing Service </div>
       </div>
 
-      <div className="contain1">
-        <span className="text">Dịch vụ xác thực tập trung</span>
-        <span className="text1">Administrator-BKPrint</span>
+      <div className="contain1s">
+        <span className="texts">Dịch vụ xác thực tập trung</span>
+        <span className="text1s">Administrator-BKPrint</span>
       </div>
-      <div className="contain2">
+      <div className="contain2s">
         <p className="notice1">Bạn cần dùng tài khoản admin để đăng nhập.</p>
       </div>
       <img className="pic" src={logo3} alt="picc" />
