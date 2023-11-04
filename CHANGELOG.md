@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.3.0](https://github.com/grassnhi/bkprint-web/compare/v1.2.0...v1.3.0) (2023-11-04)
+
+
+### Features
+
+* **announcement:** Add 3 announcement pages for printing and payment. ([5a23018](https://github.com/grassnhi/bkprint-web/commit/5a23018611d60a6462f3e164dfa945adfd1dbd38))
+* **assets:** Add new image and update assets folder. ([38d6407](https://github.com/grassnhi/bkprint-web/commit/38d64072b1767fb95c9f337533cc0b5441a2014b))
+* **package:** Add and update package. ([68ed5f9](https://github.com/grassnhi/bkprint-web/commit/68ed5f99f7f20438772c060e61e54e57c8c16adf))
+* **payment:** Add page for payment. ([807ec3d](https://github.com/grassnhi/bkprint-web/commit/807ec3db4950b8e06650ac12c0b8a139ffe5ccc7))
+* **png:** Add images for specific pages. ([dfc887c](https://github.com/grassnhi/bkprint-web/commit/dfc887c1990508f0e1cee0670142fe75ee7aac53))
+* **printlocate:** Add a page for displaying printers' location. ([782efe0](https://github.com/grassnhi/bkprint-web/commit/782efe0ac0c1daeca94f59d6233b3562a65bd7ef))
+* **profile:** Add user account (students and admins) pages. ([28a477b](https://github.com/grassnhi/bkprint-web/commit/28a477b02573087fbafafaa0baf7f0062d8b96f9))
+* **public:** Add hcmut logo to project. ([be939a4](https://github.com/grassnhi/bkprint-web/commit/be939a40662a4dec6ce20738afdb64b9411d2994))
+* **upload:** Add module upload document. ([bf337df](https://github.com/grassnhi/bkprint-web/commit/bf337df9c3a134be5556d1e6bb3db2196c6db0b3))
+* **utils:** Add components of module print document ([d65c63a](https://github.com/grassnhi/bkprint-web/commit/d65c63a084fd61610a9956dc2b1a953450c60d8d))
+
 ## [1.2.0](https://github.com/grassnhi/bkprint-web/compare/v1.1.0...v1.2.0) (2023-10-08)
 
 
