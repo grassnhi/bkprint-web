@@ -65,19 +65,19 @@
   display: inline-block;
   height: 29px;
 }
-.contain1 {
+.contain1v {
   position: absolute;
   width: fit-content;
   height: 374px;
   left: 134px;
   top: 263px;
 }
-.text {
+.textv {
   font-size: 50px;
   line-height: 80.57px;
   display: block;
 }
-.text1 {
+.text1v {
   font-size: 35px;
   line-height: 56.4px;
 }

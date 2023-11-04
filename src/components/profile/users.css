@@ -1,0 +1,214 @@
+.userContainer {
+  position: relative;
+  background-color: var(--neutral-colors-white);
+  font-family: Andika;
+  height: 1714px;
+  width: 100vw;
+  overflow: hidden;
+}
+.profileImg {
+  position: absolute;
+  top: 191px;
+  left: 163px;
+}
+.information {
+  position: absolute;
+  top: 213px;
+  left: 454px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: flex-start;
+}
+.texx {
+  color: #000;
+  font-family: Andika;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.ID {
+  color: #000;
+  font-family: Andika;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.logout {
+  color: #000;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+.info2 {
+  position: absolute;
+  top: 191px;
+  left: 891px;
+  width: 779px;
+  height: 317px;
+  border-radius: 40px;
+  border: 1px solid #000;
+  background: #fff;
+}
+.mail1,
+.mail2,
+.falcuty1,
+.falcuty2 {
+  position: absolute;
+  margin-left: 50px;
+  margin: 20px 50px;
+  color: #000;
+  font-family: Andika;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.mail1 {
+  top: 30px;
+}
+.mail2 {
+  top: 70px;
+}
+.falcuty1 {
+  top: 140px;
+}
+.falcuty2 {
+  top: 180px;
+}
+.firstBreak {
+  position: absolute;
+  width: 1770px;
+  top: 550px;
+  left: 40px;
+  margin-left: 10px;
+}
+.printHis {
+  margin: 10px;
+  left: 50px;
+  position: absolute;
+  display: flex;
+  top: 550px;
+  justify-content: space-between;
+  align-items: center;
+  width: 1740px;
+}
+.printHisTex {
+  color: #000;
+  font-family: Andika;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.datePrint {
+  color: #000;
+  font-family: Andika;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.printHis1 {
+  position: absolute;
+  top: 650px;
+  left: 50px;
+  background-color: #f7f6fe;
+  border: 1px solid black;
+}
+.hea,
+.dat,
+.hea1,
+.dat1 {
+  height: 80px;
+  text-align: center;
+  font-family: var(--font-andika);
+  color: #5d5a88;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.hea,
+.dat {
+  width: 345px;
+}
+.hea,
+.hea1 {
+  font-size: 30px;
+  background-color: white;
+  border: 2px solid #000;
+}
+.dat,
+.dat1 {
+  font-size: 15px;
+}
+.sum1 {
+  position: absolute;
+  top: 1000px;
+  left: 50px;
+  color: #000;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.sum1Tex {
+  position: relative;
+  top: -31px;
+  left: 53.5px;
+}
+.secondBreak {
+  position: absolute;
+  top: 1095px;
+  width: 1770px;
+  left: 40px;
+  margin-left: 10px;
+}
+.buyHis {
+  margin: 10px;
+  left: 50px;
+  position: absolute;
+  display: flex;
+  top: 1100px;
+  justify-content: space-between;
+  align-items: center;
+  width: 1740px;
+}
+.buyHisTex {
+  color: #000;
+  font-family: Andika;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.buyHis1 {
+  position: absolute;
+  top: 1190px;
+  left: 50px;
+  background-color: #f7f6fe;
+  border: 1px solid black;
+}
+.hea1,
+.dat1 {
+  width: 580px;
+}
+.sum2 {
+  position: absolute;
+  top: 1540px;
+  left: 50px;
+  color: #000;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
