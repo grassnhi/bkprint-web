@@ -14,10 +14,12 @@ import AdminLogin1 from "./components/login1/AdminLogin1";
 import Users from "./components/profile/users";
 import Adminusers from "./components/profile/adminusers";
 import Payment from "./components/payment/payment";
+import Help from "./components/help/Help";
+
 function App() {
   return (
     <>
-      <Payment />
+      <Routing />
     </>
   );
 }
