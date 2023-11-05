@@ -34,7 +34,7 @@ const Printproperties = () => {
           max={10}
         ></input>
       </div>
-      <Button id="finish" block>
+      <Button id="finish2" block>
         HOÀN THÀNH
       </Button>
     </div>

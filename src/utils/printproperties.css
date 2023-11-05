@@ -1,5 +1,5 @@
 .bigbox {
-  width: 526px;
+  width: 550px;
   height: 799px;
   border: 2px solid #483ea8;
   font-family: var(--font-andika);
@@ -42,10 +42,12 @@
   text-decoration: underline;
   margin: 0 3rem;
 }
-
+.pageSize {
+  top: 150px;
+}
 .pageSide {
   position: absolute;
-  top: 300px;
+  top: 322px;
 }
 .chooseSize {
   width: 260px;
@@ -62,13 +64,13 @@
   top: 500px;
 }
 .number {
-  width: 260px;
+  width: 258px;
   border: none;
 
   height: 50px;
   background-color: #747386b2;
   color: white;
-  font-size: 40px;
+  font-size: 20px;
 }
 .number::placeholder {
   font-size: medium;
@@ -78,10 +80,10 @@
   color: white;
   justify-content: center;
 }
-#finish {
+#finish2 {
   position: absolute;
-  top: 700px;
-  left: 28px;
+  top: 690px;
+  left: 39px;
   display: flex;
   width: 471px;
   height: 58px;

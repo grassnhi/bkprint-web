@@ -6,6 +6,7 @@ import logo1 from "../../assets/chm-1@2x.png";
 import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import { useNavigate } from "react-router-dom";
+import ScrollToTop from "../../backend/scrollToTop";
 const Login = () => {
   const navigate = useNavigate();
   return (
@@ -54,6 +55,7 @@ const Login = () => {
           </Button>
         </div>
       </div>
+      <ScrollToTop />
     </div>
   );
 };
