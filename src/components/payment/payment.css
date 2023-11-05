@@ -96,15 +96,16 @@
 }
 .huhu2Input {
   position: relative;
-  left: 50px;
+  left: 73px;
   top: -10px;
-  width: 90px;
+  padding: 8px 0px;
+  padding-right: 10px;
+  width: 140px;
   text-align: center;
-  color: white;
+  color: black;
   font-family: Andika;
-  background-color: #5d5a88;
+  background-color: #efedff;
   border: none;
-  border-radius: 20px;
 }
 .huhu2Tex2 {
   position: relative;
@@ -115,9 +116,8 @@
   position: relative;
   top: 25px;
   font-family: Andika;
-  background-color: #5d5a88;
+  background-color: #efedff;
   border: none;
-  border-radius: 20px;
 }
 .paymentDone {
   position: relative;

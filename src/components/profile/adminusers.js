@@ -105,7 +105,7 @@ const Adminusers = () => {
       </div>
       <hr className="firstBreak" />
       <div className="printHis">
-        <span className="printHisTex">Quản lý người dùng-Lịch sử in</span>
+        <span className="printHisTex">Quản lý người dùng - Lịch sử in</span>
         <span className="datePrint">
           Từ ngày ../../... đến ngày ../../....
           <br />
@@ -141,7 +141,7 @@ const Adminusers = () => {
 
       <hr className="secondBreak" />
       <div className="buyHis2">
-        <span className="buyHisTex2">Quản lý hệ thống-Máy in</span>
+        <span className="buyHisTex2">Quản lý hệ thống - Máy in</span>
         <span className="datePrint2">
           Từ ngày ../../... đến ngày ../../....
           <br />

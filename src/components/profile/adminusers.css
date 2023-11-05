@@ -44,7 +44,7 @@
   left: 50px;
   position: absolute;
   display: flex;
-  top: 1090px;
+  top: 1087px;
   justify-content: space-between;
   align-items: center;
   width: 1740px;
@@ -100,12 +100,15 @@
   line-height: normal;
 }
 .upd {
+  position: relative;
+  left: 76px;
+  top: -5px;
   width: 102px;
   height: 41px;
   margin-left: 10px;
   align-items: center;
   gap: 8px;
-  border-radius: 47.273px;
+
   background: var(--neutral-colors-headings-black, #5d5a88);
   border: none;
   color: #fff;
