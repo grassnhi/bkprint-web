@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/grassnhi/bkprint-web/compare/v1.3.0...v1.4.0) (2023-11-07)
+
+
+### Features
+
+* **backend:** Function for scrolling to top. ([97a473b](https://github.com/grassnhi/bkprint-web/commit/97a473be88f17cf9789169008d5b0ac7a1f26bd6))
+
+
+### Bug Fixes
+
+* **all:** Review and fix all bugs. ([0a3dbeb](https://github.com/grassnhi/bkprint-web/commit/0a3dbebb6f53bb0b6e7bbdbffd951389eb75d015))
+
 ## [1.3.0](https://github.com/grassnhi/bkprint-web/compare/v1.2.0...v1.3.0) (2023-11-04)
 
 
