@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import logo from "../../assets/oisp-official-logo01-1@2x.png";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import ScrollToTop from "../../backend/scrollToTop";
 const Choose = () => {
   const navigate = useNavigate();
   return (
@@ -33,6 +34,7 @@ const Choose = () => {
           Quản trị viên BKPrint
         </Button>
       </div>
+      <ScrollToTop />
       <Outlet />
     </div>
   );

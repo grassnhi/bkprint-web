@@ -15,7 +15,7 @@ const data = [
     room: "208B1",
   },
 ];
-const ChoosePrinter = () => {
+const ChoosePrinter = (props) => {
   return (
     <div className="chooseP">
       <h2 className="chooseTitle">Chọn máy in </h2>
@@ -39,8 +39,8 @@ const ChoosePrinter = () => {
         })}
       </table>
       <span className="checkLocate">Xem vị trí máy in</span>
-      <Button id="finish" block>
-        HOÀN THÀNH
+      <Button id="finish" onClick={props.onClick} block>
+        {props.text}
       </Button>
     </div>
   );

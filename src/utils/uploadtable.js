@@ -3,7 +3,7 @@ import { Button, Form, Upload } from "antd";
 import cloudicon from "../assets/Upload icon.png";
 import "./uploadtable.css";
 
-const Uploadtable = () => {
+const Uploadtable = (props) => {
   const [fileList, setFileList] = useState([]);
 
   return (
@@ -18,7 +18,7 @@ const Uploadtable = () => {
           <span className="dtext">duyệt</span>
         </span>
         <div className="text2">
-          Định dạng hỗ trợ: PDF, Word, Excel, PPT, JPEG, PNG
+          Định dạng hỗ trợ: PDF, Word, Excel, PPT, PNG
         </div>
       </div>
 
@@ -75,10 +75,12 @@ const Uploadtable = () => {
         </Form.Item>
 
         <span className="complete">Tệp đã tải lên</span>
-        <Button className="c1">{fileList[0]?.name}</Button>
+        <Button className="c1" disabled>
+          {fileList[0]?.name}
+        </Button>
 
-        <Button id="finish" htmlType="submit" block>
-          HOÀN THÀNH
+        <Button id="finish1" htmlType="submit" onClick={props.onClick} block>
+          {props.text}
         </Button>
       </Form>
     </div>
