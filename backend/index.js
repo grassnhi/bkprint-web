@@ -3,8 +3,9 @@ import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import printerAPI from "./apis/printerAPI.js";
 import cors from "cors";
-
-function test() {}
+import studentAPI from "./apis/studentAPI.js";
+import printingHistoryAPI from "./apis/printingHistoryAPI.js";
+import systemPolicyAPI from "./apis/systemPolicyAPI.js";
 
 const app = express();
 
@@ -20,6 +21,10 @@ app.get("/", (request, response) => {
 console.log("Second Step");
 
 app.use("/printers", printerAPI);
+app.use("/students", studentAPI);
+app.use("/printingHistory", printingHistoryAPI);
+app.use("/systemPolicy", systemPolicyAPI);
+
 console.log("Third Step");
 
 mongoose

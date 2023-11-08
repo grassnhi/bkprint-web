@@ -1,10 +1,12 @@
-const transactionHistorySchema = new mongoose.Schema({
+import mongoose from "mongoose";
+
+const transactionHistorySchema = mongoose.Schema({
   time: { type: Date },
   price: { type: Number },
   purchasedPages: { type: Number },
 });
 
-const printingHistorySchema = new mongoose.Schema({
+const printingHistorySchema = mongoose.Schema({
   filename: { type: String },
   time: { type: Date },
   printedPages: { type: Number },
@@ -14,10 +16,10 @@ const printingHistorySchema = new mongoose.Schema({
 
 const studentSchema = mongoose.Schema({
   studentID: { type: String, required: true },
-  studentName: { type: String },
-  studentEmail: { type: String },
-  studentFaculty: { type: String },
-  remainingPages: { type: Number },
+  studentName: { type: String, required: true },
+  studentEmail: { type: String, required: true },
+  studentFaculty: { type: String, required: true },
+  remainingPages: { type: Number, required: true },
   transactionHistory: [transactionHistorySchema],
   printingHistory: [printingHistorySchema],
 });

@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Button, Form, Upload } from "antd";
 import cloudicon from "../assets/Upload icon.png";
 import "./uploadtable.css";
+import { UserContext } from "../../../controllers/UserProvider";
 
 const Uploadtable = (props) => {
   const [fileList, setFileList] = useState([]);
-
+  const { fileName, setFileName } = useContext(UserContext);
+  useEffect(() => {
+    setFileName(String(fileList[0]?.name));
+  });
   return (
     <div className="upTable">
       <h2 className="tableTitle">Tải tệp lên</h2>

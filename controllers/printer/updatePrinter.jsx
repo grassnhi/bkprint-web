@@ -1,3 +1,7 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
+
 export const updatePrinter = (
   printerID,
   newprinterBrand,
@@ -10,6 +14,9 @@ export const updatePrinter = (
   enqueueSnackbar,
   navigate
 ) => {
+  const navigate = useNavigate();
+
+  const { enqueueSnackbar } = useSnackbar();
   const data = {
     printerID,
     newprinterBrand,
@@ -22,16 +29,13 @@ export const updatePrinter = (
     newprintedPages,
   };
 
-  setLoading(true);
   axios
     .put(`http://localhost:3001/printers${printerID}`, data)
     .then(() => {
-      setLoading(false);
       enqueueSnackbar("Printer Created successfully", { variant: "success" });
       navigate("/Login1/Home");
     })
     .catch((error) => {
-      setLoading(false);
       enqueueSnackbar("Error", { variant: "error" });
       console.log(error);
     });

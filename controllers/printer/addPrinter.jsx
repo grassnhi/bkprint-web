@@ -1,14 +1,15 @@
+import axios from "axios";
+
 export const addPrinter = (
+  enqueueSnackbar,
+  setPrinterCount,
   printerID,
   printerBrand,
   printerName,
   building,
   room,
   status,
-  printedPages,
-  setLoading,
-  enqueueSnackbar,
-  navigate
+  printedPages
 ) => {
   const data = {
     printerID,
@@ -22,17 +23,22 @@ export const addPrinter = (
     printedPages,
   };
 
-  setLoading(true);
+  console.log(printerID);
+  console.log(printerBrand);
+  console.log(printerName);
+  console.log(building);
+  console.log(room);
+  console.log(status);
+  console.log(printedPages);
+
   axios
     .post("http://localhost:3001/printers", data)
     .then(() => {
-      setLoading(false);
-      enqueueSnackbar("Printer Created successfully", { variant: "success" });
-      navigate("/Login1/Home");
+      setPrinterCount(printerID + 1);
+      enqueueSnackbar("Printer Created successfully", { variant: "success" }); // Use enqueueSnackbar directly
     })
     .catch((error) => {
-      setLoading(false);
-      enqueueSnackbar("Error", { variant: "error" });
       console.log(error);
+      enqueueSnackbar("Error", { variant: "error" }); // Use enqueueSnackbar directly
     });
 };

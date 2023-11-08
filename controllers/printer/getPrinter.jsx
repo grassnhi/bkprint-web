@@ -1,14 +1,18 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
+
 export const getPrinter = (printerID) => {
-  setLoading(true);
+  const navigate = useNavigate();
+
+  const { enqueueSnackbar } = useSnackbar();
   axios
     .get(`http://localhost:3001/printers/${printerID}`, data)
     .then(() => {
-      setLoading(false);
       enqueueSnackbar("Printer deleted successfully", { variant: "success" });
       navigate("/");
     })
     .catch((error) => {
-      setLoading(false);
       enqueueSnackbar("Error", { variant: "error" });
       console.log(error);
     });

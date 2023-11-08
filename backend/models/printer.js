@@ -5,11 +5,11 @@ const printerSchema = mongoose.Schema({
   printerBrand: { type: String, required: true },
   printerName: { type: String, required: true },
   location: {
-    building: String,
-    room: String,
+    building: { type: String, required: true },
+    room: { type: String, required: true },
   },
   status: { type: Boolean },
-  printedPages: { type: Number },
+  printedPages: { type: Number, required: true },
 });
 
 export const Printer = mongoose.model("Printer", printerSchema);
