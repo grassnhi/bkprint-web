@@ -1,6 +1,8 @@
 import React from "react";
 import "./choosePrinter.css";
 import { Button } from "antd";
+import { useContext } from "react";
+import { UserContext } from "../../../controllers/UserProvider";
 const data = [
   {
     mod: "Canon LBP2900",
@@ -15,7 +17,9 @@ const data = [
     room: "208B1",
   },
 ];
+
 const ChoosePrinter = (props) => {
+  const { printingLocation, setPrintingLocation } = useContext(UserContext);
   return (
     <div className="chooseP">
       <h2 className="chooseTitle">Chọn máy in </h2>

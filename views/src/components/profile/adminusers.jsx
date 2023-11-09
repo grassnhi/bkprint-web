@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./adminusers.css";
 import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import profileImg from "../../assets/N 1.png";
 import { Button } from "react-bootstrap";
+import { getPrinter } from "../../../../controllers/printer/getPrinter";
+import { UserContext } from "../../../../controllers/UserProvider";
+import { useSnackbar } from "notistack";
+import { Printer } from "../../../../backend/models/printer";
 let printAdminHis = [
   {
     names: "",
@@ -33,44 +37,24 @@ let printAdminHis = [
     status11: "",
   },
 ];
-let printerAdmin = [
-  {
-    ID: "",
-    brand: "",
-    model: "",
-    place: "",
-    room: "",
-    setting: "",
-    stat2: "",
-    num: "",
-  },
-  {
-    ID: "",
-    brand: "",
-    model: "",
-    place: "",
-    room: "",
-    setting: "",
-    stat2: "",
-    num: "",
-  },
-  {
-    ID: "",
-    brand: "",
-    model: "",
-    place: "",
-    room: "",
-    setting: "",
-    stat2: "",
-    num: "",
-  },
-];
+
 let fileType = [
   { fileT: "Excel", sta: "Cần tải lên", oP: "Cho phép" },
   { fileT: "Word", sta: "Cần tải lên", oP: "Cho phép" },
   { fileT: "PDF", sta: "Cần tải lên", oP: "Cho phép" },
 ];
+
+const renderPrinterAdmin = (i, setPrinter) => {
+  getPrinter(i, setPrinter);
+};
+
 const Adminusers = () => {
+  const { printerCount, printerAdmin, setPrinterAdmin } =
+    useContext(UserContext);
+  const [printer, setPrinter] = useState({});
+  for (let i = 0; i < printerCount; i++) {
+    renderPrinterAdmin(i, setPrinter);
+  }
   return (
     <div className="adminUserContainer">
       <div className="f">

@@ -10,6 +10,19 @@ const Uploadtable = (props) => {
   useEffect(() => {
     setFileName(String(fileList[0]?.name));
   });
+  const countPages = async (file) => {
+    const fileReader = new FileReader();
+
+    fileReader.onload = async (e) => {
+      const arrayBuffer = e.target.result;
+      const pdf = await pdfjs.getDocument(arrayBuffer).promise;
+      const totalPages = pdf.numPages;
+
+      console.log(`Number of pages: ${totalPages}`);
+    };
+
+    fileReader.readAsArrayBuffer(file);
+  };
   return (
     <div className="upTable">
       <h2 className="tableTitle">Tải tệp lên</h2>
@@ -62,9 +75,10 @@ const Uploadtable = (props) => {
             maxCount={1}
             beforeUpload={(file) => {
               return new Promise((resolve, reject) => {
-                if (file.size > 2000000) {
+                if (file.size > 40000000) {
                   reject("File size exceeded");
                 } else {
+                  countPages(file);
                   resolve("Success");
                 }
               });

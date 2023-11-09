@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
 export const getAllPrintingHistory = () => {
-  const navigate = useNavigate;
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
@@ -11,7 +10,7 @@ export const getAllPrintingHistory = () => {
         enqueueSnackbar("New printing history entry added successfully", {
           variant: "success",
         });
-        navigate("/Login1/Home");
+
       })
       .catch((error) => {
         enqueueSnackbar("Error", { variant: "error" });

@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const addPrinter = (
   enqueueSnackbar,
-  setPrinterCount,
   printerID,
   printerBrand,
   printerName,
@@ -34,11 +33,10 @@ export const addPrinter = (
   axios
     .post("http://localhost:3001/printers", data)
     .then(() => {
-      setPrinterCount(printerID + 1);
-      enqueueSnackbar("Printer Created successfully", { variant: "success" }); // Use enqueueSnackbar directly
+      enqueueSnackbar("Printer Created successfully", { variant: "success" });
     })
     .catch((error) => {
       console.log(error);
-      enqueueSnackbar("Error", { variant: "error" }); // Use enqueueSnackbar directly
+      enqueueSnackbar("Error", { variant: "error" });
     });
 };

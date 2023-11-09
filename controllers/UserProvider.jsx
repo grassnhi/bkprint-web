@@ -7,7 +7,10 @@ export const UserProvider = ({ children }) => {
   const [numberOfSided, setNumberOfSided] = useState(0); // 1-sided or 2-sided
   const [paperType, setPaperType] = useState(""); // A3, A4, A5
   const [fileName, setFileName] = useState("");
-  const [printerCount, setPrinterCount] = useState(1);
+  const [fileNumberofPages, setFileNumberofPages] = useState(0);
+  const [printerCount, setPrinterCount] = useState(0);
+  const [printingLocation, setPrintingLocation] = useState("");
+  const [printerAdmin, setPrinterAdmin] = useState([]);
   const contextValue = {
     numberOfCopy,
     setNumberOfCopy,
@@ -17,8 +20,14 @@ export const UserProvider = ({ children }) => {
     setPaperType,
     fileName,
     setFileName,
+    fileNumberofPages,
+    setFileNumberofPages,
     printerCount,
     setPrinterCount,
+    printingLocation,
+    setPrintingLocation,
+    printerAdmin,
+    setPrinterAdmin,
   };
 
   return (

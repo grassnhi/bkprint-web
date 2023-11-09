@@ -9,6 +9,7 @@ import AdminLogin1 from "../components/login1/AdminLogin1";
 import Choose from "../components/choose/Choose";
 import Completeprint from "../components/announcement/completeprint";
 import Upload from "../components/upload/upload";
+import Adminusers from "../components/profile/adminusers";
 
 const Routing = () => {
   return (
@@ -17,11 +18,11 @@ const Routing = () => {
       <Route path="Choose" element={<Choose />}>
         <Route path="Login1" element={<Login1 />}>
           <Route path="Home" element={<Home />} />
-          <Route path="Upload" element={<Upload/>} />
+          <Route path="Upload" element={<Upload />} />
           <Route path="Completeprint" element={<Completeprint />} />
         </Route>
         <Route path="AdminLogin1" element={<AdminLogin1 />}>
-          <Route path="AdminHome" element={<AdminHome />} />
+          <Route path="AdminHome" element={<Adminusers />} />
         </Route>
       </Route>
       <Route path="help" element={<Help />} />

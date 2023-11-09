@@ -7,7 +7,11 @@ import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../../routes/scrollToTop";
+import { useContext } from "react";
+import { UserContext } from "../../../../controllers/UserProvider";
 const Login = () => {
+  const { printerCount } = useContext(UserContext);
+  console.log(printerCount);
   const navigate = useNavigate();
   return (
     <div className="trang-chua-dang-nhap">

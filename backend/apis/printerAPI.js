@@ -3,13 +3,14 @@ import { Printer } from "../models/printer.js";
 
 const printerAPI = express.Router();
 
-// Route for creating a new printer
 printerAPI.post("/", async (request, response) => {
   try {
     if (
-      !request.body.printerID ||
-      !request.body.printerBrand ||
-      !request.body.printerName
+      request.body.printerBrand == "" ||
+      request.body.printerName == "" ||
+      request.body.printedPages == 0 ||
+      request.body.location.building == "" ||
+      request.body.location.room == ""
     ) {
       return response.status(400).send({
         message:
@@ -38,7 +39,6 @@ printerAPI.post("/", async (request, response) => {
   }
 });
 
-// Route for getting all printers
 printerAPI.get("/", async (request, response) => {
   try {
     const printers = await Printer.find({});
@@ -53,7 +53,6 @@ printerAPI.get("/", async (request, response) => {
   }
 });
 
-// Route for getting a printer by ID
 printerAPI.get("/:printerID", async (request, response) => {
   try {
     const { printerID } = request.params;
@@ -71,8 +70,6 @@ printerAPI.put("/:printerID", async (request, response) => {
   try {
     const { printerID } = request.params;
     const updatedPrinterData = request.body;
-
-    // Check if the request body contains the required fields
     if (!updatedPrinterData.printerBrand || !updatedPrinterData.printerName) {
       return response.status(400).send({
         message: "Send all required fields: printerBrand, printerName",
@@ -99,8 +96,6 @@ printerAPI.put("/:printerID", async (request, response) => {
 printerAPI.delete("/:printerID", async (request, response) => {
   try {
     const { printerID } = request.params;
-
-    // Find the printer by its ID and delete it
     const result = await Printer.findOneAndRemove({ printerID });
 
     if (!result) {

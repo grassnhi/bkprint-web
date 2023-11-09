@@ -5,22 +5,21 @@ import { UserContext } from "../../../controllers/UserProvider";
 import { addPrinter } from "../../../controllers/printer/addPrinter";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
-
+import { getPrinterCount } from "../../../controllers/printer/getPrinterCount";
 const Printproperties = () => {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
+
   const { enqueueSnackbar } = useSnackbar();
   const handlePrintingDocument = async () => {
-    console.log(new Date());
-    console.log(paperType);
-    console.log(numberOfSided);
+    getPrinterCount(setPrinterCount);
+    console.log("Printer count is: " + printerCount);
     addPrinter(
       enqueueSnackbar,
-      setPrinterCount,
       printerCount,
       fileName,
       fileName,
-      "A4",
+      paperType,
       "B4 304",
       true,
       parseInt(numberOfCopy) * 2
@@ -36,8 +35,8 @@ const Printproperties = () => {
     fileName,
     printerCount,
     setPrinterCount,
+    printingLocation,
   } = useContext(UserContext);
-
   const handleChange = (e) => {
     const inputValue = parseInt(e.target.value);
     let newValue;

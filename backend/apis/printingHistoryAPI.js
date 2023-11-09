@@ -3,7 +3,6 @@ import { PrintingHistory } from "../models/printingHistory.js";
 
 const printingHistoryAPI = express.Router();
 
-// Route for creating a new printing history entry
 printingHistoryAPI.post("/", async (request, response) => {
   try {
     if (
@@ -42,7 +41,6 @@ printingHistoryAPI.post("/", async (request, response) => {
   }
 });
 
-// Route for getting all printing history entries
 printingHistoryAPI.get("/", async (request, response) => {
   try {
     const printingHistoryEntries = await PrintingHistory.find({});
@@ -57,7 +55,6 @@ printingHistoryAPI.get("/", async (request, response) => {
   }
 });
 
-// Route for getting a printing history entry by index
 printingHistoryAPI.get("/:index", async (request, response) => {
   try {
     const { index } = request.params;
@@ -77,7 +74,6 @@ printingHistoryAPI.get("/:index", async (request, response) => {
   }
 });
 
-// Route for updating a printing history entry by index
 printingHistoryAPI.put("/:index", async (request, response) => {
   try {
     if (
@@ -126,7 +122,6 @@ printingHistoryAPI.put("/:index", async (request, response) => {
   }
 });
 
-// Route for deleting a printing history entry by index
 printingHistoryAPI.delete("/:index", async (request, response) => {
   try {
     const { index } = request.params;

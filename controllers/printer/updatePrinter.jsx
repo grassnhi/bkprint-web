@@ -10,13 +10,8 @@ export const updatePrinter = (
   newroom,
   newstatus,
   newprintedPages,
-  setLoading,
   enqueueSnackbar,
-  navigate
 ) => {
-  const navigate = useNavigate();
-
-  const { enqueueSnackbar } = useSnackbar();
   const data = {
     printerID,
     newprinterBrand,
@@ -33,7 +28,6 @@ export const updatePrinter = (
     .put(`http://localhost:3001/printers${printerID}`, data)
     .then(() => {
       enqueueSnackbar("Printer Created successfully", { variant: "success" });
-      navigate("/Login1/Home");
     })
     .catch((error) => {
       enqueueSnackbar("Error", { variant: "error" });
