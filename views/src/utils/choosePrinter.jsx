@@ -1,8 +1,6 @@
 import React from "react";
 import "./choosePrinter.css";
 import { Button } from "antd";
-import { useContext } from "react";
-import { UserContext } from "../../../controllers/UserProvider";
 const data = [
   {
     mod: "Canon LBP2900",
@@ -17,9 +15,7 @@ const data = [
     room: "208B1",
   },
 ];
-
 const ChoosePrinter = (props) => {
-  const { printingLocation, setPrintingLocation } = useContext(UserContext);
   return (
     <div className="chooseP">
       <h2 className="chooseTitle">Chọn máy in </h2>
@@ -30,17 +26,23 @@ const ChoosePrinter = (props) => {
           <th>Phòng</th>
           <th>Chọn</th>
         </tr>
-        {data.map((val, key) => {
-          return (
-            <tr key={key}>
-              <td>{val.mod}</td>
-              <td>{val.room}</td>
-              <td>
-                <input type="checkbox" />
-              </td>
-            </tr>
-          );
-        })}
+        {data.map((val, key) => (
+          <tr key={key}>
+            <td>{val.mod}</td>
+            <td>{val.room}</td>
+            <td>
+              <div class="custom-radio">
+                <input
+                  type="radio"
+                  id={`radio${key}`}
+                  name="options"
+                  value={val.mod}
+                />
+                <label htmlFor={`radio${key}`}></label>
+              </div>
+            </td>
+          </tr>
+        ))}
       </table>
       <span className="checkLocate">Xem vị trí máy in</span>
       <Button id="finish" onClick={props.onClick} block>

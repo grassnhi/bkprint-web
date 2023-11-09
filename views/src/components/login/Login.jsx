@@ -38,7 +38,9 @@ const Login = () => {
       </div>
       <img className="container-icon" alt="" src={logo3} />
 
-      <div className="section1">Đăng nhập</div>
+      <div className="section1" onClick={() => navigate("Choose")}>
+        Đăng nhập
+      </div>
 
       <div className="bkprint">BK Fast Automated Printing Service</div>
       <img className="oisp-official-logo-01-1-icon" alt="" src={logo2} />
