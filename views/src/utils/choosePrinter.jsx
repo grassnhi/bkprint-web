@@ -32,12 +32,7 @@ const ChoosePrinter = (props) => {
             <td>{val.room}</td>
             <td>
               <div class="custom-radio">
-                <input
-                  type="radio"
-                  id={`radio${key}`}
-                  name="options"
-                  value={val.mod}
-                />
+                <input type="radio" id={`radio${key}`} name="options" value={val.mod} />
                 <label htmlFor={`radio${key}`}></label>
               </div>
             </td>

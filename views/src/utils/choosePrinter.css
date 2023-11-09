@@ -109,7 +109,7 @@ input {
 }
 
 .custom-radio label::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -124,7 +124,7 @@ input {
 }
 
 .custom-radio label::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 5.5px; /* Adjust for alignment */
   top: 5.5px; /* Adjust for alignment */
