@@ -3,6 +3,7 @@ import { Button, Form, Upload } from "antd";
 import cloudicon from "../assets/Upload icon.png";
 import "./uploadtable.css";
 import { UserContext } from "../../../controllers/UserProvider";
+import * as pdfjs from "pdfjs-dist";
 
 const Uploadtable = (props) => {
   const [fileList, setFileList] = useState([]);
