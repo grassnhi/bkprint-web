@@ -89,3 +89,52 @@ input {
   font-family: var(--font-andika);
   color: white;
 }
+
+.custom-radio {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.custom-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-radio label {
+  position: relative;
+  padding-left: 30px; /* Adjust as needed for your design */
+  cursor: pointer;
+}
+
+.custom-radio label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px; /* Size of the radio button */
+  height: 20px; /* Size of the radio button */
+  border: 2px solid #483ea8; /* Border color */
+  border-radius: 50%; /* Rounded shape */
+}
+
+.custom-radio input[type="radio"]:checked + label::before {
+  background-color: #483ea8; /* Fill color when checked */
+}
+
+.custom-radio label::after {
+  content: '';
+  position: absolute;
+  left: 5.5px; /* Adjust for alignment */
+  top: 5.5px; /* Adjust for alignment */
+  width: 12px; /* Size of the inner circle */
+  height: 12px; /* Size of the inner circle */
+  border-radius: 50%;
+  background: #fff; /* Color of the inner circle */
+  display: none;
+}
+
+.custom-radio input[type="radio"]:checked + label::after {
+  display: block;
+}

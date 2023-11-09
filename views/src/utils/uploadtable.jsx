@@ -6,23 +6,23 @@ import { UserContext } from "../../../controllers/UserProvider";
 
 const Uploadtable = (props) => {
   const [fileList, setFileList] = useState([]);
-  const { fileName, setFileName } = useContext(UserContext);
+  const { fileName, setFileName, setStatus } = useContext(UserContext);
   useEffect(() => {
     setFileName(String(fileList[0]?.name));
   });
-  const countPages = async (file) => {
-    const fileReader = new FileReader();
+  // const countPages = async (file) => {
+  //   const fileReader = new FileReader();
 
-    fileReader.onload = async (e) => {
-      const arrayBuffer = e.target.result;
-      const pdf = await pdfjs.getDocument(arrayBuffer).promise;
-      const totalPages = pdf.numPages;
+  //   fileReader.onload = async (e) => {
+  //     const arrayBuffer = e.target.result;
+  //     const pdf = await pdfjs.getDocument(arrayBuffer).promise;
+  //     const totalPages = pdf.numPages;
 
-      console.log(`Number of pages: ${totalPages}`);
-    };
+  //     console.log(`Number of pages: ${totalPages}`);
+  //   };
 
-    fileReader.readAsArrayBuffer(file);
-  };
+  //   fileReader.readAsArrayBuffer(file);
+  // };
   return (
     <div className="upTable">
       <h2 className="tableTitle">Tải tệp lên</h2>
@@ -78,7 +78,7 @@ const Uploadtable = (props) => {
                 if (file.size > 40000000) {
                   reject("File size exceeded");
                 } else {
-                  countPages(file);
+                  setStatus(true);
                   resolve("Success");
                 }
               });

@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./upload.css";
 import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import Uploadtable from "../../utils/uploadtable";
 import ChoosePrinter from "../../utils/choosePrinter";
 import Printproperties from "../../utils/printproperties";
+import { UserContext } from "../../../../controllers/UserProvider";
 const Upload = () => {
   const [comp, setComp] = useState(false);
   const [comp1, setComp1] = useState(false);
+  const {fileName, status} = useContext(UserContext);
   const addComp = () => {
-    setComp(!comp);
+    console.log(fileName);
+    if (status && !comp) {
+      setComp(!comp);
+    }
   };
   const addComp1 = () => {
-    setComp1(!comp1);
+    if (!comp1) {
+      setComp1(!comp1);
+    }
   };
   return (
     <div className="uploadContainer">
@@ -43,14 +50,14 @@ const Upload = () => {
       <div className="upTablePosition">
         <Uploadtable text="TIẾP TỤC " onClick={addComp} />
       </div>
-      {!comp ? (
+      {comp ? (
         <div className="chooseTablePosition">
           <ChoosePrinter text="TIẾP TỤC" onClick={addComp1} />
         </div>
       ) : (
         <div></div>
       )}
-      {!comp1 ? (
+      {comp1 ? (
         <div className="propertiesTablePosition">
           <Printproperties />
         </div>
