@@ -8,7 +8,6 @@ import logo3 from "../../assets/container.png";
 import logo4 from "../../assets/375756243-688982619370253-4579776695205593531-n-1@2x.png";
 import { useNavigate } from "react-router-dom";
 import Login1 from "../login1/Login1";
-import Header from "../../utils/header";
 const Home = () => {
   const navigate = useNavigate();
   return (
@@ -34,7 +33,22 @@ const Home = () => {
         <span className="statement1">Chào mừng bạn đến với</span>
         <span className="statement2">HỆ THỐNG IN BÁCH KHOA</span>
       </div>
-      <Header></Header>
+      <img className="container-icon" alt="" src={logo3} />
+      <div className="sections-parent">
+        <div className="sections">
+          <div className="trang-chu">Trang chủ</div>
+          <div className="trang-chu">In tài liệu</div>
+          <div
+            className="trang-chu"
+            onClick={() => navigate("/Choose/Login1/Profile")}
+          >
+            Tài khoản
+          </div>
+          <div className="trang-chu">Liên hệ</div>
+        </div>
+      </div>
+      <div className="bkprint">BK Fast Automated Printing Service</div>
+      <img className="oisp-official-logo-01-1-icon" alt="" src={logo2} />
       <div className="wrapper1">
         <div className="heading">
           Tải lên tài liệu và in tại máy in gần bạn!

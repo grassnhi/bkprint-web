@@ -5,12 +5,11 @@ import { UserContext } from "../../../controllers/UserProvider";
 import { addPrinter } from "../../../controllers/printer/addPrinter";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import { getPrinterCount } from "../../../controllers/printer/getPrinterCount";
+import { getPrinterCount } from "../../../controllers/printer/getPrinter";
 
 const Printproperties = () => {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
-
   const { enqueueSnackbar } = useSnackbar();
   const handleChangeNumberofPage = () => {
     let x;
@@ -24,8 +23,9 @@ const Printproperties = () => {
     const PageOfTheFile = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
     setFileNumberofPages((numberOfCopy * PageOfTheFile + 1) / x);
   };
+
   const handlePrintingDocument = async () => {
-    getPrinterCount(setPrinterCount);
+    const x = getPrinterCount();
     console.log("Printer count is: " + printerCount);
     handleChangeNumberofPage();
     addPrinter(

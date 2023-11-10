@@ -3,7 +3,6 @@ import "./users.css";
 import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import profileImg from "../../assets/N 1.png";
-import Header from "../../utils/header";
 import { useNavigate } from "react-router-dom";
 let printHistory = [
   {
@@ -38,7 +37,22 @@ const Users = () => {
           <span className="policy">Chính sách pháp lý</span>
         </div>
       </div>
-      <Header></Header>
+      <img className="container-icon" alt="" src={logo3} />
+      <div className="sections-parent">
+        <div className="sections">
+          <div className="trang-chu">Trang chủ</div>
+          <div className="trang-chu">In tài liệu</div>
+          <div
+            className="trang-chu"
+            onClick={() => navigate("/Choose/Login1/Profile")}
+          >
+            Tài khoản
+          </div>
+          <div className="trang-chu">Liên hệ</div>
+        </div>
+      </div>
+      <div className="bkprint">BK Fast Automated Printing Service</div>
+      <img className="oisp-official-logo-01-1-icon" alt="" src={logo2} />
       <img className="profileImg" src={profileImg} alt="" />
       <div className="information">
         <span className="texx">Tạ Ngọc Nam</span>
