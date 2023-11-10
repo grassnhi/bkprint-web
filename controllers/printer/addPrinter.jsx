@@ -1,4 +1,5 @@
 import axios from "axios";
+import ChoosePrinter from "../../views/src/utils/choosePrinter";
 
 export const addPrinter = (
   enqueueSnackbar,
@@ -8,7 +9,9 @@ export const addPrinter = (
   building,
   room,
   status,
-  printedPages
+  printedPages,
+  chosenPrinter,
+  printingLocation
 ) => {
   const data = {
     printerID,
@@ -29,7 +32,10 @@ export const addPrinter = (
   console.log(room);
   console.log(status);
   console.log(printedPages);
-
+  console.log(status);
+  console.log(chosenPrinter);
+  console.log(printingLocation);
+  console.log(new Date());
   axios
     .post("http://localhost:3001/printers", data)
     .then(() => {

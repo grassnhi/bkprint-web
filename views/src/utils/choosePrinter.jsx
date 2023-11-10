@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./choosePrinter.css";
+import { useState } from "react";
 import { Button } from "antd";
+import { UserContext } from "../../../controllers/UserProvider";
 const data = [
   {
     mod: "Canon LBP2900",
@@ -16,6 +18,19 @@ const data = [
   },
 ];
 const ChoosePrinter = (props) => {
+  const {
+    chosenPrinter,
+    setChosenPrinter,
+    printingLocation,
+    setPrintingLocation,
+  } = useContext(UserContext);
+
+  const handleRadioChange = (event) => {
+    const [selectedPrinter, selectedLocation] = event.target.value.split("###");
+    setChosenPrinter(selectedPrinter);
+    setPrintingLocation(selectedLocation);
+  };
+  
   return (
     <div className="chooseP">
       <h2 className="chooseTitle">Chọn máy in </h2>
@@ -32,7 +47,13 @@ const ChoosePrinter = (props) => {
             <td>{val.room}</td>
             <td>
               <div class="custom-radio">
-                <input type="radio" id={`radio${key}`} name="options" value={val.mod} />
+                <input
+                  type="radio"
+                  id={`radio${key}`}
+                  name="options"
+                  value={`${val.mod}###${val.room}`}
+                  onChange={(e) => handleRadioChange(e)}
+                />
                 <label htmlFor={`radio${key}`}></label>
               </div>
             </td>

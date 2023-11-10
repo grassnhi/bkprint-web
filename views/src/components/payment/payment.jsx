@@ -3,6 +3,7 @@ import "./payment.css";
 import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import { Button } from "react-bootstrap";
+import Header from "../../utils/header";
 const Payment = () => {
   return (
     <div className="paymentContainer">
@@ -19,17 +20,7 @@ const Payment = () => {
           <span className="policy">Chính sách pháp lý</span>
         </div>
       </div>
-      <img className="container-icon" alt="" src={logo3} />
-      <div className="sections-parent">
-        <div className="sections">
-          <div className="trang-chu">Trang chủ</div>
-          <div className="trang-chu">In tài liệu</div>
-          <div className="trang-chu">Tài khoản</div>
-          <div className="trang-chu">Liên hệ</div>
-        </div>
-      </div>
-      <div className="bkprint">BK Fast Automated Printing Service</div>
-      <img className="oisp-official-logo-01-1-icon" alt="" src={logo2} />
+      <Header></Header>
       <div className="paymentIntro">Cổng thanh toán BKPrint</div>
       <div className="paymentNotice">
         Số giấy in của bạn không đủ để in. Hãy mua thêm tại đây

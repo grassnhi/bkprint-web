@@ -9,3 +9,4 @@ export const getPrinterCount = (setPrinterCount) => {
     console.log(error);
   }
 };
+

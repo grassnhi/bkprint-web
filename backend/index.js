@@ -9,14 +9,13 @@ import systemPolicyAPI from "./apis/systemPolicyAPI.js";
 
 const app = express();
 
-// Middleware for parsing request body
 app.use(express.json());
 app.use(cors());
 
 console.log("First Step");
 app.get("/", (request, response) => {
   console.log(request);
-  return response.status(234).send("Welcome To MERN Stack Tutorial");
+  return response.status(234).send("ABCDEF");
 });
 console.log("Second Step");
 
@@ -30,11 +29,11 @@ console.log("Third Step");
 mongoose
   .connect(mongoDBURL)
   .then(() => {
-    console.log("App connected to database");
+    console.log("App connected to the database");
     app.listen(PORT, () => {
-      console.log(`App is listening to port: ${PORT}`);
+      console.log(`App is listening on port: ${PORT}`);
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.error(error);
   });

@@ -9,9 +9,13 @@ export const UserProvider = ({ children }) => {
   const [fileName, setFileName] = useState("");
   const [fileNumberofPages, setFileNumberofPages] = useState(0);
   const [printerCount, setPrinterCount] = useState(0);
+  const [chosenPrinter, setChosenPrinter] = useState("");
   const [printingLocation, setPrintingLocation] = useState("");
   const [printerAdmin, setPrinterAdmin] = useState([]);
   const [status, setStatus] = useState(false);
+  const [A3Printed, setA3Printed] = useState(0);
+  const [A4Printed, setA4Printed] = useState(0);
+  const [A5Printed, setA5Printed] = useState(0);
   const contextValue = {
     numberOfCopy,
     setNumberOfCopy,
@@ -25,6 +29,8 @@ export const UserProvider = ({ children }) => {
     setFileNumberofPages,
     printerCount,
     setPrinterCount,
+    chosenPrinter,
+    setChosenPrinter,
     printingLocation,
     setPrintingLocation,
     printerAdmin,

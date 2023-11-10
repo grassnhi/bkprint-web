@@ -1,12 +1,15 @@
 import React from "react";
-import { UserProvider } from "../../controllers/UserProvider"; // Use the correct import path for UserContext
+import { UserProvider } from "../../controllers/UserProvider";
 import Routing from "./routes/route";
+import { SnackbarProvider } from "notistack";
 
-function App() {
+function App({ classes }) {
   return (
-    <UserProvider>
-      <Routing />
-    </UserProvider>
+    <SnackbarProvider>
+      <UserProvider>
+        <Routing />
+      </UserProvider>
+    </SnackbarProvider>
   );
 }
 

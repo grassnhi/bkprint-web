@@ -4,6 +4,7 @@ import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import Button from "react-bootstrap/Button";
 import ero from "../../assets/error404 1.png";
+
 const Cantbuy = () => {
   return (
     <div className="BB">

@@ -6,14 +6,28 @@ import { addPrinter } from "../../../controllers/printer/addPrinter";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { getPrinterCount } from "../../../controllers/printer/getPrinterCount";
+
 const Printproperties = () => {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
 
   const { enqueueSnackbar } = useSnackbar();
+  const handleChangeNumberofPage = () => {
+    let x;
+    if (numberOfSided == "In một mặt") {
+      x = 1;
+    } else if (numberOfSided == "In hai mặt") {
+      x = 2;
+    } else {
+      return;
+    }
+    const PageOfTheFile = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
+    setFileNumberofPages((numberOfCopy * PageOfTheFile + 1) / x);
+  };
   const handlePrintingDocument = async () => {
     getPrinterCount(setPrinterCount);
     console.log("Printer count is: " + printerCount);
+    handleChangeNumberofPage();
     addPrinter(
       enqueueSnackbar,
       printerCount,
@@ -21,8 +35,10 @@ const Printproperties = () => {
       fileName,
       paperType,
       "B4 304",
-      true,
-      parseInt(numberOfCopy) * 2
+      status,
+      fileNumberofPages,
+      chosenPrinter,
+      printingLocation
     );
   };
   const {
@@ -30,11 +46,15 @@ const Printproperties = () => {
     setNumberOfCopy,
     numberOfSided,
     setNumberOfSided,
+    fileNumberofPages,
+    setFileNumberofPages,
     paperType,
     setPaperType,
     fileName,
     printerCount,
     setPrinterCount,
+    status,
+    chosenPrinter,
     printingLocation,
   } = useContext(UserContext);
   const handleChange = (e) => {

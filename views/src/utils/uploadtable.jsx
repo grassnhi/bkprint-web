@@ -3,27 +3,17 @@ import { Button, Form, Upload } from "antd";
 import cloudicon from "../assets/Upload icon.png";
 import "./uploadtable.css";
 import { UserContext } from "../../../controllers/UserProvider";
-import * as pdfjs from "pdfjs-dist";
 
 const Uploadtable = (props) => {
   const [fileList, setFileList] = useState([]);
   const { fileName, setFileName, setStatus } = useContext(UserContext);
+
   useEffect(() => {
     setFileName(String(fileList[0]?.name));
+    /*     const numPages = getNumberOfPages(fileList[0].originFileObj);
+    console.log("Number of pages:", numPages); */
   });
-  // const countPages = async (file) => {
-  //   const fileReader = new FileReader();
 
-  //   fileReader.onload = async (e) => {
-  //     const arrayBuffer = e.target.result;
-  //     const pdf = await pdfjs.getDocument(arrayBuffer).promise;
-  //     const totalPages = pdf.numPages;
-
-  //     console.log(`Number of pages: ${totalPages}`);
-  //   };
-
-  //   fileReader.readAsArrayBuffer(file);
-  // };
   return (
     <div className="upTable">
       <h2 className="tableTitle">Tải tệp lên</h2>

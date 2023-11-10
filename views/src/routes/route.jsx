@@ -10,7 +10,7 @@ import Choose from "../components/choose/Choose";
 import Completeprint from "../components/announcement/completeprint";
 import Upload from "../components/upload/upload";
 import Adminusers from "../components/profile/adminusers";
-
+import Users from "../components/profile/users";
 const Routing = () => {
   return (
     <Routes>
@@ -20,6 +20,7 @@ const Routing = () => {
           <Route path="Home" element={<Home />} />
           <Route path="Upload" element={<Upload />} />
           <Route path="Completeprint" element={<Completeprint />} />
+          <Route path="Profile" element={<Users />} />
         </Route>
         <Route path="AdminLogin1" element={<AdminLogin1 />}>
           <Route path="AdminHome" element={<Adminusers />} />
