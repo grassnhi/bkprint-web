@@ -113,9 +113,7 @@ const Adminusers = () => {
             <label htmlFor="endDate">đến ngày:</label>
             <input type="date" id="endDate" name="endDate" />
           </div>
-          <br />
-          <label htmlFor="studentName">Tên sinh viên:</label>
-          <input type="text" id="studentName" name="studentName" />
+          <div>Tên sinh viên: </div>
         </div>
       </div>
 
@@ -149,11 +147,15 @@ const Adminusers = () => {
       <hr className="secondBreak" />
       <div className="buyHis2">
         <span className="buyHisTex2">Quản lý hệ thống - Máy in</span>
-        <span className="datePrint2">
-          Từ ngày ../../... đến ngày ../../....
-          <br />
-          ID máy in:
-        </span>
+        <div className="datePrint">
+          <div className="datePickerContainer">
+            <label htmlFor="startDate">Từ ngày:</label>
+            <input type="date" id="startDate" name="startDate" />
+            <label htmlFor="endDate">đến ngày:</label>
+            <input type="date" id="endDate" name="endDate" />
+          </div>
+          <div>ID máy in: </div>
+        </div>
       </div>
       <table className="buyHis1">
         <tr className="row1">

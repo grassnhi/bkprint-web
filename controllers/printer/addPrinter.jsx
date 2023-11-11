@@ -24,18 +24,6 @@ export const addPrinter = async (
     status,
     printedPages,
   };
-
-  console.log(printerID);
-  console.log(printerBrand);
-  console.log(printerName);
-  console.log(building);
-  console.log(room);
-  console.log(status);
-  console.log(printedPages);
-  console.log(status);
-  console.log(chosenPrinter);
-  console.log(printingLocation);
-  console.log(new Date());
   axios
     .post("http://localhost:3001/printers", data)
     .then(() => {

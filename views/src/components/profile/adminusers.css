@@ -349,12 +349,14 @@
   line-height: normal;
 }
 .datePickerContainer {
-  width: 300px;
+  width: 500px;
   overflow: auto;
 }
 #startDate {
-  width: 200px;
+  height: 20px;
+  width: 100px;
 }
 #endDate {
-  width: 200px;
+  height: 20px;
+  width: 100px;
 }

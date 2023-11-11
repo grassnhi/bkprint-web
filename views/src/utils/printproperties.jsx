@@ -7,11 +7,29 @@ import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import {
   getPrinterBrand,
+  getPrinterBuilding,
   getPrinterCount,
+  getPrinterData,
+  getPrinterName,
+  getPrinterPrintedPage,
+  getPrinterRoom,
 } from "../../../controllers/printer/getPrinter";
 import { getStudentRemainingPages } from "../../../controllers/student/getFromStudent";
 import { updateRemainingPages } from "../../../controllers/student/updateStudent";
 import { updatePrinter } from "../../../controllers/printer/updatePrinter";
+import {
+  getDefaultPage,
+  getMaximumFileSize,
+  getPermittedFileType,
+  getAllocatedDate,
+} from "../../../controllers/systemPolicy/getSystemPolicy";
+import {
+  updatePermittedFileType,
+  updateAllocatedDate,
+  updateMaximumFileSize,
+  updateDefaultPage,
+} from "../../../controllers/systemPolicy/updateSystemPolicy";
+
 const Printproperties = () => {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
@@ -37,8 +55,12 @@ const Printproperties = () => {
     const fileNumberofPages = await handleChangeNumberofPage();
     const oldPages = await getStudentRemainingPages(2153788);
     console.log("Old pages: " + oldPages);
-    await updatePrinter(0, false);
     await updateRemainingPages(2153788, oldPages + 1000);
+    /* TEST PRINTER APIS -- OK
+      TEST SYSTEM POLICY -- OK
+    */
+
+    /* TEST PRINTING HISTORY & STUDENT APIS ** Important ** */
 
     await addPrinter(
       enqueueSnackbar,
