@@ -25,7 +25,7 @@ export const getStudentInformation = async (studentID) => {
 export const getStudentPrintingHistory = async (studentID) => {
   try {
     const studentData = await getStudentInformation(studentID);
-    return studentData ? studentData.printingHistory : [];
+    return studentData.printingHistory;
   } catch (error) {
     console.log(error);
     return null;
@@ -35,7 +35,7 @@ export const getStudentPrintingHistory = async (studentID) => {
 export const getStudentTransactionHistory = async (studentID) => {
   try {
     const studentData = await getStudentInformation(studentID);
-    return studentData ? studentData.transactionHistory : [];
+    return studentData.transactionHistory;
   } catch (error) {
     console.log(error);
     return null;
@@ -46,6 +46,36 @@ export const getStudentRemainingPages = async (studentID) => {
   try {
     const studentData = await getStudentInformation(studentID);
     return studentData ? studentData.remainingPages : 0;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getStudentEmail = async (studentID) => {
+  try {
+    const studentData = await getStudentInformation(studentID);
+    return studentData ? studentData.studentEmail : 0;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getStudentFaculty = async (studentID) => {
+  try {
+    const studentData = await getStudentInformation(studentID);
+    return studentData ? studentData.studentFaculty : 0;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getStudentName = async (studentID) => {
+  try {
+    const studentData = await getStudentInformation(studentID);
+    return studentData ? studentData.studentName : 0;
   } catch (error) {
     console.log(error);
     return null;

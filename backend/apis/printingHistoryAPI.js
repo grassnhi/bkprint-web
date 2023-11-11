@@ -6,13 +6,12 @@ const printingHistoryAPI = express.Router();
 printingHistoryAPI.post("/", async (request, response) => {
   try {
     if (
-      !request.body.index ||
       !request.body.studentID ||
+      !request.body.studentName ||
       !request.body.fileName ||
       !request.body.printingTime ||
       !request.body.printerName ||
-      !request.body.building ||
-      !request.body.time
+      !request.body.building
     ) {
       return response.status(400).send({
         message:
@@ -23,11 +22,11 @@ printingHistoryAPI.post("/", async (request, response) => {
     const newPrintingHistoryEntry = {
       index: request.body.index,
       studentID: request.body.studentID,
+      studentName: request.body.studentName,
       fileName: request.body.fileName,
       printingTime: request.body.printingTime,
       printerName: request.body.printerName,
       building: request.body.building,
-      time: request.body.time,
     };
 
     const printingHistoryEntry = await PrintingHistory.create(

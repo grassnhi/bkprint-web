@@ -64,28 +64,26 @@ studentAPI.get("/:studentID", async (request, response) => {
 studentAPI.put("/:studentID", async (request, response) => {
   try {
     const { studentID } = request.params;
-    const newPages = request.body.remainingPages; 
-    if (newPages === undefined || newPages < 0) {
-      return response.status(400).json({
-        message:
-          "Send the required field: remainingPages with a valid positive value",
-      });
-    }
-
-    const updatedStudent = await Student.findOneAndUpdate(
-      { studentID },
-      { remainingPages: newPages },
-      { new: true }
-    );
-
-    if (!updatedStudent) {
+    const { printingHistory, transactionHistory, remainingPages } =
+      request.body;
+    const student = await Student.findOne({ studentID });
+    if (!student) {
       return response.status(404).json({ message: "Student not found" });
     }
-
+    if (printingHistory !== undefined) {
+      student.printingHistory = printingHistory;
+    }
+    if (transactionHistory !== undefined) {
+      student.transactionHistory = transactionHistory;
+    }
+    if (remainingPages !== undefined) {
+      student.remainingPages = remainingPages;
+    }
+    const updatedStudent = await student.save();
     return response.status(200).json(updatedStudent);
   } catch (error) {
-    console.log(error.message);
-    response.status(500).json({ message: error.message });
+    console.error(error.message);
+    response.status(500).send({ message: error.message });
   }
 });
 

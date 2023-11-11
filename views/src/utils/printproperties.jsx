@@ -14,8 +14,6 @@ import {
   getPrinterPrintedPage,
   getPrinterRoom,
 } from "../../../controllers/printer/getPrinter";
-import { getStudentRemainingPages } from "../../../controllers/student/getFromStudent";
-import { updateRemainingPages } from "../../../controllers/student/updateStudent";
 import { updatePrinter } from "../../../controllers/printer/updatePrinter";
 import {
   getDefaultPage,
@@ -30,6 +28,33 @@ import {
   updateDefaultPage,
 } from "../../../controllers/systemPolicy/updateSystemPolicy";
 
+import { addStudent } from "../../../controllers/student/addToStudent";
+import {
+  updateRemainingPages,
+  updateTransactionHistory,
+  updatePrintingHistory,
+} from "../../../controllers/student/updateStudent";
+import {
+  getTotalStudent,
+  getStudentInformation,
+  getStudentPrintingHistory,
+  getStudentTransactionHistory,
+  getStudentRemainingPages,
+  getStudentEmail,
+  getStudentFaculty,
+  getStudentName,
+} from "../../../controllers/student/getFromStudent";
+import { addPrintingActivity } from "../../../controllers/printingHistory/addPrintingHistory";
+import {
+  getTotalPrintingActivity,
+  getPrintingActivityData,
+  getPrintingActivityBuilding,
+  getPrintingActivityStudentID,
+  getPrintingActivityPrintingTime,
+  getPrintingActivityStudentName,
+  getPrintingActivityFileName,
+  getPrintingActivityPrinterName,
+} from "../../../controllers/printingHistory/getAllPrintingHistory";
 const Printproperties = () => {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
@@ -53,14 +78,16 @@ const Printproperties = () => {
   const handlePrintingDocument = async () => {
     const printerCount = await getPrinterCount();
     const fileNumberofPages = await handleChangeNumberofPage();
-    const oldPages = await getStudentRemainingPages(2153788);
-    console.log("Old pages: " + oldPages);
-    await updateRemainingPages(2153788, oldPages + 1000);
-    /* TEST PRINTER APIS -- OK
-      TEST SYSTEM POLICY -- OK
-    */
-
-    /* TEST PRINTING HISTORY & STUDENT APIS ** Important ** */
+    const x = await getTotalPrintingActivity();
+    await addPrintingActivity(
+      x,
+      "2153843",
+      "NHT",
+      fileName,
+      await convertTime(),
+      chosenPrinter,
+      printingLocation
+    );
 
     await addPrinter(
       enqueueSnackbar,
@@ -74,10 +101,9 @@ const Printproperties = () => {
       chosenPrinter,
       printingLocation
     );
-    const newPages = await getStudentRemainingPages(2153788);
-    console.log("New pages: " + newPages);
   };
   const {
+    convertTime,
     numberOfCopy,
     setNumberOfCopy,
     numberOfSided,

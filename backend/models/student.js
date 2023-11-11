@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
 const transactionHistorySchema = mongoose.Schema({
-  time: { type: Date },
+  time: { type: String },
   price: { type: Number },
   purchasedPages: { type: Number },
 });
 
 const printingHistorySchema = mongoose.Schema({
   filename: { type: String },
-  time: { type: Date },
+  time: { type: String },
   printedPages: { type: Number },
   paperType: { type: String },
   location: { type: String },

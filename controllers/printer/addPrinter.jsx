@@ -10,8 +10,6 @@ export const addPrinter = async (
   room,
   status,
   printedPages,
-  chosenPrinter,
-  printingLocation
 ) => {
   const data = {
     printerID,
