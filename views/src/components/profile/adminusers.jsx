@@ -4,10 +4,8 @@ import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import profileImg from "../../assets/N 1.png";
 import { Button } from "react-bootstrap";
-import { getPrinter } from "../../../../controllers/printer/getPrinter";
 import { UserContext } from "../../../../controllers/UserProvider";
 import { useSnackbar } from "notistack";
-import { Printer } from "../../../../backend/models/printer";
 let printAdminHis = [
   {
     names: "",
@@ -44,9 +42,7 @@ let fileType = [
   { fileT: "PDF", sta: "Cần tải lên", oP: "Cho phép" },
 ];
 
-const renderPrinterAdmin = (i, setPrinter) => {
-  getPrinter(i, setPrinter);
-};
+const renderPrinterAdmin = (i, setPrinter) => {};
 
 const Adminusers = () => {
   const { printerCount, printerAdmin, setPrinterAdmin } =

@@ -1,36 +1,14 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useSnackbar } from "notistack";
 
-export const updatePrinter = (
-  printerID,
-  newprinterBrand,
-  newprinterName,
-  newbuilding,
-  newroom,
-  newstatus,
-  newprintedPages,
-  enqueueSnackbar,
-) => {
-  const data = {
-    printerID,
-    newprinterBrand,
-    newprinterName,
-    location: {
-      newbuilding,
-      newroom,
-    },
-    newstatus,
-    newprintedPages,
-  };
-
+export const updatePrinter = async (printerID, newStatus) => {
   axios
-    .put(`http://localhost:3001/printers${printerID}`, data)
-    .then(() => {
-      enqueueSnackbar("Printer Created successfully", { variant: "success" });
+    .put(`http://localhost:3001/printers/${printerID}`, {
+      status: newStatus,
+    })
+    .then((response) => {
+      console.log("Printer status updated:");
     })
     .catch((error) => {
-      enqueueSnackbar("Error", { variant: "error" });
-      console.log(error);
+      console.log("Error:", error);
     });
 };

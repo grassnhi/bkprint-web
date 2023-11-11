@@ -1,7 +1,7 @@
 import axios from "axios";
 import ChoosePrinter from "../../views/src/utils/choosePrinter";
 
-export const addPrinter = (
+export const addPrinter = async (
   enqueueSnackbar,
   printerID,
   printerBrand,

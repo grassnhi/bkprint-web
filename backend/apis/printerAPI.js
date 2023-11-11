@@ -69,16 +69,17 @@ printerAPI.get("/:printerID", async (request, response) => {
 printerAPI.put("/:printerID", async (request, response) => {
   try {
     const { printerID } = request.params;
-    const updatedPrinterData = request.body;
-    if (!updatedPrinterData.printerBrand || !updatedPrinterData.printerName) {
-      return response.status(400).send({
-        message: "Send all required fields: printerBrand, printerName",
+    const updatedStatus = request.body.status;
+
+    if (updatedStatus === undefined) {
+      return response.status(400).json({
+        message: "Send the required field: status",
       });
     }
 
     const updatedPrinter = await Printer.findOneAndUpdate(
       { printerID },
-      updatedPrinterData,
+      { status: updatedStatus },
       { new: true }
     );
 
@@ -89,25 +90,7 @@ printerAPI.put("/:printerID", async (request, response) => {
     return response.status(200).json(updatedPrinter);
   } catch (error) {
     console.log(error.message);
-    response.status(500).send({ message: error.message });
-  }
-});
-
-printerAPI.delete("/:printerID", async (request, response) => {
-  try {
-    const { printerID } = request.params;
-    const result = await Printer.findOneAndRemove({ printerID });
-
-    if (!result) {
-      return response.status(404).json({ message: "Printer not found" });
-    }
-
-    return response
-      .status(200)
-      .json({ message: "Printer deleted successfully" });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
+    response.status(500).json({ message: error.message });
   }
 });
 

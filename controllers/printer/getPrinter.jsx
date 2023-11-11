@@ -1,21 +1,30 @@
 import axios from "axios";
 
 export const getPrinterCount = async () => {
-  axios
-    .get(`http://localhost:3001/printers`)
-    .then((response) => {
-      return response.data.count;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    const response = await axios.get("http://localhost:3001/printers");
+    console.log("RC: " + response.data.count);
+    return response.data.count;
+  } catch (error) {
+    console.log(error);
+  }
 };
-export const getPrinterBrand = async (printerID) => {
+
+export const getPrinterData = async (printerID) => {
   try {
     const response = await axios.get(
       `http://localhost:3001/printers/${printerID}`
     );
-    return response.data.printerBrand;
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPrinterBrand = async (printerID) => {
+  try {
+    const printerData = await getPrinterData(printerID);
+    return printerData.printerBrand;
   } catch (error) {
     console.log(error);
   }
@@ -23,10 +32,8 @@ export const getPrinterBrand = async (printerID) => {
 
 export const getPrinterName = async (printerID) => {
   try {
-    const response = await axios.get(
-      `http://localhost:3001/printers/${printerID}`
-    );
-    return response.data.printerName;
+    const printerData = await getPrinterData(printerID);
+    return printerData.printerName;
   } catch (error) {
     console.log(error);
   }
@@ -34,10 +41,8 @@ export const getPrinterName = async (printerID) => {
 
 export const getPrinterBuilding = async (printerID) => {
   try {
-    const response = await axios.get(
-      `http://localhost:3001/printers/${printerID}`
-    );
-    return response.data.location.building;
+    const printerData = await getPrinterData(printerID);
+    return printerData.location.building;
   } catch (error) {
     console.log(error);
   }
@@ -45,10 +50,8 @@ export const getPrinterBuilding = async (printerID) => {
 
 export const getPrinterRoom = async (printerID) => {
   try {
-    const response = await axios.get(
-      `http://localhost:3001/printers/${printerID}`
-    );
-    return response.data.location.room;
+    const printerData = await getPrinterData(printerID);
+    return printerData.location.room;
   } catch (error) {
     console.log(error);
   }
@@ -56,9 +59,7 @@ export const getPrinterRoom = async (printerID) => {
 
 export const getPrinterPrintedPage = async (printerID, type) => {
   try {
-    const response = await axios.get(
-      `http://localhost:3001/printers/${printerID}`
-    );
+    const printerData = await getPrinterData(printerID);
     var tpe = 0;
     if (type == "A3") {
       tpe = 0;
@@ -67,7 +68,7 @@ export const getPrinterPrintedPage = async (printerID, type) => {
     } else if (type == "A5") {
       tpe = 2;
     }
-    return response.data.printedPages[tpe];
+    return printerData.printedPages[tpe];
   } catch (error) {
     console.log(error);
   }
