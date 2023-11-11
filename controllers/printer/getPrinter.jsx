@@ -3,7 +3,6 @@ import axios from "axios";
 export const getPrinterCount = async () => {
   try {
     const response = await axios.get("http://localhost:3001/printers");
-    console.log("RC: " + response.data.count);
     return response.data.count;
   } catch (error) {
     console.log(error);

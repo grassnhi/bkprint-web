@@ -9,6 +9,8 @@ import {
   getPrinterBrand,
   getPrinterCount,
 } from "../../../controllers/printer/getPrinter";
+import { getStudentRemainingPages } from "../../../controllers/student/getFromStudent";
+import { updateRemainingPages } from "../../../controllers/student/updateStudent";
 import { updatePrinter } from "../../../controllers/printer/updatePrinter";
 const Printproperties = () => {
   const [value, setValue] = useState(0);
@@ -33,7 +35,11 @@ const Printproperties = () => {
   const handlePrintingDocument = async () => {
     const printerCount = await getPrinterCount();
     const fileNumberofPages = await handleChangeNumberofPage();
-    await updatePrinter(16, false);
+    const oldPages = await getStudentRemainingPages(2153788);
+    console.log("Old pages: " + oldPages);
+    await updatePrinter(0, false);
+    await updateRemainingPages(2153788, oldPages + 1000);
+
     await addPrinter(
       enqueueSnackbar,
       printerCount,
@@ -46,6 +52,8 @@ const Printproperties = () => {
       chosenPrinter,
       printingLocation
     );
+    const newPages = await getStudentRemainingPages(2153788);
+    console.log("New pages: " + newPages);
   };
   const {
     numberOfCopy,

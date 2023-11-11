@@ -1,11 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import React from "react";
 import "./adminusers.css";
 import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import profileImg from "../../assets/N 1.png";
 import { Button } from "react-bootstrap";
-import { UserContext } from "../../../../controllers/UserProvider";
-import { useSnackbar } from "notistack";
 let printAdminHis = [
   {
     names: "",
@@ -35,22 +33,44 @@ let printAdminHis = [
     status11: "",
   },
 ];
-
+let printerAdmin = [
+  {
+    ID: "",
+    brand: "",
+    model: "",
+    place: "",
+    room: "",
+    setting: "",
+    stat2: "",
+    num: "",
+  },
+  {
+    ID: "",
+    brand: "",
+    model: "",
+    place: "",
+    room: "",
+    setting: "",
+    stat2: "",
+    num: "",
+  },
+  {
+    ID: "",
+    brand: "",
+    model: "",
+    place: "",
+    room: "",
+    setting: "",
+    stat2: "",
+    num: "",
+  },
+];
 let fileType = [
   { fileT: "Excel", sta: "Cần tải lên", oP: "Cho phép" },
   { fileT: "Word", sta: "Cần tải lên", oP: "Cho phép" },
   { fileT: "PDF", sta: "Cần tải lên", oP: "Cho phép" },
 ];
-
-const renderPrinterAdmin = (i, setPrinter) => {};
-
 const Adminusers = () => {
-  const { printerCount, printerAdmin, setPrinterAdmin } =
-    useContext(UserContext);
-  const [printer, setPrinter] = useState({});
-  for (let i = 0; i < printerCount; i++) {
-    renderPrinterAdmin(i, setPrinter);
-  }
   return (
     <div className="adminUserContainer">
       <div className="f">
@@ -86,12 +106,19 @@ const Adminusers = () => {
       <hr className="firstBreak" />
       <div className="printHis">
         <span className="printHisTex">Quản lý người dùng - Lịch sử in</span>
-        <span className="datePrint">
-          Từ ngày ../../... đến ngày ../../....
+        <div className="datePrint">
+          <div className="datePickerContainer">
+            <label htmlFor="startDate">Từ ngày:</label>
+            <input type="date" id="startDate" name="startDate" />
+            <label htmlFor="endDate">đến ngày:</label>
+            <input type="date" id="endDate" name="endDate" />
+          </div>
           <br />
-          Tên sinh viên:
-        </span>
+          <label htmlFor="studentName">Tên sinh viên:</label>
+          <input type="text" id="studentName" name="studentName" />
+        </div>
       </div>
+
       <table className="printHis1">
         <tr className="row">
           <tr className="row">
@@ -156,7 +183,18 @@ const Adminusers = () => {
           })}
         </tr>
       </table>
-      <span className="sum2">Số tờ còn lại:</span>
+      <Button id="addPrinterBtn">Thêm máy in</Button>
+      <span className="sum3">Số tờ còn lại:</span>
+      <input className="addPrinter-input1" placeholder="Mã ID" type="text" />
+      <input
+        className="addPrinter-input2"
+        placeholder="Thương hiệu"
+        type="text"
+      />
+      <input className="addPrinter-input3" placeholder="Kiểu máy" type="text" />
+      <input className="addPrinter-input4" placeholder="Tòa nhà" type="text" />
+      <input className="addPrinter-input5" placeholder="Phòng" type="text" />
+
       <hr className="thirdBreak" />
       <div className="op1">
         <span className="op1Intro">Tùy chỉnh</span>
@@ -164,6 +202,7 @@ const Adminusers = () => {
           <span className="op1Cons1">
             Số tờ mặc định:.. tờ/người dùng | .. tờ
           </span>
+          <input type="number" id="pageNum" />
           <Button className="upd">Cập nhật</Button>
         </div>
         <span className="op1Tex">Loại file được phép tải lên:</span>

@@ -3,7 +3,6 @@ import { Student } from "../models/student.js";
 
 const studentAPI = express.Router();
 
-// Route for creating a new student
 studentAPI.post("/", async (request, response) => {
   try {
     if (!request.body.studentID) {
@@ -31,7 +30,6 @@ studentAPI.post("/", async (request, response) => {
   }
 });
 
-// Route for getting all students
 studentAPI.get("/", async (request, response) => {
   try {
     const students = await Student.find({});
@@ -46,7 +44,6 @@ studentAPI.get("/", async (request, response) => {
   }
 });
 
-// Route for getting a student by studentID
 studentAPI.get("/:studentID", async (request, response) => {
   try {
     const { studentID } = request.params;
@@ -64,56 +61,31 @@ studentAPI.get("/:studentID", async (request, response) => {
   }
 });
 
-// Route for updating a student by studentID
 studentAPI.put("/:studentID", async (request, response) => {
   try {
     const { studentID } = request.params;
+    const newPages = request.body.remainingPages; 
+    if (newPages === undefined || newPages < 0) {
+      return response.status(400).json({
+        message:
+          "Send the required field: remainingPages with a valid positive value",
+      });
+    }
 
-    const updatedStudent = {
-      studentName: request.body.studentName || "",
-      studentEmail: request.body.studentEmail || "",
-      studentFaculty: request.body.studentFaculty || "",
-      remainingPages: request.body.remainingPages || 0,
-      transactionHistory: request.body.transactionHistory || [],
-      printingHistory: request.body.printingHistory || [],
-    };
-
-    const result = await Student.findOneAndUpdate(
+    const updatedStudent = await Student.findOneAndUpdate(
       { studentID },
-      updatedStudent,
-      {
-        new: true,
-      }
+      { remainingPages: newPages },
+      { new: true }
     );
 
-    if (!result) {
+    if (!updatedStudent) {
       return response.status(404).json({ message: "Student not found" });
     }
 
-    return response.status(200).send(result);
+    return response.status(200).json(updatedStudent);
   } catch (error) {
     console.log(error.message);
-    response.status(500).send({ message: error.message });
-  }
-});
-
-// Route for deleting a student by studentID
-studentAPI.delete("/:studentID", async (request, response) => {
-  try {
-    const { studentID } = request.params;
-
-    const result = await Student.findOneAndDelete({ studentID });
-
-    if (!result) {
-      return response.status(404).json({ message: "Student not found" });
-    }
-
-    return response
-      .status(200)
-      .send({ message: "Student deleted successfully" });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
+    response.status(500).json({ message: error.message });
   }
 });
 

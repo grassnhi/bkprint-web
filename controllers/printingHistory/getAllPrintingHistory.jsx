@@ -1,20 +1,21 @@
 import axios from "axios";
-import { useEffect } from "react";
-export const getAllPrintingHistory = () => {
-  const { enqueueSnackbar } = useSnackbar();
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3001/printingHistory/${index}`, data)
-      .then(() => {
-        enqueueSnackbar("New printing history entry added successfully", {
-          variant: "success",
-        });
+export const getPrintingHistoryListCount = async () => {
+  try {
+    const response = await axios.get("http://localhost:3001/printingHistory");
+    return response.data.count;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-      })
-      .catch((error) => {
-        enqueueSnackbar("Error", { variant: "error" });
-        console.log(error);
-      });
-  }, []);
+export const getPrintingHistoryListData = async (index) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:3001/printingHistory/${index}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
