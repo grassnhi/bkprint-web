@@ -18,7 +18,7 @@ import Upload from "./components/upload/upload";
 function App() {
   return (
     <>
-      <Adminusers />
+      <Upload />
     </>
   );
 }
