@@ -1,76 +1,108 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./adminusers.css";
 import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import profileImg from "../../assets/N 1.png";
 import { Button } from "react-bootstrap";
-let printAdminHis = [
-  {
-    names: "",
-    mssv: "",
-    time: "",
-    fileName: "",
-    model: "",
-    place: "",
-    status11: "",
-  },
-  {
-    names: "",
-    mssv: "",
-    time: "",
-    fileName: "",
-    model: "",
-    place: "",
-    status11: "",
-  },
-  {
-    names: "",
-    mssv: "",
-    time: "",
-    fileName: "",
-    model: "",
-    place: "",
-    status11: "",
-  },
-];
-let printerAdmin = [
-  {
-    ID: "",
-    brand: "",
-    model: "",
-    place: "",
-    room: "",
-    setting: "",
-    stat2: "",
-    num: "",
-  },
-  {
-    ID: "",
-    brand: "",
-    model: "",
-    place: "",
-    room: "",
-    setting: "",
-    stat2: "",
-    num: "",
-  },
-  {
-    ID: "",
-    brand: "",
-    model: "",
-    place: "",
-    room: "",
-    setting: "",
-    stat2: "",
-    num: "",
-  },
-];
+import { useSnackbar } from "notistack";
+import {
+  getDefaultPage,
+  getPermittedFileType,
+} from "../../../../controllers/systemPolicy/getSystemPolicy";
+import {
+  updateDefaultPage,
+  updateMaximumFileSize,
+  updatePermittedFileType,
+} from "../../../../controllers/systemPolicy/updateSystemPolicy";
+import { addPrinter } from "../../../../controllers/printer/addPrinter";
+import {
+  getPrinterCount,
+  getPrinterData,
+  getPrinterList,
+  getPrinterStatus,
+} from "../../../../controllers/printer/getPrinter";
+import { updatePrinter } from "../../../../controllers/printer/updatePrinter";
+import {
+  getPrintingActivityData,
+  getTotalPrintingActivity,
+} from "../../../../controllers/printingHistory/getAllPrintingHistory";
+
 let fileType = [
-  { fileT: "Excel", sta: "Cần tải lên", oP: "Cho phép" },
-  { fileT: "Word", sta: "Cần tải lên", oP: "Cho phép" },
-  { fileT: "PDF", sta: "Cần tải lên", oP: "Cho phép" },
+  { fileT: "Excel", staT: "Cần tải lên", sta: 0, oP: "Cho phép" },
+  { fileT: "Word", staT: "Cần tải lên", sta: 0, oP: "Cho phép" },
+  { fileT: "PDF", staT: "Cần tải lên", sta: 0, oP: "Cho phép" },
 ];
+
 const Adminusers = () => {
+  const [approvedNum, setApprovedNum] = useState(0);
+  const [newDefaultPage, setNewDefaultPage] = useState(0);
+  const [printerBrand, setPrinterBrand] = useState("");
+  const [printerName, setPrinterName] = useState("");
+  const [printerBuidling, setPrinterBuilding] = useState("");
+  const [printerRoom, setPrinterRoom] = useState("");
+  const [printAdminHis, setPrintAdminHis] = useState([]);
+  const [printerAdmin, setPrinterAdmin] = useState([]);
+  const [printerStatus, setPrinterStatus] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleChangePrinterStatus = async (key, newStatus) => {
+    await updatePrinter(key, newStatus);
+    const updatedPrinterAdmin = [...printerAdmin];
+    updatedPrinterAdmin[key].status = newStatus;
+    setPrinterAdmin(updatedPrinterAdmin);
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      const x = await getDefaultPage();
+      setApprovedNum(x);
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchPrinterData() {
+      const printerNum = await getPrinterCount();
+      const promises = [];
+      for (let i = 0; i < printerNum; i++) {
+        promises.push(getPrinterData(i));
+      }
+      const printerData = await Promise.all(promises);
+      setPrinterAdmin(printerData);
+    }
+    fetchPrinterData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchPrintingHistData() {
+      const printinglistNum = await getTotalPrintingActivity();
+      const promises = [];
+      for (let i = 0; i < printinglistNum; i++) {
+        promises.push(getPrintingActivityData(i));
+      }
+      const printingListData = await Promise.all(promises);
+      setPrintAdminHis(printingListData);
+    }
+    fetchPrintingHistData();
+  }, []);
+
+  const handleChangeDefaultNumber = async () => {
+    await updateDefaultPage(parseInt(newDefaultPage));
+    window.location.reload();
+  };
+  const handleAddPrinter = async () => {
+    await addPrinter(
+      enqueueSnackbar,
+      await getPrinterCount(),
+      printerBrand,
+      printerName,
+      printerBuidling,
+      printerRoom,
+      false,
+      0
+    );
+    window.location.reload();
+  };
   return (
     <div className="adminUserContainer">
       <div className="f">
@@ -131,13 +163,13 @@ const Adminusers = () => {
           {printAdminHis.map((val, key) => {
             return (
               <tr className="row" key={key}>
-                <td className="dat">{val.names}</td>
-                <td className="dat">{val.mssv}</td>
-                <td className="dat">{val.time}</td>
+                <td className="dat">{val.studentName}</td>
+                <td className="dat">{val.studentID}</td>
+                <td className="dat">{val.printingTime}</td>
                 <td className="dat">{val.fileName}</td>
-                <td className="dat">{val.model}</td>
-                <td className="dat">{val.place}</td>
-                <td className="dat">{val.status11}</td>
+                <td className="dat">{val.printerName}</td>
+                <td className="dat">{val.building}</td>
+                <td className="dat">Đã Hoàn Thành</td>
               </tr>
             );
           })}
@@ -172,40 +204,73 @@ const Adminusers = () => {
           {printerAdmin.map((val, key) => {
             return (
               <tr className="row1" key={key}>
-                <td className="dat1">{val.ID}</td>
-                <td className="dat1">{val.brand}</td>
-                <td className="dat1">{val.model}</td>
-                <td className="dat1">{val.place}</td>
-                <td className="dat1">{val.room}</td>
-                <td className="dat1">{val.setting}</td>
-                <td className="dat1">{val.stat2}</td>
-                <td className="dat1">{val.num}</td>
+                <td className="dat1">{val.printerID}</td>
+                <td className="dat1">{val.printerBrand}</td>
+                <td className="dat1">{val.printerName}</td>
+                <td className="dat1">{val.location.building}</td>
+                <td className="dat1">{val.location.room}</td>
+                <td className="dat1">
+                  {val.status ? "Buộc dừng" : "Đang hoạt động"}
+                </td>
+                <td
+                  className="dat1"
+                  onClick={() => handleChangePrinterStatus(key, !val.status)}
+                >
+                  {val.status ? "Đang hoạt động" : "Buộc dừng"}
+                </td>
+                <td className="dat1">{val.printedPages}</td>
               </tr>
             );
           })}
         </tr>
       </table>
-      <Button id="addPrinterBtn">Thêm máy in</Button>
+      <Button id="addPrinterBtn" onClick={() => handleAddPrinter()}>
+        Thêm máy in
+      </Button>
       <span className="sum3">Số tờ còn lại:</span>
-      <input className="addPrinter-input1" placeholder="Mã ID" type="text" />
+      {/* ADD PRINTER IN HERE */}
       <input
-        className="addPrinter-input2"
+        className="addPrinter-input1"
         placeholder="Thương hiệu"
         type="text"
+        onChange={(e) => setPrinterBrand(e.target.value)}
       />
-      <input className="addPrinter-input3" placeholder="Kiểu máy" type="text" />
-      <input className="addPrinter-input4" placeholder="Tòa nhà" type="text" />
-      <input className="addPrinter-input5" placeholder="Phòng" type="text" />
+      <input
+        className="addPrinter-input2"
+        placeholder="Kiểu máy"
+        type="text"
+        onChange={(e) => setPrinterName(e.target.value)}
+      />
+      <input
+        className="addPrinter-input3"
+        placeholder="Tòa nhà"
+        type="text"
+        onChange={(e) => setPrinterBuilding(e.target.value)}
+      />
+      <input
+        className="addPrinter-input4"
+        placeholder="Phòng"
+        type="text"
+        onChange={(e) => setPrinterRoom(e.target.value)}
+      />
 
       <hr className="thirdBreak" />
       <div className="op1">
         <span className="op1Intro">Tùy chỉnh</span>
         <div className="op1Cons">
           <span className="op1Cons1">
-            Số tờ mặc định:.. tờ/người dùng | .. tờ
+            Số tờ mặc định: {approvedNum} tờ/người dùng | Số tờ:
           </span>
-          <input type="number" id="pageNum" />
-          <Button className="upd">Cập nhật</Button>
+          <input
+            type="number"
+            id="pageNum"
+            placeholder="Nhập số giấy"
+            defaultValue={0}
+            onChange={(e) => setNewDefaultPage(e.target.value)}
+          />
+          <Button className="upd" onClick={() => handleChangeDefaultNumber()}>
+            Cập nhật
+          </Button>
         </div>
         <span className="op1Tex">Loại file được phép tải lên:</span>
       </div>
@@ -221,9 +286,38 @@ const Adminusers = () => {
             return (
               <tr className="row2" key={key}>
                 <td className="dat2">{val.fileT}</td>
-                <td className="dat23">{val.sta}</td>
+                <td className="dat23">{val.staT}</td>
                 <td>
-                  <Button className="cButton">{val.oP}</Button>
+                  <Button
+                    className="cButton"
+                    onClick={async () => {
+                      const modifiedFile = val.fileT;
+                      console.log(modifiedFile);
+                      const recentPermittedFileList =
+                        await getPermittedFileType();
+                      console.log(recentPermittedFileList);
+                      if (val.sta == 0) {
+                        await recentPermittedFileList.push(
+                          String(modifiedFile)
+                        );
+                        await updatePermittedFileType();
+                        val.sta = 1;
+                        val.staT = "Cho phép";
+                      } else {
+                        if (recentPermittedFileList.length <= 0) {
+                          return -1;
+                        }
+                        await recentPermittedFileList.remove(
+                          String(modifiedFile)
+                        );
+                        await updatePermittedFileType();
+                        val.sta = 0;
+                        val.staT = "Cần tải lên";
+                      }
+                    }}
+                  >
+                    {val.oP}
+                  </Button>
                 </td>
               </tr>
             );

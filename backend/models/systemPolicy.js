@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const systemPolicySchema = mongoose.Schema({
-  defaultPage: { type: Number, required: true },
-  allocatedDate: { type: String, required: true },
-  maximumFileSize: { type: Number, required: true },
-  permittedFileType: [{ type: String, required: true }],
+  defaultPage: { type: Number },
+  allocatedDate: { type: String },
+  maximumFileSize: { type: Number },
+  permittedFileType: [],
 });
 
 export const SystemPolicy = mongoose.model("SystemPolicy", systemPolicySchema);

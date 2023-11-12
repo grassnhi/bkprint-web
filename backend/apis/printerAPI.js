@@ -8,7 +8,7 @@ printerAPI.post("/", async (request, response) => {
     if (
       request.body.printerBrand == "" ||
       request.body.printerName == "" ||
-      request.body.printedPages == 0 ||
+      request.body.printedPages < 0 ||
       request.body.location.building == "" ||
       request.body.location.room == ""
     ) {

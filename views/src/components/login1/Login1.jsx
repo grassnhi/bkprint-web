@@ -7,7 +7,12 @@ import logo3 from "../../assets/5120191 1.png";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../../../../controllers/UserProvider";
 const Login1 = () => {
+  const { setStdID } = useContext(UserContext);
+  const handleLogin = () => {
+    setStdID("2153788");
+  };
   const navigate = useNavigate();
   return (
     <div className="biggestcontainer">
@@ -55,7 +60,13 @@ const Login1 = () => {
       <div className="help">
         <NavLink to="/help">Trợ giúp đăng nhập?</NavLink>{" "}
       </div>
-      <Button className="logbutt" onClick={() => navigate("Home")}>
+      <Button
+        className="logbutt"
+        onClick={() => {
+          handleLogin();
+          navigate("Home");
+        }}
+      >
         Đăng nhập
       </Button>
       <Outlet />

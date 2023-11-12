@@ -28,6 +28,7 @@ export const UserProvider = ({ children }) => {
   const [printingLocation, setPrintingLocation] = useState("");
   const [printerAdmin, setPrinterAdmin] = useState([]);
   const [status, setStatus] = useState(false);
+  const [stdID, setStdID] = useState("");
   const contextValue = {
     numberOfCopy,
     setNumberOfCopy,
@@ -46,6 +47,8 @@ export const UserProvider = ({ children }) => {
     status,
     setStatus,
     convertTime,
+    stdID,
+    setStdID,
   };
 
   return (

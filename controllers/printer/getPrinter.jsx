@@ -9,6 +9,15 @@ export const getPrinterCount = async () => {
   }
 };
 
+export const getPrinterList = async (printerID) => {
+  try {
+    const response = await axios.get(`http://localhost:3001/printers`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getPrinterData = async (printerID) => {
   try {
     const response = await axios.get(
@@ -51,6 +60,15 @@ export const getPrinterRoom = async (printerID) => {
   try {
     const printerData = await getPrinterData(printerID);
     return printerData.location.room;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPrinterStatus = async (printerID) => {
+  try {
+    const printerData = await getPrinterData(printerID);
+    return printerData.location.status;
   } catch (error) {
     console.log(error);
   }

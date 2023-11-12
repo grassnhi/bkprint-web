@@ -59,6 +59,7 @@ const Printproperties = () => {
   const [value, setValue] = useState(0);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+
   const handleChangeNumberofPage = async () => {
     let x;
     if (numberOfSided == "In một mặt") {
@@ -76,31 +77,43 @@ const Printproperties = () => {
   };
 
   const handlePrintingDocument = async () => {
+    console.log("STDID " + parseInt(stdID));
     const printerCount = await getPrinterCount();
     const fileNumberofPages = await handleChangeNumberofPage();
+    console.log("PAGE NUMBER " + fileNumberofPages); // get pageNumber of uploaded file
     const x = await getTotalPrintingActivity();
-    await addPrintingActivity(
-      x,
-      "2153843",
-      "NHT",
-      fileName,
-      await convertTime(),
-      chosenPrinter,
-      printingLocation
-    );
-
-    await addPrinter(
-      enqueueSnackbar,
-      printerCount,
-      fileName,
-      fileName,
-      paperType,
-      "B4 304",
-      status,
-      fileNumberofPages,
-      chosenPrinter,
-      printingLocation
-    );
+    const stdName = await getStudentName(parseInt(stdID));
+    await updateRemainingPages(parseInt(stdID), 200);
+    if (
+      (await getStudentRemainingPages(parseInt(stdID))) >= fileNumberofPages
+    ) {
+      // Add to PrintingHistory
+      const index = await getTotalPrintingActivity();
+      console.log("Index " + index);
+      await addPrintingActivity(
+        index,
+        stdID,
+        stdName,
+        fileName,
+        await convertTime(),
+        chosenPrinter,
+        printingLocation
+      );
+      // Add to Student
+      let recentPrintingList = await getStudentPrintingHistory(parseInt(stdID));
+      const newPrintingActivity = {
+        filename: fileName,
+        time: await convertTime(),
+        printedPages: fileNumberofPages,
+        paperType: paperType,
+        location: printingLocation,
+      };
+      recentPrintingList.push(newPrintingActivity);
+      console.log(recentPrintingList);
+      await updatePrintingHistory(parseInt(stdID), recentPrintingList);
+    } else {
+      return -1;
+    }
   };
   const {
     convertTime,
@@ -114,6 +127,7 @@ const Printproperties = () => {
     status,
     chosenPrinter,
     printingLocation,
+    stdID,
   } = useContext(UserContext);
   const handleChange = (e) => {
     const inputValue = parseInt(e.target.value);
