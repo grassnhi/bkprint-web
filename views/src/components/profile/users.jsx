@@ -4,6 +4,8 @@ import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import profileImg from "../../assets/N 1.png";
 import { useNavigate } from "react-router-dom";
+import Header from "../../utils/header";
+import Footer from "../../utils/footer";
 let printHistory = [
   {
     time: "",
@@ -24,35 +26,8 @@ const Users = () => {
   const navigate = useNavigate();
   return (
     <div className="userContainer">
-      <div className="wrapper">
-        <div className="container" />
-        <div className="copyright">Bản quyền © Thiếu Nhi-CC02</div>
-        <div className="footer-right">
-          <span className="phat-trien-boi-thieu-nhi-cc02">
-            <span>Phát triển bởi Thiếu Nhi-CC02</span>
-            <span className="span">{` | `}</span>
-          </span>
-          <span className="policy">{`Điều khoản & điều kiện`}</span>
-          <span className="span1">{` | `}</span>
-          <span className="policy">Chính sách pháp lý</span>
-        </div>
-      </div>
-      <img className="container-icon" alt="" src={logo3} />
-      <div className="sections-parent">
-        <div className="sections">
-          <div className="trang-chu">Trang chủ</div>
-          <div className="trang-chu">In tài liệu</div>
-          <div
-            className="trang-chu"
-            onClick={() => navigate("/Choose/Login1/Profile")}
-          >
-            Tài khoản
-          </div>
-          <div className="trang-chu">Liên hệ</div>
-        </div>
-      </div>
-      <div className="bkprint">BK Fast Automated Printing Service</div>
-      <img className="oisp-official-logo-01-1-icon" alt="" src={logo2} />
+      <Footer></Footer>
+      <Header></Header>
       <img className="profileImg" src={profileImg} alt="" />
       <div className="information">
         <span className="texx">Tạ Ngọc Nam</span>
