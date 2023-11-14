@@ -68,6 +68,7 @@ const Uploadtable = (props) => {
               return new Promise((resolve, reject) => {
                 if (file.size > 40000000) {
                   reject("File size exceeded");
+                  setStatus(false);
                 } else {
                   setStatus(true);
                   resolve("Success");

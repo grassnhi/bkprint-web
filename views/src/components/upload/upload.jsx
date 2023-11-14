@@ -12,7 +12,7 @@ const Upload = () => {
   const { fileName, status } = useContext(UserContext);
   const addComp = () => {
     console.log(fileName);
-    if (status && !comp) {
+    if (status == true && comp == false) {
       setComp(!comp);
     }
   };

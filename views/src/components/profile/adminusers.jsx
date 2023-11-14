@@ -43,6 +43,8 @@ const Adminusers = () => {
   const [printAdminHis, setPrintAdminHis] = useState([]);
   const [printerAdmin, setPrinterAdmin] = useState([]);
   const [printerStatus, setPrinterStatus] = useState(false);
+  const [from, setFrom] = useState("0");
+  const [to, setTo] = useState("0");
   const { enqueueSnackbar } = useSnackbar();
 
   const handleChangePrinterStatus = async (key, newStatus) => {
@@ -179,15 +181,6 @@ const Adminusers = () => {
       <hr className="secondBreak" />
       <div className="buyHis2">
         <span className="buyHisTex2">Quản lý hệ thống - Máy in</span>
-        <div className="datePrint">
-          <div className="datePickerContainer">
-            <label htmlFor="startDate">Từ ngày:</label>
-            <input type="date" id="startDate" name="startDate" />
-            <label htmlFor="endDate">đến ngày:</label>
-            <input type="date" id="endDate" name="endDate" />
-          </div>
-          <div>ID máy in: </div>
-        </div>
       </div>
       <table className="buyHis1">
         <tr className="row1">
