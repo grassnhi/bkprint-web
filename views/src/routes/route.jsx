@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Login from "../components/login/Login";
 import Home from "../components/home/Home";
 import Login1 from "../components/login1/Login1";
-import Help from "../components/help/Help";
 import AdminHome from "../components/home/AdminHome";
 import AdminLogin1 from "../components/login1/AdminLogin1";
 import Choose from "../components/choose/Choose";
@@ -11,6 +10,8 @@ import Completeprint from "../components/announcement/completeprint";
 import Upload from "../components/upload/upload";
 import Adminusers from "../components/profile/adminusers";
 import Users from "../components/profile/users";
+import Printlocate from "../components/printlocate/Printlocate";
+import Help from "../components/help/Help"
 const Routing = () => {
   return (
     <Routes>
@@ -21,6 +22,7 @@ const Routing = () => {
           <Route path="Upload" element={<Upload />} />
           <Route path="Completeprint" element={<Completeprint />} />
           <Route path="Profile" element={<Users />} />
+          <Route path="PrintLocate" element={<Printlocate />} />
         </Route>
         <Route path="AdminLogin1" element={<AdminLogin1 />}>
           <Route path="AdminHome" element={<Adminusers />} />

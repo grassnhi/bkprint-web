@@ -8,11 +8,14 @@ import logo3 from "../../assets/container.png";
 import logo4 from "../../assets/375756243-688982619370253-4579776695205593531-n-1@2x.png";
 import { useNavigate } from "react-router-dom";
 import Login1 from "../login1/Login1";
+import Header from "../../utils/header";
+import Footer from "../../utils/footer";
 const Home = () => {
   const navigate = useNavigate();
   return (
     <div className="trang-da-dang-nhap">
-      <div className="wrapper">
+      <Footer></Footer>
+      {/* <div className="wrapper">
         <div className="container" />
         <div className="copyright">Bản quyền © Thiếu Nhi-CC02</div>
         <div className="footer-right">
@@ -24,7 +27,7 @@ const Home = () => {
           <span className="span1">{` | `}</span>
           <span className="policy">Chính sách pháp lý</span>
         </div>
-      </div>
+      </div> */}
       <div className="call-to-action-v3">
         <img className="icon2" alt="" src={logo} />
       </div>
@@ -33,22 +36,7 @@ const Home = () => {
         <span className="statement1">Chào mừng bạn đến với</span>
         <span className="statement2">HỆ THỐNG IN BÁCH KHOA</span>
       </div>
-      <img className="container-icon" alt="" src={logo3} />
-      <div className="sections-parent">
-        <div className="sections">
-          <div className="trang-chu">Trang chủ</div>
-          <div className="trang-chu">In tài liệu</div>
-          <div
-            className="trang-chu"
-            onClick={() => navigate("/Choose/Login1/Profile")}
-          >
-            Tài khoản
-          </div>
-          <div className="trang-chu">Liên hệ</div>
-        </div>
-      </div>
-      <div className="bkprint">BK Fast Automated Printing Service</div>
-      <img className="oisp-official-logo-01-1-icon" alt="" src={logo2} />
+      <Header></Header>
       <div className="wrapper1">
         <div className="heading">
           Tải lên tài liệu và in tại máy in gần bạn!
@@ -69,12 +57,14 @@ const Home = () => {
           </Button>
         </div>
         <div className="button-set22">
-          <Button className="master-secondary-button1">
+          <Button
+            className="master-secondary-button1"
+            onClick={() => navigate("/Choose/Login1/PrintLocate")}
+          >
             Xem vị trí máy in
           </Button>
         </div>
       </div>
-      <img className="n-1-icon" alt="" src={logo4} />
     </div>
   );
 };
