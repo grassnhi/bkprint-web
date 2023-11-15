@@ -6,6 +6,15 @@ import profileImg from "../../assets/N 1.png";
 import { useNavigate } from "react-router-dom";
 import Header from "../../utils/header";
 import Footer from "../../utils/footer";
+import { useState } from "react";
+import {
+  getStudentEmail,
+  getStudentFaculty,
+  getStudentName,
+  getStudentRemainingPages,
+} from "../../../../controllers/student/getFromStudent";
+import { useContext } from "react";
+import { UserContext } from "../../../../controllers/UserProvider";
 let printHistory = [
   {
     time: "",
@@ -23,6 +32,13 @@ let buyHistory = [
   { times: "", amount: "", quantity1: "" },
 ];
 const Users = () => {
+  const [A3Printed, setA3Printed] = useState(0);
+  const [A4Printed, setA4Printed] = useState(0);
+  const [A5Printed, setA5Printed] = useState(0);
+  const [printingHistory, setPrintingHistory] = useState([]);
+  const [transactionHistory, setTransactionHistory] = useState([]);
+
+  const { stdID } = useContext(UserContext);
   const navigate = useNavigate();
   return (
     <div className="userContainer">
@@ -30,8 +46,8 @@ const Users = () => {
       <Header></Header>
       <img className="profileImg" src={profileImg} alt="" />
       <div className="information">
-        <span className="texx">Tạ Ngọc Nam</span>
-        <span className="ID">2152788</span>
+        <span className="texx">{getStudentName(parseInt(stdID))}</span>
+        <span className="ID">stdID</span>
         <span
           className="logout"
           onClick={() => navigate("/Choose/Login1/Home")}
@@ -41,9 +57,9 @@ const Users = () => {
       </div>
       <div className="info2">
         <div className="mail1">Địa chỉ email</div>
-        <div className="mail2">nam.ta8989@hcmut.edu.vn</div>
+        <div className="mail2">{getStudentEmail(parseInt(stdID))}</div>
         <div className="falcuty1">Ngành học</div>
-        <div className="falcuty2">Kỹ thuật máy tính</div>
+        <div className="falcuty2">{getStudentFaculty(parseInt(stdID))}</div>
       </div>
       <hr className="firstBreak" />
       <div className="printHis">
@@ -104,7 +120,9 @@ const Users = () => {
           })}
         </tr>
       </table>
-      <span className="sum2">Số tờ còn lại:</span>
+      <span className="sum2">
+        Số tờ còn lại: {getStudentRemainingPages(parseInt(stdID))}(A4)
+      </span>
     </div>
   );
 };

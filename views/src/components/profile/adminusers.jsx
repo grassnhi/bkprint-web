@@ -150,33 +150,34 @@ const Adminusers = () => {
           <div>Tên sinh viên: </div>
         </div>
       </div>
-
-      <table className="printHis1">
-        <tr className="row">
+      <div className="printingHistoryList">
+        <table className="printHis1">
           <tr className="row">
-            <th className="hea">Tên</th>
-            <th className="hea">MSSV</th>
-            <th className="hea">Thời gian</th>
-            <th className="hea">Tên file</th>
-            <th className="hea">Kiểu máy</th>
-            <th className="hea">Địa điểm</th>
-            <th className="hea">Trạng thái</th>
+            <tr className="row">
+              <th className="hea">Tên</th>
+              <th className="hea">MSSV</th>
+              <th className="hea">Thời gian</th>
+              <th className="hea">Tên file</th>
+              <th className="hea">Kiểu máy</th>
+              <th className="hea">Địa điểm</th>
+              <th className="hea">Trạng thái</th>
+            </tr>
+            {printAdminHis.map((val, key) => {
+              return (
+                <tr className="row" key={key}>
+                  <td className="dat">{val.studentName}</td>
+                  <td className="dat">{val.studentID}</td>
+                  <td className="dat">{val.printingTime}</td>
+                  <td className="dat">{val.fileName}</td>
+                  <td className="dat">{val.printerName}</td>
+                  <td className="dat">{val.building}</td>
+                  <td className="dat">Đã Hoàn Thành</td>
+                </tr>
+              );
+            })}
           </tr>
-          {printAdminHis.map((val, key) => {
-            return (
-              <tr className="row" key={key}>
-                <td className="dat">{val.studentName}</td>
-                <td className="dat">{val.studentID}</td>
-                <td className="dat">{val.printingTime}</td>
-                <td className="dat">{val.fileName}</td>
-                <td className="dat">{val.printerName}</td>
-                <td className="dat">{val.building}</td>
-                <td className="dat">Đã Hoàn Thành</td>
-              </tr>
-            );
-          })}
-        </tr>
-      </table>
+        </table>
+      </div>
 
       <hr className="secondBreak" />
       <div className="buyHis2">
@@ -202,14 +203,14 @@ const Adminusers = () => {
                 <td className="dat1">{val.printerName}</td>
                 <td className="dat1">{val.location.building}</td>
                 <td className="dat1">{val.location.room}</td>
-                <td className="dat1">
-                  {val.status ? "Buộc dừng" : "Đang hoạt động"}
-                </td>
                 <td
                   className="dat1"
                   onClick={() => handleChangePrinterStatus(key, !val.status)}
                 >
-                  {val.status ? "Đang hoạt động" : "Buộc dừng"}
+                  {val.status ? "Buộc dừng" : "Khởi động"}
+                </td>
+                <td className="dat1">
+                  {val.status ? "Đang hoạt động" : "Ngừng hoạt động"}
                 </td>
                 <td className="dat1">{val.printedPages}</td>
               </tr>

@@ -10,20 +10,7 @@ import {
   getPrinterRoom,
   getPrinterStatus,
 } from "../../../controllers/printer/getPrinter";
-const data = [
-  {
-    mod: "Canon LBP2900",
-    room: "402A4",
-  },
-  {
-    mod: "Epson L805",
-    room: "106A5",
-  },
-  {
-    mod: "Laser Brother HL-L2321D",
-    room: "208B1",
-  },
-];
+import { useNavigate } from "react-router-dom";
 const ChoosePrinter = (props) => {
   const {
     chosenPrinter,
@@ -31,6 +18,7 @@ const ChoosePrinter = (props) => {
     printingLocation,
     setPrintingLocation,
   } = useContext(UserContext);
+  const navigate = useNavigate();
   const [printerList, setPrinterList] = useState([]);
   useEffect(() => {
     async function fetchPrinterData() {
@@ -39,6 +27,7 @@ const ChoosePrinter = (props) => {
       for (let i = 0; i < printerNum; i++) {
         const check = await getPrinterStatus(i);
         if (check == false) {
+          console.log(check);
           continue;
         }
         const name = await getPrinterName(i);
@@ -72,26 +61,35 @@ const ChoosePrinter = (props) => {
           <th>Phòng</th>
           <th>Chọn</th>
         </tr>
-        {printerList.map((val, key) => (
-          <tr key={key}>
-            <td>{val.name}</td>
-            <td>{val.location}</td>
-            <td>
-              <div class="custom-radio">
-                <input
-                  type="radio"
-                  id={`radio${key}`}
-                  name="options"
-                  value={`${val.name}###${val.location}`}
-                  onChange={(e) => handleRadioChange(e)}
-                />
-                <label htmlFor={`radio${key}`}></label>
-              </div>
-            </td>
-          </tr>
-        ))}
+        {printerList.length > 0 ? (
+          printerList.map((val, key) => (
+            <tr key={key}>
+              <td>{val.name}</td>
+              <td>{val.location}</td>
+              <td>
+                <div class="custom-radio">
+                  <input
+                    type="radio"
+                    id={`radio${key}`}
+                    name="options"
+                    value={`${val.name}###${val.location}`}
+                    onChange={(e) => handleRadioChange(e)}
+                  />
+                  <label htmlFor={`radio${key}`}></label>
+                </div>
+              </td>
+            </tr>
+          ))
+        ) : (
+          <div>No printer available. Please come back later</div>
+        )}
       </table>
-      <span className="checkLocate">Xem vị trí máy in</span>
+      <span
+        className="checkLocate"
+        onClick={() => navigate("/Choose/Login1/PrintLocate")}
+      >
+        Xem vị trí máy in
+      </span>
       <Button id="finish" onClick={props.onClick} block>
         {props.text}
       </Button>
