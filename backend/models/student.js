@@ -12,6 +12,7 @@ const printingHistorySchema = mongoose.Schema({
   printedPages: { type: Number },
   paperType: { type: String },
   location: { type: String },
+  sided: { type: Number },
 });
 
 const studentSchema = mongoose.Schema({

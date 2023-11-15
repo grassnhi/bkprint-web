@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./payment.css";
-import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
-import logo3 from "../../assets/container.png";
 import { Button } from "react-bootstrap";
 import Header from "../../utils/header";
+import Footer from "../../utils/footer";
+import { set } from "mongoose";
 const Payment = () => {
+  const [chosenPaperType, setChosenPaperType] = useState("");
+  const [pageNum, setPageNum] = useState(0);
+  const [totalMoney, setTotalMoney] = useState("");
+  const [total, setTotal] = useState("");
+
+  const handleGetTotalMoney = () => {
+    console.log(chosenPaperType + pageNum);
+    let money = 0;
+    if (chosenPaperType[1] === "3") {
+      money = 1000 * pageNum;
+    }
+    if (chosenPaperType[1] === "4") {
+      money = 500 * pageNum;
+    }
+    if (chosenPaperType[1] === "5") {
+      money = 250 * pageNum;
+    }
+    setTotalMoney(String(money) + " VND");
+  };
+
+  useEffect(() => {
+    setTotal(totalMoney);
+  }, [totalMoney]);
+
   return (
     <div className="paymentContainer">
-      <div className="wrapper">
-        <div className="container" />
-        <div className="copyright">Bản quyền © Thiếu Nhi-CC02</div>
-        <div className="footer-right">
-          <span className="phat-trien-boi-thieu-nhi-cc02">
-            <span>Phát triển bởi Thiếu Nhi-CC02</span>
-            <span className="span">{` | `}</span>
-          </span>
-          <span className="policy">{`Điều khoản & điều kiện`}</span>
-          <span className="span1">{` | `}</span>
-          <span className="policy">Chính sách pháp lý</span>
-        </div>
-      </div>
+      <Footer></Footer>
       <Header></Header>
       <div className="paymentIntro">Cổng thanh toán BKPrint</div>
       <div className="paymentNotice">
@@ -48,17 +60,28 @@ const Payment = () => {
           <td className="huhu2">
             <div className="zero2">
               <span className="huhu2Tex">Loại giấy</span>
-              <select className="huhu2Select">
+              <select
+                className="huhu2Select"
+                onChange={(e) => setChosenPaperType(e.target.value)}
+              >
                 <option value="">Chọn loại giấy</option>
                 <option value="A3 (297 x 420)mm">A3 (297 x 420)mm</option>
                 <option value="A4 (210 x 297)mm">A4 (210 x 297)mm</option>
                 <option value="A5 (148 x 210)mm">A5 (148 x 210)mm</option>
               </select>
               <span className="huhu2Tex1">Số tờ</span>
-              <input className="huhu2Input" type="number" min={10} />
+              <input
+                className="huhu2Input"
+                type="number"
+                min={10}
+                onChange={(e) => {
+                  setPageNum(e.target.value);
+                  handleGetTotalMoney();
+                }}
+              />
               <br />
               <span className="huhu2Tex2">Thành tiền</span>
-              <textarea className="bubu" />
+              <textarea className="bubu" readOnly={true} value={total} />
               <Button className="paymentDone">Thanh toán</Button>
             </div>
           </td>

@@ -57,21 +57,21 @@ const Users = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setPrintList(await getStudentPrintingHistory(parseInt(stdID)));
-      setTranList(await getStudentTransactionHistory(parseInt(stdID)));
-      setPrintList(printList.reverse());
-      setTranList(tranList.reverse());
-      for (let i = 0; i < printList.length; i++) {
-        if (printList[i].paperType == "A3") {
-          setA3Printed(A3Printed + printList[i].printedPages);
+      const printingHistory = await getStudentPrintingHistory(parseInt(stdID));
+      const transactionHistory = await getStudentTransactionHistory(
+        parseInt(stdID)
+      );
+      setPrintList(printingHistory.reverse());
+      setTranList(transactionHistory.reverse());
+      printingHistory.forEach((item) => {
+        if (item.paperType[1] === "3") {
+          setA3Printed((prevA3Printed) => prevA3Printed + item.printedPages);
+        } else if (item.paperType[1] === "4") {
+          setA4Printed((prevA4Printed) => prevA4Printed + item.printedPages);
+        } else if (item.paperType[1] === "5") {
+          setA5Printed((prevA5Printed) => prevA5Printed + item.printedPages);
         }
-        if (printList[i].paperType == "A4") {
-          setA4Printed(A4Printed + printList[i].printedPages);
-        }
-        if (printList[i].paperType == "A5") {
-          setA5Printed(A5Printed + printList[i].printedPages);
-        }
-      }
+      });
     };
     fetchData();
   }, [stdID]);
@@ -117,6 +117,7 @@ const Users = () => {
             <th className="hea">Tên file</th>
             <th className="hea">Số tờ</th>
             <th className="hea">Loại giấy</th>
+            <th className="hea">Số mặt</th>
             <th className="hea">Địa điểm</th>
             <th className="hea">Trạng thái</th>
           </tr>
@@ -127,6 +128,9 @@ const Users = () => {
                 <td className="dat">{val.filename}</td>
                 <td className="dat">{val.printedPages}</td>
                 <td className="dat">{val.paperType}</td>
+                <td className="dat">
+                  {val.sided == 1 ? "In một mặt" : "In hai mặt"}
+                </td>
                 <td className="dat">{val.location}</td>
                 <td className="dat">Đã hoàn tất</td>
               </tr>
