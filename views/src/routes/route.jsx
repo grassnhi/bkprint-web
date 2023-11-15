@@ -24,9 +24,12 @@ const Routing = () => {
       <Route path="Choose/Login1/Completeprint" element={<Completeprint />} />
       <Route path="Choose/Login1/Profile" element={<Users />} />
       <Route path="Choose/Login1/PrintLocate" element={<Printlocate />} />
-      <Route path="AdminLogin1" element={<AdminLogin1 />} />
-      <Route path="AdminLogin1/AdminHome" element={<AdminHome />} />
-      <Route path="AdminLogin1/AdminHome/AdminUsers" element={<Adminusers />} />
+      <Route path="Choose/AdminLogin1" element={<AdminLogin1 />} />
+      <Route path="Choose/AdminLogin1/AdminHome" element={<AdminHome />} />
+      <Route
+        path="Choose/AdminLogin1/AdminHome/AdminUsers"
+        element={<Adminusers />}
+      />
       <Route
         path="AdminLogin1/AdminHome/Adminreport"
         element={<Adminreport />}
