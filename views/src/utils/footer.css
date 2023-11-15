@@ -1,22 +1,20 @@
-.footer-right {
-  top: 54.59px;
-  left: 1197px;
-  text-align: right;
-  display: inline-block;
-  width: 641.33px;
-  height: 24.81px;
-}
-.footer-right,
-.wrapper {
-  position: absolute;
-}
-.wrapper {
-  top: 1580px;
-  left: 0;
+.wrapper-footer {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 134px;
+  height: 90px;
   color: var(--neutral-colors-text-gray);
 }
+
+.right-footer {
+  flex: 1;
+  padding-left: 150px;
+}
+
 .container {
   position: absolute;
   top: 0;
@@ -25,21 +23,20 @@
   width: 100%;
   height: 134px;
 }
-.copyright {
-  position: absolute;
-  top: 59.56px;
-  left: 109px;
-  line-height: 18px;
-  display: inline-block;
-  width: 374.67px;
-  height: 14.89px;
+
+.left-footer {
+  flex: 1;
+  padding-left: 70px;
 }
+
 .span {
   font-family: var(--text-single-300-regular);
 }
+
 .phat-trien-boi-thieu-nhi-cc02 {
   line-height: 18px;
 }
+
 .policy {
   text-decoration: underline;
   line-height: 30px;

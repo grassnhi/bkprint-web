@@ -1,7 +1,16 @@
+.trang-da-dang-nhap-student {
+  background-color: var(--neutral-colors-white);
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--neutral-colors-headings-black);
+  font-family: var(--font-andika);
+  height: 100%;
+}
 .welcome-container {
   position: relative;
   text-align: center;
-  height: 800px;
+  margin-top: 12px;
+  height: 79vh;
 }
 .chm-1-icon-student {
   width: 100%;
@@ -14,7 +23,7 @@
   transform: translate(-50%, -50%);
   width: 790px;
   height: fit-content;
-  background-color: rgba(102, 91, 255, 0.5);
+  background-color: rgba(93, 90, 136, 0.80);
   padding: 20px;
   border-radius: 50px;
   color: #ffffff;
@@ -32,61 +41,82 @@
 }
 
 .intro-container {
+  padding-top: 50px;
+  background-color: var(--neutral-colors-color-400);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 55vh;
   display: flex;
-  justify-self: center;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper1-student {
+  height: 100%;
+  flex: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 36px;
 }
 
 .white-space-left,
 .white-space-right {
+  height: 100%;
   flex: 1;
 }
 
-.call-to-action-v3-1 {
-  background-color: var(--neutral-colors-color-400);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  height: 609px;
-  overflow: hidden;
+.column-1 {
+  flex: 1;
 }
-.icon2 {
-  top: 44px;
-  left: 390px;
+.printer-img-container {
+  display: flex;
+  flex: 1;
+  z-index: 1;  
+}
+.printer-img {
   border-radius: 20px;
-  width: 521.35px;
-  height: 521.35px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
-.call-to-action-v3,
-.chm-1-icon-student {
-  display: block; /* Ensures the image takes up the full width of its container */
+.column-2 {
+  margin-left: 30px;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: start;
+  align-items: center;
 }
-.heading,
-.paragraph {
-  position: absolute;
-  top: 0;
-  left: 0.35px;
+.heading-student {
+  flex: 0.2;
   line-height: 46px;
-  display: inline-block;
   width: 531.38px;
+  justify-content: end;
 }
-.paragraph {
-  top: 108px;
+.paragraph-student {
+  flex: 0.3;
+  line-height: 46px;
+  width: 531.38px;
   font-size: var(--font-size-lg);
   line-height: 30px;
   color: var(--neutral-colors-text-gray);
-  width: 523px;
+}
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 .button-set22 {
-  position: absolute;
-  top: 214.32px;
-  left: 250px;
+
   gap: 24px;
 }
 .button-set20 {
-  position: absolute;
-  top: 214.32px;
-  left: 0;
   gap: 24px;
+  margin-right: 10px;
 }
 .master-primary-button1 {
   border-radius: 47.27px;
@@ -101,7 +131,6 @@
   text-decoration: none;
   transition: background-color 0.5s;
 }
-
 .master-secondary-button1 {
   border-radius: 47.27px;
   border: 1px solid var(--neutral-colors-headings-black);
@@ -116,7 +145,7 @@
   transition: background-color 0.5s;
 }
 .master-primary-button1:hover {
-  background-color: #1ea9e9;
+  background-color: #5D5A88;
   color: #fff;
 }
 .master-primary-button1:active {
@@ -124,7 +153,7 @@
   transition: background-color 0s;
 }
 .master-secondary-button1:hover {
-  background-color: aqua;
+  background-color: #5D5A88;
   color: #fff;
 }
 .master-secondary-button1:active {
@@ -132,31 +161,3 @@
   transition: background-color 0s;
 }
 
-.wrapper1 {
-  position: absolute;
-  top: 1143.68px;
-  left: 1038px;
-  width: 531.73px;
-  height: 290.32px;
-  font-size: 36px;
-}
-.n-1-icon {
-  position: absolute;
-  top: 39px;
-  left: 1795px;
-  width: 44px;
-  height: 45px;
-  object-fit: cover;
-}
-
-.trang-da-dang-nhap {
-  position: relative;
-  background-color: var(--neutral-colors-white);
-  width: 100%;
-  height: 1714px;
-  overflow: hidden;
-  text-align: left;
-  font-size: var(--font-size-lg);
-  color: var(--neutral-colors-headings-black);
-  font-family: var(--font-andika);
-}

@@ -2,11 +2,13 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  top: 12px;
+  top: 10px;
+  z-index: 1;
   right: 0;
   width: 100%;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .left-section {
@@ -43,13 +45,15 @@
 
 /* Right section */
 .trang-chu-main {
+  display: flex;
   flex: 1;
   position: relative;
   line-height: 18px;
   padding: 15px 18px;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 23px;
+  transition: background-color 0.5s;
 }
 
 .trang-chu-main:hover {
@@ -60,10 +64,15 @@
 
 .img-header {
   flex: 1;
-  padding-right: 20px;
 }
+
 .n-1-icon-main {
   padding-left: 10px;
   width: 40px;
 }
 
+@media (max-width: 1600px) {
+  .trang-chu-main {
+    font-size: 18px;
+  }
+}
