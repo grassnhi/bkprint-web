@@ -1,7 +1,5 @@
 import React from "react";
 import "./users.css";
-import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
-import logo3 from "../../assets/container.png";
 import profileImg from "../../assets/N 1.png";
 import { useNavigate } from "react-router-dom";
 import Header from "../../utils/header";
@@ -11,6 +9,9 @@ import {
   getStudentEmail,
   getStudentFaculty,
   getStudentName,
+  getStudentPrintingHistory,
+  getStudentRemainingPages,
+  getStudentTransactionHistory,
 } from "../../../../controllers/student/getFromStudent";
 import { useContext } from "react";
 import { UserContext } from "../../../../controllers/UserProvider";
@@ -38,6 +39,9 @@ const Users = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [faculty, setFaculty] = useState("");
+  const [printList, setPrintList] = useState([]);
+  const [tranList, setTranList] = useState([]);
+  const [remainingPages, setRemainingPages] = useState(0);
   const { stdID } = useContext(UserContext);
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +51,34 @@ const Users = () => {
       setName(name);
       setEmail(email);
       setFaculty(faculty);
+    };
+    fetchData();
+  }, [stdID]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setPrintList(await getStudentPrintingHistory(parseInt(stdID)));
+      setTranList(await getStudentTransactionHistory(parseInt(stdID)));
+      setPrintList(printList.reverse());
+      setTranList(tranList.reverse());
+      for (let i = 0; i < printList.length; i++) {
+        if (printList[i].paperType == "A3") {
+          setA3Printed(A3Printed + printList[i].printedPages);
+        }
+        if (printList[i].paperType == "A4") {
+          setA4Printed(A4Printed + printList[i].printedPages);
+        }
+        if (printList[i].paperType == "A5") {
+          setA5Printed(A5Printed + printList[i].printedPages);
+        }
+      }
+    };
+    fetchData();
+  }, [stdID]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setRemainingPages(await getStudentRemainingPages(parseInt(stdID)));
     };
     fetchData();
   }, [stdID]);
@@ -84,17 +116,19 @@ const Users = () => {
             <th className="hea">Thời gian</th>
             <th className="hea">Tên file</th>
             <th className="hea">Số tờ</th>
+            <th className="hea">Loại giấy</th>
             <th className="hea">Địa điểm</th>
             <th className="hea">Trạng thái</th>
           </tr>
-          {printHistory.map((val, key) => {
+          {printList.map((val, key) => {
             return (
               <tr className="row" key={key}>
                 <td className="dat">{val.time}</td>
-                <td className="dat">{val.fileName}</td>
-                <td className="dat">{val.quantity}</td>
-                <td className="dat">{val.place}</td>
-                <td className="dat">{val.status1}</td>
+                <td className="dat">{val.filename}</td>
+                <td className="dat">{val.printedPages}</td>
+                <td className="dat">{val.paperType}</td>
+                <td className="dat">{val.location}</td>
+                <td className="dat">Đã hoàn tất</td>
               </tr>
             );
           })}
@@ -103,10 +137,11 @@ const Users = () => {
       <div className="sum1">
         <span>Số tờ </span>
         <div className="sum1Tex">
-          A3 đã in: <br />
-          A4 đã in:
+          A3 đã in: {A3Printed}
           <br />
-          A5 đã in:
+          A4 đã in: {A4Printed}
+          <br />
+          A5 đã in: {A5Printed}
         </div>
       </div>
       <hr className="secondBreak" />
@@ -121,18 +156,18 @@ const Users = () => {
             <th className="hea1">Số tiền</th>
             <th className="hea1">Số tờ</th>
           </tr>
-          {buyHistory.map((val, key) => {
+          {tranList.map((val, key) => {
             return (
               <tr className="row1" key={key}>
-                <td className="dat1">{val.times}</td>
-                <td className="dat1">{val.amount}</td>
-                <td className="dat1">{val.quantity1}</td>
+                <td className="dat1">{val.time}</td>
+                <td className="dat1">{val.price}</td>
+                <td className="dat1">{val.purchasedPages}</td>
               </tr>
             );
           })}
         </tr>
       </table>
-      <span className="sum2">Số tờ còn lại: </span>
+      <span className="sum2">Số tờ còn lại: {remainingPages}(A4)</span>
     </div>
   );
 };
