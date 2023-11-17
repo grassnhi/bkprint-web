@@ -65,6 +65,11 @@
   font-weight: 400;
   line-height: normal;
 }
+.printingHistoryList{
+  width: 1000px;
+  height: 500px;
+  overflow-y:  scroll;
+}
 .thirdBreak {
   position: absolute;
   width: 1770px;
@@ -239,4 +244,124 @@
 .op2Tex1 {
   position: absolute;
   top: 290px;
+}
+#addPrinterBtn {
+  position: absolute;
+  top: 1540px;
+  left: 1000px;
+  width: 102px;
+  height: 41px;
+  margin-left: 10px;
+  align-items: center;
+  gap: 8px;
+
+  background: var(--neutral-colors-headings-black, #5d5a88);
+  border: none;
+  color: #fff;
+  font-family: Andika;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#addPrinterBtn:hover {
+  background-color: #443f86;
+}
+#addPrinterBtn:active {
+  background-color: #160e86;
+}
+#pageNum {
+  margin-left: 30px;
+  background-color: gray;
+  height: 25px;
+  width: 60px;
+  color: #000;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.sum3 {
+  position: absolute;
+  top: 1565px;
+  left: 50px;
+  color: #000;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.addPrinter-input1 {
+  position: absolute;
+  top: 1565px;
+  left: 200px;
+  width: 100px;
+  background-color: white;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.addPrinter-input2 {
+  position: absolute;
+  top: 1565px;
+  left: 350px;
+  width: 100px;
+  background-color: white;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.addPrinter-input3 {
+  position: absolute;
+  top: 1565px;
+  left: 500px;
+  width: 100px;
+  background-color: white;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.addPrinter-input4 {
+  position: absolute;
+  top: 1565px;
+  left: 650px;
+  width: 100px;
+  background-color: white;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.addPrinter-input5 {
+  position: absolute;
+  top: 1565px;
+  left: 800px;
+  width: 100px;
+  background-color: white;
+  font-family: Andika;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.datePickerContainer {
+  width: 500px;
+  overflow: auto;
+}
+#startDate {
+  height: 20px;
+  width: 100px;
+}
+#endDate {
+  height: 20px;
+  width: 100px;
 }

@@ -89,6 +89,12 @@
   top: 47px;
   right: 50px;
   font-size: 25px;
+  cursor: pointer;
+  padding: 5px 8px;
+}
+.section1:hover {
+  background-color: rgb(214, 214, 238);
+  border-radius: 15px;
 }
 
 .bkprint {

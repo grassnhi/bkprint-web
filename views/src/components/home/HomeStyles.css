@@ -84,6 +84,11 @@
 .trang-chu {
   position: relative;
   line-height: 18px;
+  padding: 5px 8px;
+}
+.trang-chu:hover {
+  background-color: rgb(214, 214, 238);
+  border-radius: 20px;
 }
 
 .sections {
