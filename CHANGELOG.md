@@ -1,5 +1,41 @@
 # Changelog
 
+## [2.0.0](https://github.com/grassnhi/bkprint-web/compare/v1.4.0...v2.0.0) (2023-11-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **MVC:** Database and backend.
+
+### Features
+
+* add header & footer ([0ccac38](https://github.com/grassnhi/bkprint-web/commit/0ccac38738b3c47db08a75965eb392f324eef884))
+* fix header(done) & Home ([10a1288](https://github.com/grassnhi/bkprint-web/commit/10a1288989b5511a68aaf8dee606923f54f876a1))
+* fix Home & Footer ([c5a0b1f](https://github.com/grassnhi/bkprint-web/commit/c5a0b1f191672c1fecdef58ce2ed668b641c8b23))
+* **MVC:** Database and backend. ([3f553b7](https://github.com/grassnhi/bkprint-web/commit/3f553b72f3a2e6463741956f4ea070e6b7ae455e))
+* rendering ([2f8bc7f](https://github.com/grassnhi/bkprint-web/commit/2f8bc7fc30b6d577a0c0ae8192c93592b780b8bb))
+* rendering ([9583e71](https://github.com/grassnhi/bkprint-web/commit/9583e7109e2a48221bc6dff497cfc39a34a68518))
+* rendering ([bc8bdda](https://github.com/grassnhi/bkprint-web/commit/bc8bdda9e33876db5642730a1db3f3e9ef51a136))
+* rendering ([2894eaf](https://github.com/grassnhi/bkprint-web/commit/2894eaf12414f085f2b0f9c0a1e63b08b54517d5))
+* rendering ([195782e](https://github.com/grassnhi/bkprint-web/commit/195782e0fb0c08af89b3a78c226c9b54e3961874))
+* rendering ([4d4ac18](https://github.com/grassnhi/bkprint-web/commit/4d4ac18c3c977afcbd9c8d7b6aa5afd20219e0a8))
+
+
+### Bug Fixes
+
+* api ([57ec327](https://github.com/grassnhi/bkprint-web/commit/57ec327f92ed527e38bd67addb706d3a3a102531))
+* api ([a1486a6](https://github.com/grassnhi/bkprint-web/commit/a1486a6cf95a59578bc6cba2a47393e6fa5853dd))
+* **css:** Edit css files. ([ecbc4d0](https://github.com/grassnhi/bkprint-web/commit/ecbc4d04db109cc90cfc51a27a9cfa9065e1f66f))
+* database ([9f7be26](https://github.com/grassnhi/bkprint-web/commit/9f7be26b224b4f4ac58ffe19a1a10fb26a0362cc))
+* database ([4d8bfdd](https://github.com/grassnhi/bkprint-web/commit/4d8bfddc1fd150f8ddbdc250bc304ab550f3acac))
+* database ([f95fe30](https://github.com/grassnhi/bkprint-web/commit/f95fe30e8a53a2e803ecd1b2154bbac98ab090f9))
+* database ([6a19204](https://github.com/grassnhi/bkprint-web/commit/6a192043364501323d643a7c51c07c4f46ce6834))
+* display behavior when button is pressed ([07a0d80](https://github.com/grassnhi/bkprint-web/commit/07a0d803e85b8ae72cc84cda38f2837858cc9d94))
+* uploading page ([b7b2fce](https://github.com/grassnhi/bkprint-web/commit/b7b2fce352f7f11d842b4b68df833392b9e94fba))
+* uploading page ([3196dda](https://github.com/grassnhi/bkprint-web/commit/3196dda9884440ef11a1874ce8fd616d1422ca29))
+* uploading page ([cb372a4](https://github.com/grassnhi/bkprint-web/commit/cb372a43ec9a9007b727c08b2624a0bc7628fcba))
+* uploading page ([1f1618d](https://github.com/grassnhi/bkprint-web/commit/1f1618d75d2a01db668a51c96acf463fe6907634))
+
 ## [1.4.0](https://github.com/grassnhi/bkprint-web/compare/v1.3.0...v1.4.0) (2023-11-07)
 
 
