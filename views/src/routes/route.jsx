@@ -12,8 +12,6 @@ import Adminusers from "../components/profile/adminusers";
 import Users from "../components/profile/users";
 import Printlocate from "../components/printlocate/Printlocate";
 import Help from "../components/help/Help";
-import Adminreport from "../components/report/adminreport";
-import Payment from "../components/payment/payment";
 const Routing = () => {
   return (
     <Routes>
@@ -25,17 +23,10 @@ const Routing = () => {
       <Route path="Choose/Login1/Completeprint" element={<Completeprint />} />
       <Route path="Choose/Login1/Profile" element={<Users />} />
       <Route path="Choose/Login1/PrintLocate" element={<Printlocate />} />
-      <Route path="Choose/Login1/Payment" element={<Payment />} />
-      <Route path="Choose/AdminLogin1" element={<AdminLogin1 />} />
-      <Route path="Choose/AdminLogin1/AdminHome" element={<AdminHome />} />
-      <Route
-        path="Choose/AdminLogin1/AdminHome/AdminUsers"
-        element={<Adminusers />}
-      />
-      <Route
-        path="AdminLogin1/AdminHome/Adminreport"
-        element={<Adminreport />}
-      />
+      <Route path="AdminLogin1" element={<AdminLogin1 />} />
+      <Route path="AdminLogin1/AdminHome" element={<AdminHome />} />
+      <Route path="AdminLogin1/AdminHome/AdminUsers" element={<Adminusers />} />
+      
       <Route path="help" element={<Help />} />
     </Routes>
   );

@@ -60,55 +60,7 @@
   height: 134px;
   color: var(--neutral-colors-text-gray);
 }
-.container-icon {
-  top: 0;
-  height: 130px;
-}
-.trang-chu {
-  position: relative;
-  line-height: 18px;
-}
 
-.sections {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  top: 0;
-  right: 0;
-  width: 583px;
-  justify-content: space-between;
-}
-
-.sections-parent {
-  position: absolute;
-  top: 52px;
-  right: 138px;
-  width: 583px;
-  height: 19px;
-  text-align: center;
-  font-size: var(--font-size-6xl);
-}
-.bkprint {
-  position: absolute;
-  top: 47px;
-  left: 139px;
-  font-size: 30px;
-  line-height: 30px;
-  text-align: right;
-  display: inline-block;
-  width: fit-content;
-  height: 29px;
-}
-.oisp-official-logo-01-1-icon {
-  position: absolute;
-  top: 19px;
-  left: 28px;
-  width: 83px;
-  height: 84px;
-  object-fit: cover;
-}
 .page1 {
   object-fit: cover;
   position: absolute;
