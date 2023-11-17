@@ -1,0 +1,78 @@
+.sections-main {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  top: 10px;
+  z-index: 1;
+  right: 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.left-section {
+  display: flex;
+  flex: 3.5;
+  align-items: center;
+}
+
+.middle-section {
+  flex: 0.8;
+}
+
+.right-section {
+  display: flex;
+  flex: 3;
+  align-items: center;
+}
+
+/* Left Section */
+.img-headers {
+  flex: 0.8;
+  padding-left: 20px;
+}
+
+.oisp-official-logo-01-1-icon-header {
+  width: 100px;
+  object-fit: cover;
+}
+
+.bkprint-header {
+  flex: 4;
+  font-size: 35px;
+}
+
+/* Right section */
+.trang-chu-main {
+  display: flex;
+  flex: 1;
+  position: relative;
+  line-height: 18px;
+  padding: 15px 18px;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  transition: background-color 0.5s;
+}
+
+.trang-chu-main:hover {
+  background-color: rgb(214, 214, 238);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.img-header {
+  flex: 1;
+}
+
+.n-1-icon-main {
+  padding-left: 10px;
+  width: 40px;
+}
+
+@media (max-width: 1600px) {
+  .trang-chu-main {
+    font-size: 18px;
+  }
+}

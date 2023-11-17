@@ -1,0 +1,23 @@
+.adminReport {
+  position: relative;
+  background-color: var(--neutral-colors-white);
+  font-family: Andika;
+  height: 2506px;
+  width: 100vw;
+  overflow: hidden;
+  color: #5d5a88;
+}
+.titleReport {
+  position: absolute;
+  top: 170px;
+  left: 690px;
+  font-size: 50px;
+  font-weight: 500px;
+}
+.printHis12 {
+  position: absolute;
+  top: 280px;
+  left: 30px;
+  background-color: #f7f6fe;
+  border: 1px solid black;
+}

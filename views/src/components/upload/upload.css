@@ -1,0 +1,34 @@
+.uploadContainer {
+  position: relative;
+  background-color: var(--neutral-colors-white);
+  width: 100vw;
+  height: 1714px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--neutral-colors-headings-black);
+  font-family: var(--font-andika);
+}
+
+.upTablePositionFalse {
+  position: absolute;
+  top: 133px;
+  left: 697px;
+}
+
+.upTablePosition {
+  position: absolute;
+  top: 133px;
+  left: 80px;
+}
+
+.chooseTablePosition {
+  position: absolute;
+  top: 133px;
+  left: 697px;
+}
+.propertiesTablePosition {
+  position: absolute;
+  top: 133px;
+  left: 1314px;
+}
