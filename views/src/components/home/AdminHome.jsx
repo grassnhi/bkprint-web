@@ -6,27 +6,54 @@ import logo1 from "../../assets/chôm2 1.png";
 import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import logo4 from "../../assets/375756243-688982619370253-4579776695205593531-n-1@2x.png";
+import Header from "../../utils/header";
+import Footer from "../../utils/footer";
 
 const AdminHome = () => {
   return (
-    <div className="trang-da-dang-nhap">
-      <div className="wrapper1">
-        <div className="heading">
-          Quản lý hệ thống máy in tiện lợi mọi lúc, mọi nơi.
-        </div>
-        <div className="paragraph">
-          Quản trị viên có thể thay đổi chức năng người dùng, xem báo cáo hệ
-          thống định kỳ hoặc hiện thời. Hãy bắt đầu quản lý là khám phá hệ thống
-          ngay bây giờ.
-        </div>
-        <div className="button-set">
-          <Button className="master-primary-button">Quản lý người dùng</Button>
-        </div>
-        <div className="button-set2">
-          <Button className="master-secondary-button">Báo cáo hệ thống</Button>
+    <div className="trang-da-dang-nhap-student">
+      <Header></Header>
+      <div className="welcome-container">
+        <img className="chm-1-icon-student" alt="" src={logo1} />
+        <div className="welcome-student">
+          <span className="statement1-student">Chào mừng bạn đến với</span>
+          <span className="statement2-student">HỆ THỐNG IN BÁCH KHOA</span>
         </div>
       </div>
-      <img className="n-1-icon" alt="" src={logo4} />
+      
+      <div className="intro-container">
+        <div className="white-space-left"></div>
+
+        <div className="wrapper1-student">
+          <div className="column-1">
+            <div className="printer-img-container">
+              <img className="printer-img" alt="" src={logo} />
+            </div>
+          </div>
+
+          <div className="column-2">
+            <div className="heading-student">
+              Tải lên tài liệu và in tại máy in gần bạn!
+            </div>
+            <div className="paragraph-student">
+              Đại học Bách Khoa TP.HCM có hệ thống máy in hiện đại nhất trong khối
+              Đại học Quốc gia. Bạn hoàn toàn có thể tải lên tập tin và chọn máy in
+              gần bạn để in trong vòng 5 phút.
+              <div className="btn-container">
+              <div className="button-set-admin">
+                <Button className="master-primary-button-admin">Quản lý người dùng</Button>
+              </div>
+              <div className="button-set2-admin">
+                <Button className="master-secondary-button-admin">Báo cáo hệ thống</Button>
+              </div>
+            </div>
+            </div>
+          </div>
+
+        </div>
+        <div className="white-space-right"></div>
+      </div>
+      <Footer></Footer>
     </div>
   );
 };
