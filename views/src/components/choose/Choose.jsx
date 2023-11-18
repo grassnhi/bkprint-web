@@ -27,10 +27,10 @@ const Choose = () => {
       </div>
       <img className="bklogo1" src={logo} alt="bklogo1" />
       <div className="chosen">
-        <Button className="stu" onClick={() => navigate("Login1")}>
+        <Button className="stu" onClick={() => navigate("/Login1")}>
           Sinh viên trường Đại học Bách Khoa
         </Button>
-        <Button className="admin" onClick={() => navigate("AdminLogin1")}>
+        <Button className="admin" onClick={() => navigate("/AdminLogin1")}>
           Quản trị viên BKPrint
         </Button>
       </div>

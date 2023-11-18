@@ -92,10 +92,7 @@ const Users = () => {
       <div className="information">
         <span className="texx">{name}</span>
         <span className="ID">{stdID}</span>
-        <span
-          className="logout"
-          onClick={() => navigate("/Choose/Login1/Home")}
-        >
+        <span className="logout" onClick={() => navigate("/Home")}>
           Thoát
         </span>
       </div>
@@ -159,6 +156,7 @@ const Users = () => {
             <th className="hea1">Thời gian</th>
             <th className="hea1">Số tiền</th>
             <th className="hea1">Số tờ</th>
+            <th className="hea1">Loại giấy</th>
           </tr>
           {tranList.map((val, key) => {
             return (
@@ -166,6 +164,7 @@ const Users = () => {
                 <td className="dat1">{val.time}</td>
                 <td className="dat1">{val.price}</td>
                 <td className="dat1">{val.purchasedPages}</td>
+                <td className="dat1">{val.purchasedPaperType}</td>
               </tr>
             );
           })}

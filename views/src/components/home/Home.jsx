@@ -15,19 +15,6 @@ const Home = () => {
   return (
     <div className="trang-da-dang-nhap">
       <Footer></Footer>
-      {/* <div className="wrapper">
-        <div className="container" />
-        <div className="copyright">Bản quyền © Thiếu Nhi-CC02</div>
-        <div className="footer-right">
-          <span className="phat-trien-boi-thieu-nhi-cc02">
-            <span>Phát triển bởi Thiếu Nhi-CC02</span>
-            <span className="span">{` | `}</span>
-          </span>
-          <span className="policy">{`Điều khoản & điều kiện`}</span>
-          <span className="span1">{` | `}</span>
-          <span className="policy">Chính sách pháp lý</span>
-        </div>
-      </div> */}
       <div className="call-to-action-v3">
         <img className="icon2" alt="" src={logo} />
       </div>
@@ -50,7 +37,7 @@ const Home = () => {
           <Button
             className="master-primary-button1"
             onClick={() => {
-              navigate("/Choose/Login1/Upload");
+              navigate("/Upload");
             }}
           >
             Tải lên và in
@@ -59,7 +46,7 @@ const Home = () => {
         <div className="button-set22">
           <Button
             className="master-secondary-button1"
-            onClick={() => navigate("/Choose/Login1/PrintLocate")}
+            onClick={() => navigate("/PrintLocate")}
           >
             Xem vị trí máy in
           </Button>

@@ -7,11 +7,18 @@ import studentAPI from "./apis/studentAPI.js";
 import printingHistoryAPI from "./apis/printingHistoryAPI.js";
 import systemPolicyAPI from "./apis/systemPolicyAPI.js";
 import accountAPI from "./apis/accountAPI.js";
-
+import cookieParser from "cookie-parser";
 const app = express();
 
+app.use(cookieParser());
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3001", "http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
 
 console.log("First Step");
 app.get("/", (request, response) => {
@@ -25,6 +32,7 @@ app.use("/students", studentAPI);
 app.use("/printingHistory", printingHistoryAPI);
 app.use("/systemPolicy", systemPolicyAPI);
 app.use("/accounts", accountAPI);
+
 console.log("Third Step");
 
 mongoose

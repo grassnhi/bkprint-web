@@ -19,23 +19,17 @@ const Routing = () => {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="Choose" element={<Choose />} />
-      <Route path="Choose/Login1" element={<Login1 />} />
-      <Route path="Choose/Login1/Home" element={<Home />} />
-      <Route path="Choose/Login1/Upload" element={<Upload />} />
-      <Route path="Choose/Login1/Completeprint" element={<Completeprint />} />
-      <Route path="Choose/Login1/Profile" element={<Users />} />
-      <Route path="Choose/Login1/PrintLocate" element={<Printlocate />} />
-      <Route path="Choose/Login1/Payment" element={<Payment />} />
-      <Route path="Choose/AdminLogin1" element={<AdminLogin1 />} />
-      <Route path="Choose/AdminLogin1/AdminHome" element={<AdminHome />} />
-      <Route
-        path="Choose/AdminLogin1/AdminHome/AdminUsers"
-        element={<Adminusers />}
-      />
-      <Route
-        path="AdminLogin1/AdminHome/Adminreport"
-        element={<Adminreport />}
-      />
+      <Route path="/Login1" element={<Login1 />} />
+      <Route path="/Home" element={<Home />} />
+      <Route path="/Upload" element={<Upload />} />
+      <Route path="/Completeprint" element={<Completeprint />} />
+      <Route path="/Profile" element={<Users />} />
+      <Route path="/PrintLocate" element={<Printlocate />} />
+      <Route path="/Payment" element={<Payment />} />
+      <Route path="/AdminLogin1" element={<AdminLogin1 />} />
+      <Route path="/AdminHome" element={<AdminHome />} />
+      <Route path="/AdminUsers" element={<Adminusers />} />
+      <Route path="/Adminreport" element={<Adminreport />} />
       <Route path="help" element={<Help />} />
     </Routes>
   );

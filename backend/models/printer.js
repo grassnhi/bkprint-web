@@ -9,7 +9,7 @@ const printerSchema = mongoose.Schema({
     room: { type: String, required: true },
   },
   status: { type: Boolean },
-  printedPages: [{ type: Number, required: true }],
+  printedPages: { type: Number },
 });
 
 export const Printer = mongoose.model("Printer", printerSchema);

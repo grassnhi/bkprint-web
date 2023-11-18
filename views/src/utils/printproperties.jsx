@@ -14,7 +14,7 @@ import {
   getPrinterPrintedPage,
   getPrinterRoom,
 } from "../../../controllers/printer/getPrinter";
-import { updatePrinter } from "../../../controllers/printer/updatePrinter";
+import { updatePrinter, updatePrinterPrintedPages } from "../../../controllers/printer/updatePrinter";
 import {
   getDefaultPage,
   getMaximumFileSize,
@@ -77,10 +77,8 @@ const Printproperties = () => {
   };
 
   const handlePrintingDocument = async () => {
-    console.log("STDID " + parseInt(stdID));
     const printerCount = await getPrinterCount();
     const fileNumberofPages = await handleChangeNumberofPage();
-    console.log("PAGE NUMBER " + fileNumberofPages); // get pageNumber of uploaded file
     const index = await getTotalPrintingActivity();
     const stdName = await getStudentName(parseInt(stdID));
     if (
@@ -113,18 +111,23 @@ const Printproperties = () => {
         sided: x,
       };
       recentPrintingList.push(newPrintingActivity);
-      console.log(recentPrintingList);
       await updatePrintingHistory(parseInt(stdID), recentPrintingList);
       const recentRM = await getStudentRemainingPages(parseInt(stdID));
-      console.log("Recent RM" + recentRM);
       await updateRemainingPages(
         parseInt(stdID),
         parseInt(recentRM) - parseInt(fileNumberofPages)
       );
-      console.log("NUMBER OF PAGES: " + fileNumberofPages);
+      // Update printed pages in the printers
+      for(let i = 0; i < await getPrinterCount(); i++) {
+        if(chosenPrinter == getPrinterName(i)){
+          const recent = getPrinterPrintedPage(i)
+          await updatePrinterPrintedPages(parseInt(stdID), )
+          break;
+        }
+      }
     } else {
       // GO TO TRANSACTION PAGES
-      navigate("/Choose/Login1/Payment");
+      navigate("/Payment");
       return -1;
     }
   };

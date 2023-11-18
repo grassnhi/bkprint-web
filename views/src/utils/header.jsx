@@ -12,19 +12,19 @@ const Header = () => {
         <div className="sections">
           <div
             className="trang-chu"
-            onClick={() => navigate("/Choose/Login1/Home")}
+            onClick={() => navigate("/Home")}
           >
             Trang chủ
           </div>
           <div
             className="trang-chu"
-            onClick={() => navigate("/Choose/Login1/Upload")}
+            onClick={() => navigate("/Upload")}
           >
             In tài liệu
           </div>
           <div
             className="trang-chu"
-            onClick={() => navigate("/Choose/Login1/Profile")}
+            onClick={() => navigate("/Profile")}
           >
             Tài khoản
           </div>
