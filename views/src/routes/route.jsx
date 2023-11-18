@@ -12,6 +12,7 @@ import Adminusers from "../components/profile/adminusers";
 import Users from "../components/profile/users";
 import Printlocate from "../components/printlocate/Printlocate";
 import Help from "../components/help/Help";
+import Payment from "../components/payment/payment"
 const Routing = () => {
   return (
     <Routes>
@@ -27,7 +28,6 @@ const Routing = () => {
       <Route path="/AdminLogin1" element={<AdminLogin1 />} />
       <Route path="/AdminHome" element={<AdminHome />} />
       <Route path="/AdminUsers" element={<Adminusers />} />
-      <Route path="/Adminreport" element={<Adminreport />} />
       <Route path="help" element={<Help />} />
     </Routes>
   );

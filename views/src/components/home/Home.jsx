@@ -22,7 +22,7 @@ const Home = () => {
           <span className="statement2-student">HỆ THỐNG IN BÁCH KHOA</span>
         </div>
       </div>
-      
+
       <div className="intro-container">
         <div className="white-space-left"></div>
 
@@ -38,9 +38,9 @@ const Home = () => {
               Tải lên tài liệu và in tại máy in gần bạn!
             </div>
             <div className="paragraph-student">
-              Đại học Bách Khoa TP.HCM có hệ thống máy in hiện đại nhất trong khối
-              Đại học Quốc gia. Bạn hoàn toàn có thể tải lên tập tin và chọn máy in
-              gần bạn để in trong vòng 5 phút.
+              Đại học Bách Khoa TP.HCM có hệ thống máy in hiện đại nhất trong
+              khối Đại học Quốc gia. Bạn hoàn toàn có thể tải lên tập tin và
+              chọn máy in gần bạn để in trong vòng 5 phút.
             </div>
             <div className="btn-container">
               <div className="button-set20">
@@ -56,15 +56,13 @@ const Home = () => {
               <div className="button-set22">
                 <Button
                   className="master-secondary-button1"
-                  onClick={() => navigate("/Choose/Login1/PrintLocate")}
+                  onClick={() => navigate("/PrintLocate")}
                 >
                   Xem vị trí máy in
                 </Button>
               </div>
             </div>
-            
           </div>
-
         </div>
         <div className="white-space-right"></div>
       </div>
