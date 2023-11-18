@@ -68,7 +68,7 @@ export const getPrinterRoom = async (printerID) => {
 export const getPrinterStatus = async (printerID) => {
   try {
     const printerData = await getPrinterData(printerID);
-    return printerData.location.status;
+    return printerData.status;
   } catch (error) {
     console.log(error);
   }

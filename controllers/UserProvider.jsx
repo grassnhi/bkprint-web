@@ -19,6 +19,22 @@ export const UserProvider = ({ children }) => {
     const timeFormatted = date.toLocaleTimeString("vi-VN", timeOptions);
     return `${timeFormatted}, ${dateFormatted}`;
   };
+  const parseTime = async () => {
+    const dateTimeString = "10:57:23, 12/11/2023";
+    const [timePart, datePart] = dateTimeString.split(", ");
+    const timeComponents = timePart.split(":");
+    const [hour, minute, second] = timeComponents;
+    const dateComponents = datePart.split("/");
+    const [day, month, year] = dateComponents;
+    return {
+      day: parseInt(day),
+      month: parseInt(month),
+      year: parseInt(year),
+      hour: parseInt(hour),
+      minute: parseInt(minute),
+      second: parseInt(second),
+    };
+  };
 
   const [numberOfCopy, setNumberOfCopy] = useState(0); // 2 ban in
   const [numberOfSided, setNumberOfSided] = useState(0); // 1-sided or 2-sided
@@ -29,6 +45,7 @@ export const UserProvider = ({ children }) => {
   const [printerAdmin, setPrinterAdmin] = useState([]);
   const [status, setStatus] = useState(false);
   const [stdID, setStdID] = useState("");
+  const [auth, setAuth] = useState(false);
   const contextValue = {
     numberOfCopy,
     setNumberOfCopy,
@@ -49,6 +66,9 @@ export const UserProvider = ({ children }) => {
     convertTime,
     stdID,
     setStdID,
+    parseTime,
+    auth,
+    setAuth,
   };
 
   return (

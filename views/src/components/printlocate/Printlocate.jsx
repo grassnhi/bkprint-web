@@ -1,7 +1,5 @@
 import React from "react";
 import "./PrintlocateStyles.css";
-import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
-import logo3 from "../../assets/container.png";
 import mapp from "../../assets/MAP-3D-01-scaled 1.png";
 import Statustable from "../../utils/statustable";
 import Header from "../../utils/header";

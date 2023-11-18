@@ -1,50 +1,29 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import "./statustable.css";
-
-const checkingsta = (x) => {
-  let o = "";
-  if (x === "Đang hoạt động") {
-    return (o = "In tại máy in này");
-  } else {
-    return (o = "Không thể in tại đây ");
-  }
-};
-const data = [
-  {
-    ID: "#00001",
-    brand: "Canon",
-    model: "Canon LBP2900",
-    building: "A4",
-    room: "402",
-    statuss: "Ngừng hoạt động",
-    dec: "",
-  },
-  {
-    ID: "#00002",
-    brand: "Epson",
-    model: "Epson L805",
-    building: "A5",
-    room: "106",
-    statuss: "Đang hoạt động",
-    dec: "",
-  },
-  {
-    ID: "#00003",
-    brand: "Brother",
-    model: "Laser Brother HL-L2321D",
-    building: "B1",
-    room: "208",
-    statuss: "Ngừng hoạt động",
-    dec: "",
-  },
-];
+import {
+  getPrinterData,
+  getPrinterCount,
+} from "../../../controllers/printer/getPrinter";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Statustable = () => {
+  const navigate = useNavigate();
+  const [printerAdmin, setPrinterAdmin] = useState([]);
+  useEffect(() => {
+    async function fetchPrinterData() {
+      const printerNum = await getPrinterCount();
+      const promises = [];
+      for (let i = 0; i < printerNum; i++) {
+        promises.push(getPrinterData(i));
+      }
+      const printerData = await Promise.all(promises);
+      setPrinterAdmin(printerData);
+    }
+    fetchPrinterData();
+  }, []);
   let st = true;
-  data.map((val) => {
-    return (val.dec = checkingsta(val.statuss));
-  });
   return (
     <table className="stats">
       <tr>
@@ -57,34 +36,35 @@ const Statustable = () => {
           <th>Trạng thái</th>
           <th>In</th>
         </tr>
-        {data.map((val, key) => {
+
+        {printerAdmin.map((val, key) => {
           return (
             <tr key={key}>
-              <td>{val.ID}</td>
-              <td>{val.brand}</td>
-              <td>{val.model}</td>
-              <td>{val.building}</td>
-              <td>{val.room}</td>
+              <td>{val.printerID}</td>
+              <td>{val.printerBrand}</td>
+              <td>{val.printerName}</td>
+              <td>{val.location.building}</td>
+              <td>{val.location.room}</td>
               <td
                 className="stt"
-                {...(val.statuss === "Đang hoạt động"
-                  ? (st = true)
-                  : (st = false))}
-                id={st ? "Avai" : "NoAvai"}
-                style={{ backgroundColor: st ? "#B3FFD4" : "#FCAAAA" }}
+                id={val.status ? "Avai" : "NoAvai"}
+                style={{ backgroundColor: val.status ? "#B3FFD4" : "#FCAAAA" }}
               >
-                {val.statuss}
+                {val.status ? "Đang hoạt động" : "Ngưng hoạt động"}
               </td>
-
-              {val.statuss === "Đang hoạt động" ? (
+              {val.status === true ? (
                 <td>
-                  <Button className="de" id="Avai1">
-                    {val.dec}
+                  <Button
+                    className="de"
+                    id="Avai1"
+                    onClick={() => navigate("/Choose/Login1/Upload")}
+                  >
+                    In tại máy in này
                   </Button>
                 </td>
               ) : (
                 <td className="de1" id="NoAvai1">
-                  {val.dec}
+                  Không thể in tại đây
                 </td>
               )}
             </tr>

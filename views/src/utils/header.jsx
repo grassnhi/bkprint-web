@@ -2,7 +2,7 @@ import logo2 from "../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../assets/container.png";
 import logo4 from "../assets/375756243-688982619370253-4579776695205593531-n-1@2x.png";
 import { useNavigate } from "react-router-dom";
-import "./header.css"
+import "./header.css";
 const Header = () => {
   const navigate = useNavigate();
   return (

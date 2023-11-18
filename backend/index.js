@@ -6,6 +6,7 @@ import cors from "cors";
 import studentAPI from "./apis/studentAPI.js";
 import printingHistoryAPI from "./apis/printingHistoryAPI.js";
 import systemPolicyAPI from "./apis/systemPolicyAPI.js";
+import accountAPI from "./apis/accountAPI.js";
 
 const app = express();
 
@@ -23,7 +24,7 @@ app.use("/printers", printerAPI);
 app.use("/students", studentAPI);
 app.use("/printingHistory", printingHistoryAPI);
 app.use("/systemPolicy", systemPolicyAPI);
-
+app.use("/accounts", accountAPI);
 console.log("Third Step");
 
 mongoose

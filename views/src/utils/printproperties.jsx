@@ -81,15 +81,18 @@ const Printproperties = () => {
     const printerCount = await getPrinterCount();
     const fileNumberofPages = await handleChangeNumberofPage();
     console.log("PAGE NUMBER " + fileNumberofPages); // get pageNumber of uploaded file
-    const x = await getTotalPrintingActivity();
+    const index = await getTotalPrintingActivity();
     const stdName = await getStudentName(parseInt(stdID));
-    await updateRemainingPages(parseInt(stdID), 200);
     if (
       (await getStudentRemainingPages(parseInt(stdID))) >= fileNumberofPages
     ) {
       // Add to PrintingHistory
-      const index = await getTotalPrintingActivity();
-      console.log("Index " + index);
+      let x;
+      if (numberOfSided == "In một mặt") {
+        x = 1;
+      } else if (numberOfSided == "In hai mặt") {
+        x = 2;
+      }
       await addPrintingActivity(
         index,
         stdID,
@@ -107,11 +110,21 @@ const Printproperties = () => {
         printedPages: fileNumberofPages,
         paperType: paperType,
         location: printingLocation,
+        sided: x,
       };
       recentPrintingList.push(newPrintingActivity);
       console.log(recentPrintingList);
       await updatePrintingHistory(parseInt(stdID), recentPrintingList);
+      const recentRM = await getStudentRemainingPages(parseInt(stdID));
+      console.log("Recent RM" + recentRM);
+      await updateRemainingPages(
+        parseInt(stdID),
+        parseInt(recentRM) - parseInt(fileNumberofPages)
+      );
+      console.log("NUMBER OF PAGES: " + fileNumberofPages);
     } else {
+      // GO TO TRANSACTION PAGES
+      navigate("/Choose/Login1/Payment");
       return -1;
     }
   };
