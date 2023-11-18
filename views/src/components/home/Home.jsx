@@ -47,7 +47,7 @@ const Home = () => {
                 <Button
                   className="master-primary-button1"
                   onClick={() => {
-                    navigate("/Choose/Login1/Upload");
+                    navigate("/Upload");
                   }}
                 >
                   Tải lên và in

@@ -14,7 +14,10 @@ import {
   getPrinterPrintedPage,
   getPrinterRoom,
 } from "../../../controllers/printer/getPrinter";
-import { updatePrinter, updatePrinterPrintedPages } from "../../../controllers/printer/updatePrinter";
+import {
+  updatePrinter,
+  updatePrinterPrintedPages,
+} from "../../../controllers/printer/updatePrinter";
 import {
   getDefaultPage,
   getMaximumFileSize,
@@ -77,6 +80,19 @@ const Printproperties = () => {
   };
 
   const handlePrintingDocument = async () => {
+    if (!status) {
+      enqueueSnackbar("Please choose another file", { variant: "error" });
+      return -1;
+    }
+    if (
+      fileName == "" ||
+      paperType == "" ||
+      numberOfSided == 0 ||
+      numberOfCopy == 0
+    ) {
+      enqueueSnackbar("Please enter all informations", { variant: "error" });
+      return -1;
+    }
     const printerCount = await getPrinterCount();
     const fileNumberofPages = await handleChangeNumberofPage();
     const index = await getTotalPrintingActivity();
@@ -117,14 +133,16 @@ const Printproperties = () => {
         parseInt(stdID),
         parseInt(recentRM) - parseInt(fileNumberofPages)
       );
+      enqueueSnackbar("Printing successfully", { variant: "success" });
       // Update printed pages in the printers
-      for(let i = 0; i < await getPrinterCount(); i++) {
-        if(chosenPrinter == getPrinterName(i)){
-          const recent = getPrinterPrintedPage(i)
-          await updatePrinterPrintedPages(parseInt(stdID), )
+      for (let i = 0; i < (await getPrinterCount()); i++) {
+        if (chosenPrinter == getPrinterName(i)) {
+          const recent = getPrinterPrintedPage(i);
+          await updatePrinterPrintedPages(parseInt(stdID));
           break;
         }
       }
+      navigate("/Completeprint");
     } else {
       // GO TO TRANSACTION PAGES
       navigate("/Payment");
@@ -133,18 +151,13 @@ const Printproperties = () => {
   };
   const {
     convertTime,
-    numberOfCopy,
-    setNumberOfCopy,
-    numberOfSided,
-    setNumberOfSided,
-    paperType,
-    setPaperType,
     fileName,
-    status,
     chosenPrinter,
     printingLocation,
     stdID,
+    status,
   } = useContext(UserContext);
+
   const handleChange = (e) => {
     const inputValue = parseInt(e.target.value);
     let newValue;
@@ -153,7 +166,9 @@ const Printproperties = () => {
     setValue(newValue);
     setNumberOfCopy(newValue);
   };
-
+  const [numberOfCopy, setNumberOfCopy] = useState(0); // 2 ban in
+  const [numberOfSided, setNumberOfSided] = useState(0); // 1-sided or 2-sided
+  const [paperType, setPaperType] = useState(""); // A3, A4, A5
   return (
     <div className="bigbox">
       <h2 className="properTitle">Chọn thuộc tính in</h2>

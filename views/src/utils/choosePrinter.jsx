@@ -10,6 +10,7 @@ import {
   getPrinterStatus,
 } from "../../../controllers/printer/getPrinter";
 import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 const ChoosePrinter = (props) => {
   const {
@@ -17,6 +18,7 @@ const ChoosePrinter = (props) => {
     setChosenPrinter,
     printingLocation,
     setPrintingLocation,
+    status,
   } = useContext(UserContext);
   const navigate = useNavigate();
   const [printerList, setPrinterList] = useState([]);
@@ -107,10 +109,7 @@ const ChoosePrinter = (props) => {
           )}
         </tbody>
       </table>
-      <span
-        className="checkLocate"
-        onClick={() => navigate("/PrintLocate")}
-      >
+      <span className="checkLocate" onClick={() => navigate("/PrintLocate")}>
         Xem vị trí máy in
       </span>
       <Button id="finish" onClick={props.onClick} block>

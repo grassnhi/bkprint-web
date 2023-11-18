@@ -36,9 +36,6 @@ export const UserProvider = ({ children }) => {
     };
   };
 
-  const [numberOfCopy, setNumberOfCopy] = useState(0); // 2 ban in
-  const [numberOfSided, setNumberOfSided] = useState(0); // 1-sided or 2-sided
-  const [paperType, setPaperType] = useState(""); // A3, A4, A5
   const [fileName, setFileName] = useState("");
   const [chosenPrinter, setChosenPrinter] = useState("");
   const [printingLocation, setPrintingLocation] = useState("");
@@ -47,12 +44,6 @@ export const UserProvider = ({ children }) => {
   const [stdID, setStdID] = useState("");
   const [auth, setAuth] = useState(false);
   const contextValue = {
-    numberOfCopy,
-    setNumberOfCopy,
-    numberOfSided,
-    setNumberOfSided,
-    paperType,
-    setPaperType,
     fileName,
     setFileName,
     chosenPrinter,
