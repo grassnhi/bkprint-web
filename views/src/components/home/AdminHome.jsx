@@ -32,10 +32,10 @@ const AdminHome = () => {
           </div>
 
           <div className="column-2">
-            <div className="heading-student">
+            <div className="heading-admin">
               Tải lên tài liệu và in tại máy in gần bạn!
             </div>
-            <div className="paragraph-student">
+            <div className="paragraph-admin">
               Đại học Bách Khoa TP.HCM có hệ thống máy in hiện đại nhất trong khối
               Đại học Quốc gia. Bạn hoàn toàn có thể tải lên tập tin và chọn máy in
               gần bạn để in trong vòng 5 phút.

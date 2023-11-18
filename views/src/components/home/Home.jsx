@@ -24,12 +24,12 @@ const Home = () => {
       </div>
       
       <div className="intro-container">
-        <div className="white-space-left"></div>
+        <div className="white-space-left-student"></div>
 
         <div className="wrapper1-student">
           <div className="column-1">
             <div className="printer-img-container">
-              <img className="printer-img" alt="" src={logo} />
+              <img className="printer-img-student" alt="" src={logo} />
             </div>
           </div>
 
@@ -66,7 +66,7 @@ const Home = () => {
           </div>
 
         </div>
-        <div className="white-space-right"></div>
+        <div className="white-space-right-student"></div>
       </div>
       <Footer></Footer>
     </div>

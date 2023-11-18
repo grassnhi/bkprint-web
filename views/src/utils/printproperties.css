@@ -1,6 +1,13 @@
+h2 {
+  margin-block-start: 0.53em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
 .bigbox {
+  margin-top: 40px;
   width: 550px;
-  height: 799px;
+  height: 80vh;
   border: 2px solid #483ea8;
   font-family: var(--font-andika);
 }
@@ -15,22 +22,22 @@
   line-height: normal;
 }
 .br {
-  position: absolute;
   top: 100px;
   left: 100px;
   overflow: cover;
   width: 330px;
   border: 1px solid black;
+  margin-bottom: 20px;
 }
 .pageSize,
 .numbersPage,
 .pageSide {
-  position: absolute;
-  width: 490px;
+  width: 100%;
   height: auto;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 .text {
   color: #000;
@@ -40,36 +47,42 @@
   font-weight: 400;
   line-height: normal;
   text-decoration: underline;
-  margin: 0 3rem;
+  flex: 1;
+  margin-left: 60px;
 }
 .pageSize {
-  top: 150px;
+  margin-bottom: 120px;
 }
 .pageSide {
-  position: absolute;
+  margin-bottom: 120px;
   top: 322px;
 }
 .chooseSize {
-  width: 260px;
+  padding-left: 10px;
+  width: 50%;
   height: 50px;
   font-family: Andika;
-  border: none;
   font-size: medium;
   cursor: pointer;
-  background-color: #747386b2;
-  color: white;
+  background-color: #EFEDFF;
+  border-radius: 15px;
+  border-color: #215AFF;
+  color: black;
+  flex: 1;
+  margin-right: 60px;
 }
 .numbersPage {
-  position: absolute;
   top: 500px;
 }
 .number {
-  width: 258px;
-  border: none;
-
+  padding-left: 10px;
+  border-radius: 15px;
+  border-color: #215AFF;
+  flex: 0.98;
+  margin-right: 60px;
   height: 50px;
-  background-color: #747386b2;
-  color: white;
+  background-color: #EFEDFF;
+  color: black;
   font-size: 20px;
 }
 .number::placeholder {
@@ -80,16 +93,18 @@
   color: white;
   justify-content: center;
 }
+.properties-btn-container {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
 #finish2 {
   position: absolute;
-  top: 690px;
-  left: 39px;
-  display: flex;
-  width: 471px;
+  bottom: 60px;
+  width: 20%;
   height: 58px;
   padding: 9px 14px;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   flex-shrink: 0;
   border-radius: 4px;

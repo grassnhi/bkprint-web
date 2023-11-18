@@ -1,14 +1,25 @@
+h2 {
+  margin-block-start: 0.53em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+p {
+  display: block;
+  margin-block-start: 0.2em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
 .chooseP {
+  margin-top: 40px;
   width: 526px;
-  height: 799px;
+  height: 80vh;
   border: 2px solid #483ea8;
   font-family: var(--font-andika);
 }
 .chooseTitle {
   color: #0f0f0f;
-  position: absolute;
-  top: 20px;
-  left: 158px;
   text-align: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: Andika;
@@ -16,14 +27,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 10px;
 }
 .instruc1 {
-  position: absolute;
-  padding-top: 5px;
-  top: 84px;
-  left: 140px;
-  width: 259px;
   height: 39px;
   color: #b80000;
   text-align: center;
@@ -33,12 +38,15 @@
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
+  
+}
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .choosePrinters {
-  position: absolute;
-  top: 200px;
-  left: 28px;
-  width: 471px;
+  width: 90%;
   height: 240px;
   border: 1px solid #0f0f0f;
 }
@@ -66,18 +74,19 @@ input {
   height: 24px;
 }
 .checkLocate {
-  position: absolute;
-  top: 450px;
-  left: 370px;
+  padding-top: 10px;
+  padding-right: 30px;
+  text-align: right;
   cursor: pointer;
   text-decoration: underline;
 }
+.btn-container {
+  width: 100%;
+}
 #finish {
   position: absolute;
-  top: 690px;
-  left: 28px;
-  display: flex;
-  width: 471px;
+  bottom: 60px;
+  width: 20%;
   height: 58px;
   padding: 9px 14px;
   justify-content: center;
@@ -97,7 +106,6 @@ input {
 }
 
 .custom-radio input[type="radio"] {
-  position: absolute;
   opacity: 0;
   cursor: pointer;
 }
@@ -110,9 +118,7 @@ input {
 
 .custom-radio label::before {
   content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
+  display: flex;
   width: 20px; /* Size of the radio button */
   height: 20px; /* Size of the radio button */
   border: 2px solid #483ea8; /* Border color */
@@ -125,9 +131,6 @@ input {
 
 .custom-radio label::after {
   content: '';
-  position: absolute;
-  left: 5.5px; /* Adjust for alignment */
-  top: 5.5px; /* Adjust for alignment */
   width: 12px; /* Size of the inner circle */
   height: 12px; /* Size of the inner circle */
   border-radius: 50%;
@@ -136,5 +139,5 @@ input {
 }
 
 .custom-radio input[type="radio"]:checked + label::after {
-  display: block;
+  display: flex;
 }

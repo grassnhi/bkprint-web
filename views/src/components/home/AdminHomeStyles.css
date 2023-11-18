@@ -88,13 +88,13 @@
   justify-content: center;
   align-items: center;
 }
-.heading-student {
+.heading-admin {
   flex: 0.2;
   line-height: 46px;
   width: 68%;
   justify-content: center;
 }
-.paragraph-student {
+.paragraph-admin {
   flex: 0.6;
   line-height: 46px;
   width: 65%;

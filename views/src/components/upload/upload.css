@@ -1,13 +1,20 @@
-.uploadContainer {
-  position: relative;
+.uploadPage {
   background-color: var(--neutral-colors-white);
-  width: 100vw;
-  height: 1714px;
-  overflow: hidden;
-  text-align: left;
   font-size: var(--font-size-lg);
   color: var(--neutral-colors-headings-black);
   font-family: var(--font-andika);
+}
+.uploadContainer {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  width: 98vw;
+  height: 90vh;
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .upTablePositionFalse {
@@ -17,18 +24,13 @@
 }
 
 .upTablePosition {
-  position: absolute;
-  top: 133px;
-  left: 80px;
+  flex: 1;
 }
 
 .chooseTablePosition {
-  position: absolute;
-  top: 133px;
-  left: 697px;
+  flex: 1;
+
 }
 .propertiesTablePosition {
-  position: absolute;
-  top: 133px;
-  left: 1314px;
+  flex: 1;
 }

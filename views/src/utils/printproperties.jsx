@@ -177,9 +177,11 @@ const Printproperties = () => {
           onChange={(e) => handleChange(e)}
         />
       </div>
-      <Button id="finish2" block onClick={() => handlePrintingDocument()}>
-        HOÀN THÀNH
-      </Button>
+      <div className="properties-btn-container">
+        <Button id="finish2" block onClick={() => handlePrintingDocument()}>
+          HOÀN THÀNH
+        </Button>
+      </div>
     </div>
   );
 };

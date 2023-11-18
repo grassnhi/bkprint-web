@@ -87,10 +87,12 @@ const Uploadtable = (props) => {
         <Button className="c1" disabled>
           {fileList[0]?.name}
         </Button>
-
-        <Button id="finish1" htmlType="submit" onClick={props.onClick} block>
-          {props.text}
-        </Button>
+        
+        <div className="upTable-btn-container">
+          <Button id="finish1" htmlType="submit" onClick={props.onClick} block>
+            {props.text}
+          </Button>
+        </div>
       </Form>
     </div>
   );
