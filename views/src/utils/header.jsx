@@ -7,34 +7,46 @@ const Header = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <img className="container-icon" alt="" src={logo3} />
-      <div className="sections-parent">
-        <div className="sections">
-          <div
-            className="trang-chu"
-            onClick={() => navigate("/Home")}
-          >
-            Trang chủ
+        <div className="sections-main">
+          <div className="left-section">
+            <div className="img-headers">
+              <img className="oisp-official-logo-01-1-icon-header" alt="" src={logo2} />
+            </div>
+            <div className="bkprint-header">BK Fast Automated Printing Service</div>
           </div>
-          <div
-            className="trang-chu"
-            onClick={() => navigate("/Upload")}
-          >
-            In tài liệu
+
+          <div className="middle-section"></div>
+
+          <div className="right-section">
+            <div
+              className="trang-chu-main"
+              onClick={() => navigate("/Choose/Login1/Home")}
+            >
+              Trang chủ
+            </div>
+
+            <div
+              className="trang-chu-main"
+              onClick={() => navigate("/Choose/Login1/Upload")}
+            >
+              In tài liệu
+            </div>
+
+            <div
+              className="trang-chu-main"
+              onClick={() => navigate("/Choose/Login1/Profile")}
+            >
+              Tài khoản
+            </div>
+
+            <div className="trang-chu-main">Liên hệ</div>
+
+            <div className="img-header">
+              <img className="n-1-icon-main" alt="" src={logo4} />
+            </div>
           </div>
-          <div
-            className="trang-chu"
-            onClick={() => navigate("/Profile")}
-          >
-            Tài khoản
-          </div>
-          <div className="trang-chu">Liên hệ</div>
         </div>
       </div>
-      <div className="bkprint">BK Fast Automated Printing Service</div>
-      <img className="oisp-official-logo-01-1-icon" alt="" src={logo2} />
-      <img className="n-1-icon" alt="" src={logo4} />
-    </div>
   );
 };
 export default Header;
