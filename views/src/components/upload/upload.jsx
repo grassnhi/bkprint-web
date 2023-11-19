@@ -8,10 +8,12 @@ import Printproperties from "../../utils/printproperties";
 import { UserContext } from "../../../../controllers/UserProvider";
 import Header from "../../utils/header";
 import Footer from "../../utils/footer";
+import { useSnackbar } from "notistack";
 const Upload = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [comp, setComp] = useState(false);
   const [comp1, setComp1] = useState(false);
-  const { fileName, status } = useContext(UserContext);
+  const { fileName, status, chosenPrinter } = useContext(UserContext);
   const addComp = () => {
     console.log(fileName);
     if (status == true && comp == false) {
@@ -19,8 +21,13 @@ const Upload = () => {
     }
   };
   const addComp1 = () => {
-    if (!comp1) {
+    if (!comp1 && status && chosenPrinter != "") {
       setComp1(!comp1);
+    } else if (chosenPrinter == "") {
+      console.log(chosenPrinter);
+      enqueueSnackbar("Please choose a printer", { variant: "error" });
+    } else {
+      enqueueSnackbar("Please choose another file", { variant: "error" });
     }
   };
   return (

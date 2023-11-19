@@ -4,33 +4,15 @@ import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import Button from "react-bootstrap/Button";
 import page1 from "../../assets/18696 1.png";
+import Footer from "../../utils/footer";
+import Header from "../../utils/header";
+import { useNavigate } from "react-router-dom";
 const Completeprint = () => {
+  const navigate = useNavigate();
   return (
     <div className="BB">
-      <div className="wrapper">
-        <div className="container" />
-        <div className="copyright">Bản quyền © Thiếu Nhi-CC02</div>
-        <div className="footer-right">
-          <span className="phat-trien-boi-thieu-nhi-cc02">
-            <span>Phát triển bởi Thiếu Nhi-CC02</span>
-            <span className="span">{` | `}</span>
-          </span>
-          <span className="policy">{`Điều khoản & điều kiện`}</span>
-          <span className="span1">{` | `}</span>
-          <span className="policy">Chính sách pháp lý</span>
-        </div>
-      </div>
-      <img className="container-icon" alt="" src={logo3} />
-      <div className="sections-parent">
-        <div className="sections">
-          <div className="trang-chu">Trang chủ</div>
-          <div className="trang-chu">In tài liệu</div>
-          <div className="trang-chu">Tài khoản</div>
-          <div className="trang-chu">Liên hệ</div>
-        </div>
-      </div>
-      <div className="bkprint">BK Fast Automated Printing Service</div>
-      <img className="oisp-official-logo-01-1-icon" alt="" src={logo2} />;
+      <Header></Header>
+      <Footer></Footer>
       <img className="page1" src={page1} alt="" />
       <div className="somethingwrong">
         Tài liệu của bạn đang được in tại máy in...
@@ -39,10 +21,20 @@ const Completeprint = () => {
         Hãy đến ngay máy in nhận tài liệu để tránh thất lạc.
       </p>
       <div className="button-set20ab">
-        <Button className="master-primary-button1a">Tải lên và in tiếp</Button>
+        <Button
+          className="master-primary-button1a"
+          onClick={() => navigate("/Upload")}
+        >
+          Tải lên và in tiếp
+        </Button>
       </div>
       <div className="button-set22ab">
-        <Button className="master-secondary-button1a">Về trang chủ</Button>
+        <Button
+          className="master-secondary-button1a"
+          onClick={() => navigate("/Home")}
+        >
+          Về trang chủ
+        </Button>
       </div>
     </div>
   );

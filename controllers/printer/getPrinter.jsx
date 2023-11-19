@@ -77,15 +77,7 @@ export const getPrinterStatus = async (printerID) => {
 export const getPrinterPrintedPage = async (printerID, type) => {
   try {
     const printerData = await getPrinterData(printerID);
-    var tpe = 0;
-    if (type == "A3") {
-      tpe = 0;
-    } else if (type == "A4") {
-      tpe = 1;
-    } else if (type == "A5") {
-      tpe = 2;
-    }
-    return printerData.printedPages[tpe];
+    return printerData.printedPages;
   } catch (error) {
     console.log(error);
   }

@@ -12,21 +12,22 @@ import Adminusers from "../components/profile/adminusers";
 import Users from "../components/profile/users";
 import Printlocate from "../components/printlocate/Printlocate";
 import Help from "../components/help/Help";
+import Payment from "../components/payment/payment"
 const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="Choose" element={<Choose />} />
-      <Route path="Choose/Login1" element={<Login1 />} />
-      <Route path="Choose/Login1/Home" element={<Home />} />
-      <Route path="Choose/Login1/Upload" element={<Upload />} />
-      <Route path="Choose/Login1/Completeprint" element={<Completeprint />} />
-      <Route path="Choose/Login1/Profile" element={<Users />} />
-      <Route path="Choose/Login1/PrintLocate" element={<Printlocate />} />
-      <Route path="AdminLogin1" element={<AdminLogin1 />} />
-      <Route path="AdminLogin1/AdminHome" element={<AdminHome />} />
-      <Route path="AdminLogin1/AdminHome/AdminUsers" element={<Adminusers />} />
-      
+      <Route path="/Login1" element={<Login1 />} />
+      <Route path="/Home" element={<Home />} />
+      <Route path="/Upload" element={<Upload />} />
+      <Route path="/Completeprint" element={<Completeprint />} />
+      <Route path="/Profile" element={<Users />} />
+      <Route path="/PrintLocate" element={<Printlocate />} />
+      <Route path="/Payment" element={<Payment />} />
+      <Route path="/AdminLogin1" element={<AdminLogin1 />} />
+      <Route path="/AdminHome" element={<AdminHome />} />
+      <Route path="/AdminUsers" element={<Adminusers />} />
       <Route path="help" element={<Help />} />
     </Routes>
   );

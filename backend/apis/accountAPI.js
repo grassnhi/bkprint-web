@@ -1,44 +1,139 @@
+import { createSecretToken } from "../auth/secretToken.js";
+import { userVerification } from "../auth/middleware.js";
+import bcrypt from "bcrypt";
 import express from "express";
-import { Account } from "../models/account.js";
+import Account from "../models/account.js";
 
 const accountAPI = express.Router();
-
-accountAPI.post("/", async (request, response) => {
+/*module.exports.Signup = async (req, res, next) => {
   try {
-    if (
-      !request.body.username ||
-      !request.body.password ||
-      !request.body.id ||
-      !request.body.role
-    ) {
-      return response.status(400).send({
-        message: "Send all required fields: username, password, id, role",
-      });
+    const { username, password, id, role } = req.body;
+    const existingUser = await Account.findOne({ username });
+    if (existingUser) {
+      return res.json({ message: "User already exists" });
+    }
+    const user = await Account.create({ username, password, id, role });
+    const token = createSecretToken(user._id);
+    res.cookie("token", token, {
+      withCredentials: true,
+      httpOnly: false,
+    });
+    res
+      .status(201)
+      .json({ message: "User signed in successfully", success: true, user });
+    next();
+  } catch (error) {
+    console.error(error);
+  }
+};*/
+/*module.exports.Signup = async (req, res, next) => {
+  try {
+    const { username, password, id, role } = req.body;
+    const existingUser = await Account.findOne({ username });
+    if (existingUser) {
+      return res.json({ message: "User already exists" });
+    }
+    const user = await Account.create({ username, password, id, role });
+    const token = createSecretToken(user._id);
+    res.cookie("token", token, {
+      withCredentials: true,
+      httpOnly: false,
+    });
+    res
+      .status(201)
+      .json({ message: "User signed in successfully", success: true, user });
+    next();
+  } catch (error) {
+    console.error(error);
+  }
+};*/
+const Login = async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      console.log("Username" + username);
+      console.log("Pass" + password);
+      return res.json({ message: "All fields are required" });
     }
 
-    const newAccountEntry = {
-      username: request.body.username,
-      password: request.body.password,
-      id: request.body.id,
-      role: request.body.role,
-    };
+    const user = await Account.findOne({ username });
+    if (!user) {
+      return res.json({ message: "Incorrect username" });
+    }
 
-    const accountEntry = await Account.create(newAccountEntry);
+    //let auth = await bcrypt.compare(password, user.password);
+    //console.log(password);
+    //console.log(user.password);
+    // console.log(auth);
+    let auth = false;
+    if (password === user.password) {
+      auth = true;
+    }
+    if (!auth) {
+      return res.json({ message: "Incorrect password " });
+    }
 
-    return response.status(201).send(accountEntry);
+    const token = createSecretToken;
+    res.cookie("token", token, {
+      withCredentials: true,
+      httpOnly: false,
+    });
+    res
+      .status(201)
+      .json({ message: "User logged in successfully", success: true });
+    next();
   } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
+    console.error(error);
   }
-});
+};
+const Login1 = async (req, res, next) => {
+  try {
+    const { username, password, role } = req.body;
+    if (!username || !password) {
+      return res.json({ message: "All fields are required" });
+    }
+    const user = await Account.findOne({ username });
+    if (!user) {
+      return res.json({ message: "Incorrect username" });
+    }
+
+    //let auth = await bcrypt.compare(password, user.password);
+    //console.log(password);
+    //console.log(user.password);
+    // console.log(auth);
+    let auth = false;
+    if (password === user.password) {
+      auth = true;
+    }
+    if (!auth) {
+      return res.json({ message: "Incorrect password " });
+    }
+    if (user.role != "admin") {
+      return res.json({
+        message: "This account is not permitted to this segment ",
+      });
+    }
+    const token = createSecretToken;
+    res.cookie("token", token, {
+      withCredentials: true,
+      httpOnly: false,
+    });
+    res
+      .status(201)
+      .json({ message: "User logged in successfully", success: true });
+    next();
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 accountAPI.get("/", async (request, response) => {
   try {
-    const accountEntries = await Account.find({});
+    const accounts = await Account.find({});
 
     return response.status(200).json({
-      count: accountEntries.length,
-      data: accountEntries,
+      count: accounts.length,
+      data: accounts,
     });
   } catch (error) {
     console.log(error.message);
@@ -49,18 +144,17 @@ accountAPI.get("/", async (request, response) => {
 accountAPI.get("/:username", async (request, response) => {
   try {
     const { username } = request.params;
+    const account = await Account.findOne({ username });
 
-    const accountEntry = await Account.findOne({ username });
-
-    if (!accountEntry) {
-      return response.status(404).json({ message: "Account entry not found" });
-    }
-
-    return response.status(200).json(accountEntry);
+    return response.status(200).json(account);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
   }
 });
+
+accountAPI.post("/studentLogin", Login);
+accountAPI.post("/adminLogin", Login1);
+accountAPI.post("/", userVerification);
 
 export default accountAPI;
