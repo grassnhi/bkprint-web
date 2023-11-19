@@ -11,10 +11,10 @@ Current Version: v2.0.0
 For a detailed history of changes and updates, please refer to the [CHANGELOG.md](https://github.com/grassnhi/bkprint-web/blob/main/CHANGELOG.md) file.
 
 ## Documents
-BKPrint maintains several critical documents that are stored within the [**documents**]() folder:
-- [Requirement]()
-- [System modelling]()
-- [Architectural design]()
+BKPrint maintains several critical documents that are stored within the [**documents**](https://github.com/grassnhi/bkprint-web/tree/main/documents) folder:
+- [Requirement](https://github.com/grassnhi/bkprint-web/blob/main/documents/Requirement.pdf)
+- [System modelling](https://github.com/grassnhi/bkprint-web/blob/main/documents/Modelling.pdf)
+- [Architectural design](https://github.com/grassnhi/bkprint-web/blob/main/documents/Architecture.pdf)
 
 ## Features
 ### For students:
