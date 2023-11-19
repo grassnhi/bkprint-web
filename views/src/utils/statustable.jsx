@@ -57,7 +57,7 @@ const Statustable = () => {
                   <Button
                     className="de"
                     id="Avai1"
-                    onClick={() => navigate("/Choose/Login1/Upload")}
+                    onClick={() => navigate("/Upload")}
                   >
                     In tại máy in này
                   </Button>

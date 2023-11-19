@@ -20,21 +20,21 @@ const Header = () => {
           <div className="right-section">
             <div
               className="trang-chu-main"
-              onClick={() => navigate("/Choose/Login1/Home")}
+              onClick={() => navigate("/Home")}
             >
               Trang chủ
             </div>
 
             <div
               className="trang-chu-main"
-              onClick={() => navigate("/Choose/Login1/Upload")}
+              onClick={() => navigate("/Upload")}
             >
               In tài liệu
             </div>
 
             <div
               className="trang-chu-main"
-              onClick={() => navigate("/Choose/Login1/Profile")}
+              onClick={() => navigate("/Profile")}
             >
               Tài khoản
             </div>

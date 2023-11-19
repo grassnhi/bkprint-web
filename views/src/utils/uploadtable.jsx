@@ -51,10 +51,12 @@ const Uploadtable = (props) => {
             {
               validator(_, fileList) {
                 return new Promise((resolve, reject) => {
-                  if (fileList && fileList[0].size > 2000000) {
+                  if (fileList && fileList[0].size > 4000000) {
                     reject("File size exceeded");
+                    setStatus(false);
                   } else {
                     resolve("Success");
+                    setStatus(true);
                   }
                 });
               },
@@ -66,12 +68,12 @@ const Uploadtable = (props) => {
             maxCount={1}
             beforeUpload={(file) => {
               return new Promise((resolve, reject) => {
-                if (file.size > 40000000) {
+                if (file.size > Infinity) {
                   reject("File size exceeded");
                   setStatus(false);
                 } else {
-                  setStatus(true);
                   resolve("Success");
+                  setStatus(true);
                 }
               });
             }}

@@ -6,9 +6,15 @@ Welcome to the BKPrint - a Student Smart Printing Service website for students a
 
 ## Version
 
-Current Version: v1.4.0
+Current Version: v2.0.0
 
 For a detailed history of changes and updates, please refer to the [CHANGELOG.md](https://github.com/grassnhi/bkprint-web/blob/main/CHANGELOG.md) file.
+
+## Documents
+BKPrint maintains several critical documents that are stored within the [**documents**]() folder:
+- [Requirement]()
+- [System modelling]()
+- [Architectural design]()
 
 ## Features
 ### For students:

@@ -69,28 +69,22 @@ printerAPI.get("/:printerID", async (request, response) => {
 printerAPI.put("/:printerID", async (request, response) => {
   try {
     const { printerID } = request.params;
-    const updatedStatus = request.body.status;
-
-    if (updatedStatus === undefined) {
-      return response.status(400).json({
-        message: "Send the required field: status",
-      });
+    const { updatedStatus, updatedPrintedPages } = request.body;
+    const printer = await Printer.findOne({ printerID });
+    if (!printer) {
+      return response.status(404).json({ message: "Student not found" });
     }
-
-    const updatedPrinter = await Printer.findOneAndUpdate(
-      { printerID },
-      { status: updatedStatus },
-      { new: true }
-    );
-
-    if (!updatedPrinter) {
-      return response.status(404).json({ message: "Printer not found" });
+    if (printingHistory !== undefined) {
+      printer.status = updatedStatus;
     }
-
+    if (transactionHistory !== undefined) {
+      printer.printedPages = updatedPrintedPages;
+    }
+    const updatedPrinter = await printer.save();
     return response.status(200).json(updatedPrinter);
   } catch (error) {
-    console.log(error.message);
-    response.status(500).json({ message: error.message });
+    console.error(error.message);
+    response.status(500).send({ message: error.message });
   }
 });
 

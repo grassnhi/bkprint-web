@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 
 const transactionHistorySchema = mongoose.Schema({
   time: { type: String },
-  price: { type: Number },
+  price: { type: String },
   purchasedPages: { type: Number },
+  purchasedPaperType: { type: String },
 });
 
 const printingHistorySchema = mongoose.Schema({
