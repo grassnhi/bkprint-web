@@ -68,6 +68,7 @@ const Login1 = () => {
       console.log(error);
     }
     const id = await getAccountID(username);
+    console.log(id);
     setStdID(String(id));
     /* setInputValue({
       ...inputValue,

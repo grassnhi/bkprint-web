@@ -47,7 +47,7 @@ const AdminLogin1 = () => {
       <div className="help">
         <NavLink to="/help">Trợ giúp đăng nhập?</NavLink>
       </div>
-      <Button className="logbutt" onClick={() => navigate("AdminHome")}>
+      <Button className="logbutt" onClick={() => navigate("/AdminHome")}>
         Đăng nhập
       </Button>
       <Outlet />

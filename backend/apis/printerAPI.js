@@ -56,7 +56,6 @@ printerAPI.get("/", async (request, response) => {
 printerAPI.get("/:printerID", async (request, response) => {
   try {
     const { printerID } = request.params;
-    console.log(printerID);
     const printer = await Printer.findOne({ printerID });
 
     return response.status(200).json(printer);
@@ -69,15 +68,17 @@ printerAPI.get("/:printerID", async (request, response) => {
 printerAPI.put("/:printerID", async (request, response) => {
   try {
     const { printerID } = request.params;
-    const { updatedStatus, updatedPrintedPages } = request.body;
+    const updatedStatus = request.body.status;
+    const updatedPrintedPages = request.body.printedPages;
     const printer = await Printer.findOne({ printerID });
+    console.log(request.body);
     if (!printer) {
       return response.status(404).json({ message: "Student not found" });
     }
-    if (printingHistory !== undefined) {
+    if (updatedStatus !== undefined) {
       printer.status = updatedStatus;
     }
-    if (transactionHistory !== undefined) {
+    if (updatedPrintedPages !== undefined) {
       printer.printedPages = updatedPrintedPages;
     }
     const updatedPrinter = await printer.save();

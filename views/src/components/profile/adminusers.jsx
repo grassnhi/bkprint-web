@@ -48,6 +48,7 @@ const Adminusers = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleChangePrinterStatus = async (key, newStatus) => {
+    console.log(key, newStatus)
     await updatePrinter(key, newStatus);
     const updatedPrinterAdmin = [...printerAdmin];
     updatedPrinterAdmin[key].status = newStatus;
