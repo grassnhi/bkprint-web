@@ -99,15 +99,19 @@
 }
 .button-set22ab {
   position: absolute;
-  top: 550px;
-  left: 1308px;
+  left: 285px;
   gap: 24px;
 }
 .button-set20ab {
   position: absolute;
+
+  gap: 24px;
+}
+.button-scale {
+  position: absolute;
   top: 550px;
   left: 1038px;
-  gap: 24px;
+  width: 700px;
 }
 .master-primary-button1a {
   border-radius: 47.27px;
@@ -151,4 +155,41 @@
 .master-secondary-button1a:active {
   background-color: #0a617c;
   transition: background-color 0s;
+}
+@media screen and (max-width: 1580px) {
+  .page1 {
+    left: +150px;
+  }
+  .somethingwrong {
+    left: +800px;
+  }
+  .wrongtext1 {
+    left: +800px;
+  }
+
+  .button-scale {
+    left: +800px;
+  }
+}
+@media screen and (max-width: 1330px) {
+  .page1 {
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+  }
+  .somethingwrong {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .wrongtext1 {
+    left: 50%;
+    top: 57%;
+    transform: translate(-50%, -50%);
+  }
+  .button-scale {
+    top: 58%;
+    left: 53%;
+    transform: translate(-41%, -59%);
+  }
 }

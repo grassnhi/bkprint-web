@@ -20,21 +20,23 @@ const Completeprint = () => {
       <p className="wrongtext1">
         Hãy đến ngay máy in nhận tài liệu để tránh thất lạc.
       </p>
-      <div className="button-set20ab">
-        <Button
-          className="master-primary-button1a"
-          onClick={() => navigate("/Upload")}
-        >
-          Tải lên và in tiếp
-        </Button>
-      </div>
-      <div className="button-set22ab">
-        <Button
-          className="master-secondary-button1a"
-          onClick={() => navigate("/Home")}
-        >
-          Về trang chủ
-        </Button>
+      <div className="button-scale">
+        <div className="button-set20ab">
+          <Button
+            className="master-primary-button1a"
+            onClick={() => navigate("/Upload")}
+          >
+            Tải lên và in tiếp
+          </Button>
+        </div>
+        <div className="button-set22ab">
+          <Button
+            className="master-secondary-button1a"
+            onClick={() => navigate("/Home")}
+          >
+            Về trang chủ
+          </Button>
+        </div>
       </div>
     </div>
   );
