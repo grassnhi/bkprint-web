@@ -14,7 +14,6 @@
 
 .right-footer {
   flex: 1;
-  padding-left: 150px;
 }
 
 .container {
@@ -27,8 +26,8 @@
 }
 
 .left-footer {
-  flex: 1;
-  padding-left: 70px;
+  flex: 1.4;
+  padding-left: 70px; 
 }
 
 .span {

@@ -11,7 +11,7 @@ import Footer from "../../utils/footer";
 
 const AdminHome = () => {
   return (
-    <div className="trang-da-dang-nhap-student">
+    <div className="trang-da-dang-nhap-admin">
       <Header></Header>
       <div className="welcome-container">
         <img className="chm-1-icon-student" alt="" src={logo1} />

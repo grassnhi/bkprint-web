@@ -6,6 +6,7 @@
   z-index: 1;
   right: 0;
   width: 100vw;
+  height: 10vh;
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -24,6 +25,7 @@
 .right-section {
   display: flex;
   flex: 3;
+  margin-right: 30px;
   align-items: center;
 }
 
@@ -34,20 +36,19 @@
 }
 
 .oisp-official-logo-01-1-icon-header {
-  width: 100px;
+  width: 60%;
   object-fit: cover;
 }
 
 .bkprint-header {
   flex: 4;
-  font-size: 2.3vw;
+  font-size: 2.1vw;
 }
 
 /* Right section */
 .trang-chu-main {
   display: flex;
   flex: 1;
-  position: relative;
   line-height: 18px;
   padding: 15px 18px;
   align-items: center;
@@ -63,7 +64,7 @@
 }
 
 .img-header {
-  flex: 1;
+  flex: 0.5;
 }
 
 .n-1-icon-main {

@@ -13,7 +13,7 @@ import Footer from "../../utils/footer";
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <div className="trang-da-dang-nhap-student">
+    <div className="trang-da-dang-nhap-student-home">
       <Header></Header>
       <div className="welcome-container">
         <img className="chm-1-icon-student" alt="" src={logo1} />
@@ -28,7 +28,7 @@ const Home = () => {
 
         <div className="wrapper1-student">
           <div className="column-1">
-            <div className="printer-img-container">
+            <div className="printer-img-container-student">
               <img className="printer-img-student" alt="" src={logo} />
             </div>
           </div>

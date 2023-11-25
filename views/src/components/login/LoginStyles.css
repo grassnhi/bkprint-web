@@ -13,30 +13,35 @@
   border-radius: 15px;
 }
 
-.bkprint {
-  position: absolute;
-  top: 47px;
-  left: 139px;
+.header-choose-pre {
+  width: 100%;
+  height: 122px;
+  box-shadow: 5px 1.5px #9795b5;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 100;
+}
+.bklogo-choose {
+  padding-left: 20px;
+  width: 83px;
+  height: 84px;
+  z-index: 100;
+}
+.name-choose {
+  margin-left: 20px;
   font-size: 30px;
   line-height: 30px;
   text-align: right;
   display: inline-block;
-  width: fit-content;
   height: 29px;
-}
-.oisp-official-logo-01-1-icon {
-  position: absolute;
-  top: 19px;
-  left: 28px;
-  width: 83px;
-  height: 84px;
-  object-fit: cover;
+  z-index: 100;
 }
 
-.welcome-container {
+.welcome-container-pre {
   position: relative;
   text-align: center;
-  margin-top: 12px;
   height: 79vh;
 }
 .chm-1-icon-student {
@@ -69,15 +74,77 @@
   font-size: 3.5vw;
 }
 
+.intro-container-pre {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: var(--neutral-colors-color-400);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 550px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
+.wrapper1-student {
+  height: 100%;
+  flex: 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 36px;
+}
 
-.button-set {
-  position: absolute;
-  top: 214.32px;
-  left: 0;
+.white-space-left-pre,
+.white-space-right-pre {
+  height: 100%;
+  flex: 1;
+}
+
+.column-1-pre {
+  flex: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.printer-img-container-pre {
+  z-index: 1;  
+}
+.printer-img-pre {
+  border-radius: 20px;
+  width: 100%;
+}
+.column-2-pre {
+  padding-top: 60px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1.5;
+  justify-content: start;
+  align-items: center;
+}
+.heading-student-pre {
+  flex: 0.2;
+  line-height: 46px;
+  width: 90%;
+  justify-content: end;
+  margin-bottom: 15px;
+}
+.paragraph-student-pre {
+  margin-bottom: 20px;
+  flex: 0.3;
+  line-height: 46px;
+  width: 90%;
+  font-size: var(--font-size-lg);
+  line-height: 30px;
+  color: var(--neutral-colors-text-gray);
+}
+
+.button-set-pre {
   gap: 24px;
 }
-.master-primary-button {
+.master-primary-button-pre {
   border-radius: 47.27px;
   border: 1px solid var(--neutral-colors-headings-black);
   background-color: linear-gradient(90deg, #3f51b5, transparent) #2196f3;
@@ -91,15 +158,14 @@
   transition: background-color 0.5s;
 }
 
-.master-primary-button:hover {
-  background-color: #1ea9e9;
+.master-primary-button-pre:hover {
+  background-color: #5D5A88;
   color: #fff;
 }
-.master-primary-button:active {
+.master-primary-button-pre:active {
   background-color: #12a86e42;
   transition: background-color 0s;
 }
-
 
 .trang-chua-dang-nhap {
   position: relative;
@@ -111,4 +177,17 @@
   font-size: var(--font-size-lg);
   color: var(--neutral-colors-headings-black);
   font-family: var(--font-andika);
+}
+
+@media only screen and (max-width: 600px) {
+  .intro-container-pre {
+    display: flex;
+    flex-direction: column;
+  }
+  .white-space-left-pre {
+    display: none;
+  }
+  .white-space-right-pre {
+    display: none;
+  }
 }

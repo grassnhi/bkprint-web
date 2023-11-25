@@ -17,7 +17,7 @@ const Password = () => {
         maxLength={16}
         minLength={4}
       />
-      <img onClick={togglePassword} src={logo} />
+      <img class="togglePassword" onClick={togglePassword} src={logo} />
     </div>
   );
 };

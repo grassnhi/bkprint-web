@@ -1,13 +1,13 @@
-.trang-da-dang-nhap-student {
+.trang-da-dang-nhap-student-home {
   background-color: var(--neutral-colors-white);
   text-align: left;
   font-size: var(--font-size-lg);
   color: var(--neutral-colors-headings-black);
   font-family: var(--font-andika);
   height: 100%;
+  width: 100vw;
 }
 .welcome-container {
-  position: relative;
   text-align: center;
   margin-top: 12px;
   height: 79vh;
@@ -45,7 +45,7 @@
   background-color: var(--neutral-colors-color-400);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   width: 100%;
-  height: 55vh;
+  height: 550px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -70,7 +70,7 @@
 .column-1 {
   flex: 0.5;
 }
-.printer-img-container {
+.printer-img-container-student {
   flex: 1;
   z-index: 1;  
 }
@@ -84,7 +84,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  justify-content: start;
+  justify-content: ce;
   align-items: center;
 }
 .heading-student {
@@ -115,10 +115,12 @@
   margin-right: 10px;
 }
 .master-primary-button1 {
+  height: 8vh;
   border-radius: 47.27px;
   border: 1px solid var(--neutral-colors-headings-black);
   background-color: linear-gradient(90deg, #3f51b5, transparent) #2196f3;
-  padding: var(--padding-9xl) var(--padding-37xl);
+  padding-left: 50px;
+  padding-right: 50px;
   gap: var(--gap-5xs);
   font-family: var(--font-andika);
   line-height: 20px;
@@ -126,16 +128,19 @@
   color: var(--neutral-colors-headings-black);
   text-decoration: none;
   transition: background-color 0.5s;
+  text-align: center;
 }
 .master-secondary-button1 {
+  height: 8vh;
+  text-align: center;
   border-radius: 47.27px;
   border: 1px solid var(--neutral-colors-headings-black);
   font-family: var(--font-andika);
   background-color: linear-gradient(90deg, #b13fb5, transparent) #21f372;
   line-height: 20px;
   font-size: var(--text-single-300-regular-size);
-  padding: var(--padding-9xl) var(--padding-37xl);
-  gap: var(--gap-5xs);
+  padding-left: 50px;
+  padding-right: 50px;  gap: var(--gap-5xs);
   color: var(--neutral-colors-headings-black);
   text-decoration: none;
   transition: background-color 0.5s;
@@ -157,3 +162,19 @@
   transition: background-color 0s;
 }
 
+@media only screen and (max-width: 1375px) {
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .intro-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .white-space-left-student {
+    display: none;
+  }
+  .white-space-right-student {
+    display: none;
+  }
+}
