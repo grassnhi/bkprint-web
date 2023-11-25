@@ -181,3 +181,15 @@
   color: var(--neutral-colors-headings-black);
   font-family: var(--font-andika);
 }
+
+@media screen and (max-width: 1800px) {
+  .text{
+    transform: translate(-6%, -10%);
+  }
+  .loginframe, .username, .pass, .logbutt{
+    transform: translate(-16%, -10%);
+  }
+  .help{
+    transform: translate(-40%, -10%);
+  }
+}

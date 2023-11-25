@@ -83,24 +83,25 @@ const Login1 = () => {
         <img className="bklogo" src={logo2} alt="bklogo" />
         <div className="name">BK Fast Automated Printing Service </div>
       </div>
-
-      <div className="contain1v">
-        <span className="textv">Dịch vụ xác thực tập trung</span>
-        <span className="text1v">BKPrint</span>
+      <div className="text">
+        <div className="contain1v">
+          <span className="textv">Dịch vụ xác thực tập trung</span>
+          <span className="text1v">BKPrint</span>
+        </div>
+        <div className="contain2">
+          <p className="notice1">
+            Bạn cần dùng tài khoản HCMUT để đăng nhập. Tài khoản HCMUT cho phép
+            truy cập đến nhiều tài nguyên bao gồm hệ thống thông tin, thư điện tử,
+            ...
+          </p>
+          <p className="notice2">
+            Vì lý do an ninh, bạn hãy Thoát khỏi trình duyệt Web khi bạn kết thúc
+            việc truy cập các dịch vụ đòi hỏi xác thực!
+          </p>
+        </div>
+      
+        <img className="pic" src={logo3} alt="picc" />
       </div>
-      <div className="contain2">
-        <p className="notice1">
-          Bạn cần dùng tài khoản HCMUT để đăng nhập. Tài khoản HCMUT cho phép
-          truy cập đến nhiều tài nguyên bao gồm hệ thống thông tin, thư điện tử,
-          ...
-        </p>
-        <p className="notice2">
-          Vì lý do an ninh, bạn hãy Thoát khỏi trình duyệt Web khi bạn kết thúc
-          việc truy cập các dịch vụ đòi hỏi xác thực!
-        </p>
-      </div>
-      <img className="pic" src={logo3} alt="picc" />
-
       <div className="loginframe">
         <span className="title">Nhập thông tin tài khoản</span>
         <hr />

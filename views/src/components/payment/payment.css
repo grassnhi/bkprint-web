@@ -146,3 +146,94 @@
 .paymentDone:active {
   background-color: #10009c;
 }
+
+@media screen and (max-width: 1900px) {
+  .paymentIntro{
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentNotice{
+    top: 16%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentTable {
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+}
+
+@media screen and (max-width: 1750px) {
+  .paymentIntro{
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentNotice{
+    top: 16%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentTable {
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(8%);
+  } 
+}
+
+@media screen and (max-width: 1700px) {
+  .paymentIntro{
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentNotice{
+    top: 16%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentTable {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(9%);
+  } 
+}
+
+@media screen and (max-width: 1550px) {
+  .paymentIntro{
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentNotice{
+    top: 16%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentTable {
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(10%);
+  } 
+}
+
+@media screen and (max-width: 1450px) {
+  .paymentIntro{
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentNotice{
+    top: 16%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .paymentTable {
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(10%);
+  } 
+}
