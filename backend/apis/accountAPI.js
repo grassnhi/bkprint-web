@@ -1,8 +1,15 @@
-import { createSecretToken } from "../auth/secretToken.js";
 import { userVerification } from "../auth/middleware.js";
 import bcrypt from "bcrypt";
 import express from "express";
 import Account from "../models/account.js";
+import { TOKEN_KEY } from "../config.js";
+import jwt from "jsonwebtoken";
+
+const createSecretToken = (_id) => {
+  return jwt.sign({ _id }, TOKEN_KEY, {
+    expiresIn: 3 * 24 * 60 * 60,
+  });
+};
 
 const accountAPI = express.Router();
 /*module.exports.Signup = async (req, res, next) => {
@@ -51,8 +58,6 @@ const Login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     if (!username || !password) {
-      console.log("Username" + username);
-      console.log("Pass" + password);
       return res.json({ message: "All fields are required" });
     }
 
@@ -73,7 +78,7 @@ const Login = async (req, res, next) => {
       return res.json({ message: "Incorrect password " });
     }
 
-    const token = createSecretToken;
+    const token = createSecretToken(user._id);
     res.cookie("token", token, {
       withCredentials: true,
       httpOnly: false,
@@ -113,7 +118,7 @@ const Login1 = async (req, res, next) => {
         message: "This account is not permitted to this segment ",
       });
     }
-    const token = createSecretToken;
+    const token = createSecretToken(user._id);
     res.cookie("token", token, {
       withCredentials: true,
       httpOnly: false,

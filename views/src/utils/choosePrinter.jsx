@@ -70,51 +70,39 @@ const ChoosePrinter = (props) => {
     <div className="chooseP">
       <h2 className="chooseTitle">Chọn máy in</h2>
       <p className="instruc1">(Chỉ chọn MỘT máy in)</p>
-      <table className="choosePrinters">
-        <thead>
+      <div className="table-container">
+        <table className="choosePrinters">
           <tr>
             <th>Kiểu máy</th>
             <th>Phòng</th>
             <th>Chọn</th>
           </tr>
-        </thead>
-        <tbody>
-          {loading ? (
-            <tr>
-              <td colSpan="3">Đang tải thông tin máy in, vui lòng đợi</td>
+          {printerList.map((val, key) => (
+            <tr key={key}>
+              <td>{val.name}</td>
+              <td>{val.location}</td>
+              <td>
+                <div class="custom-radio">
+                  <input
+                    type="radio"
+                    id={`radio${key}`}
+                    name="options"
+                    value={`${val.mod}###${val.room}`}
+                    onChange={(e) => handleRadioChange(e)}
+                  />
+                  <label htmlFor={`radio${key}`}></label>
+                </div>
+              </td>
             </tr>
-          ) : printerList.length > 0 ? (
-            printerList.map((val, key) => (
-              <tr key={key}>
-                <td>{val.name}</td>
-                <td>{val.location}</td>
-                <td>
-                  <div className="custom-radio">
-                    <input
-                      type="radio"
-                      id={`radio${key}`}
-                      name="options"
-                      value={`${val.name}###${val.location}`}
-                      onChange={(e) => handleRadioChange(e)}
-                    />
-                    <label htmlFor={`radio${key}`}></label>
-                  </div>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="3">No printer available. Please come back later</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-      <span className="checkLocate" onClick={() => navigate("/PrintLocate")}>
-        Xem vị trí máy in
-      </span>
-      <Button id="finish" onClick={props.onClick} block>
-        {props.text}
-      </Button>
+          ))}
+        </table>
+      </div>
+      <div className="checkLocate">Xem vị trí máy in</div>
+      <div className="btn-container">
+        <Button id="finish" onClick={props.onClick} block>
+          {props.text}
+        </Button>
+      </div>
     </div>
   );
 };

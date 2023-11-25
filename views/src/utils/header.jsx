@@ -7,46 +7,38 @@ const Header = () => {
   const navigate = useNavigate();
   return (
     <div>
-        <div className="sections-main">
-          <div className="left-section">
-            <div className="img-headers">
-              <img className="oisp-official-logo-01-1-icon-header" alt="" src={logo2} />
-            </div>
-            <div className="bkprint-header">BK Fast Automated Printing Service</div>
+      <div className="sections-main">
+        <div className="left-section">
+          <div className="img-headers">
+            <img
+              className="oisp-official-logo-01-1-icon-header"
+              alt=""
+              src={logo2}
+            />
           </div>
+          <div className="bkprint-header">
+            BK Fast Automated Printing Service
+          </div>
+        </div>
 
-          <div className="middle-section"></div>
-
-          <div className="right-section">
-            <div
-              className="trang-chu-main"
-              onClick={() => navigate("/Home")}
-            >
-              Trang chủ
-            </div>
-
-            <div
-              className="trang-chu-main"
-              onClick={() => navigate("/Upload")}
-            >
-              In tài liệu
-            </div>
-
-            <div
-              className="trang-chu-main"
-              onClick={() => navigate("/Profile")}
-            >
-              Tài khoản
-            </div>
-
-            <div className="trang-chu-main">Liên hệ</div>
-
-            <div className="img-header">
-              <img className="n-1-icon-main" alt="" src={logo4} />
-            </div>
+        <div className="middle-section"></div>
+        <div className="right-section">
+          <div className="trang-chu-main" onClick={() => navigate("/Home")}>
+            Trang chủ
+          </div>
+          <div className="trang-chu-main" onClick={() => navigate("/Upload")}>
+            In tài liệu
+          </div>
+          <div className="trang-chu-main" onClick={() => navigate("/Profile")}>
+            Tài khoản
+          </div>
+          <div className="trang-chu-main">Liên hệ</div>
+          <div className="img-header">
+            <img className="n-1-icon-main" alt="" src={logo4} />
           </div>
         </div>
       </div>
+    </div>
   );
 };
 export default Header;

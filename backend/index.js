@@ -8,7 +8,29 @@ import printingHistoryAPI from "./apis/printingHistoryAPI.js";
 import systemPolicyAPI from "./apis/systemPolicyAPI.js";
 import accountAPI from "./apis/accountAPI.js";
 import cookieParser from "cookie-parser";
+
 const app = express();
+
+console.log("First Step");
+app.get("/", (request, response) => {
+  console.log(request);
+  return response.status(234).send("ABCDEF");
+});
+console.log("Second Step");
+
+console.log("Third Step");
+
+mongoose
+  .connect(mongoDBURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB is  connected successfully"))
+  .catch((err) => console.error(err));
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
 
 app.use(cookieParser());
 app.use(express.json());
@@ -20,29 +42,8 @@ app.use(
   })
 );
 
-console.log("First Step");
-app.get("/", (request, response) => {
-  console.log(request);
-  return response.status(234).send("ABCDEF");
-});
-console.log("Second Step");
-
 app.use("/printers", printerAPI);
 app.use("/students", studentAPI);
 app.use("/printingHistory", printingHistoryAPI);
 app.use("/systemPolicy", systemPolicyAPI);
 app.use("/accounts", accountAPI);
-
-console.log("Third Step");
-
-mongoose
-  .connect(mongoDBURL)
-  .then(() => {
-    console.log("App connected to the database");
-    app.listen(PORT, () => {
-      console.log(`App is listening on port: ${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error(error);
-  });

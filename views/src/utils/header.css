@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .sections-main {
   position: relative;
   display: flex;
@@ -5,7 +9,7 @@
   top: 10px;
   z-index: 1;
   right: 0;
-  width: 100%;
+  width: 100vw;
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -40,7 +44,7 @@
 
 .bkprint-header {
   flex: 4;
-  font-size: 35px;
+  font-size: 2.3vw;
 }
 
 /* Right section */
@@ -74,5 +78,15 @@
 @media (max-width: 1600px) {
   .trang-chu-main {
     font-size: 18px;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .right-section {
+    flex-direction: column;
+  }
+  .btn-container {
+    flex-direction: column;
   }
 }

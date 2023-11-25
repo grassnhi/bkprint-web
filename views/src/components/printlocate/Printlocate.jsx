@@ -7,7 +7,6 @@ import Footer from "../../utils/footer";
 const Printlocate = () => {
   return (
     <div className="mastercontainer">
-      <Footer></Footer>
       <Header></Header>
       <div className="map1">
         Bản đồ trường Đại học Bách Khoa TPHCM (cơ sở 1)
@@ -18,6 +17,7 @@ const Printlocate = () => {
       <div className="sttable">
         <Statustable />
       </div>
+      <Footer></Footer>
     </div>
   );
 };

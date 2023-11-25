@@ -31,27 +31,30 @@ const Upload = () => {
     }
   };
   return (
-    <div className="uploadContainer">
-      <Footer></Footer>
+    <div className="uploadPage">
       <Header></Header>
-      <div className={comp ? "upTablePosition" : "upTablePositionFalse"}>
-        <Uploadtable text="TIẾP TỤC " onClick={addComp} />
+      <div className="uploadContainer">
+        <div className={comp ? "upTablePosition" : "upTablePositionFalse"}>
+          <Uploadtable text="TIẾP TỤC " onClick={addComp} />
+        </div>
+        {comp ? (
+          <div className="chooseTablePosition">
+            <ChoosePrinter text="TIẾP TỤC" onClick={addComp1} />
+          </div>
+        ) : (
+          <div></div>
+        )}
+        {comp1 ? (
+          <div className="propertiesTablePosition">
+            <Printproperties />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
-      {comp ? (
-        <div className="chooseTablePosition">
-          <ChoosePrinter text="TIẾP TỤC" onClick={addComp1} />
-        </div>
-      ) : (
-        <div></div>
-      )}
-      {comp1 ? (
-        <div className="propertiesTablePosition">
-          <Printproperties />
-        </div>
-      ) : (
-        <></>
-      )}
+      <Footer></Footer>
     </div>
+    
   );
 };
 

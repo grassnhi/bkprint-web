@@ -71,10 +71,10 @@ const Login1 = () => {
     console.log(id);
     setStdID(String(id));
     /* setInputValue({
-      ...inputValue,
-      username: "",
-      password: "",
-    });*/
+        ...inputValue,
+        username: "",
+        password: "",
+      });*/
     //setUsername("");
     //setPassword("");
   };
