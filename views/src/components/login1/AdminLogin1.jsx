@@ -11,34 +11,47 @@ const AdminLogin1 = () => {
   const navigate = useNavigate();
   return (
     <div className="biggestcontainer">
-      <div className="header">
-        <img className="bklogo" src={logo2} alt="bklogo" />
-        <div className="name">BK Fast Automated Printing Service </div>
+      <div className="header-choose-login">
+        <img className="bklogo-choose-login" src={logo2} alt="bklogo" />
+        <div className="name-choose-login">BK Fast Automated Printing Service </div>
       </div>
 
-      <div className="contain1s">
-        <span className="texts">Dịch vụ xác thực tập trung</span>
-        <span className="text1s">Administrator-BKPrint</span>
+      <div className="login-container-admin">
+        <div className="left-sec-login-admin">
+          <div className="contain1s">
+            <span className="texts">Dịch vụ xác thực tập trung</span>
+            <span className="text1s">Administrator - BKPrint</span>
+          </div>
+
+          <div className="column-admin">
+            <div className="contain2s">
+              <p className="notice1">Bạn cần dùng tài khoản admin để đăng nhập.</p>
+            </div>
+            <img className="pic" src={logo3} alt="picc" />
+          </div>
+        </div>
+
+        <div className="right-sec-login-admin">
+          <div className="loginframe">
+            <span className="title">Nhập thông tin tài khoản</span>
+            <hr />
+          </div>
+          <input className="username" type="text" placeholder="Tên đăng nhập" />
+          <div className="pass">
+            <Password />
+          </div>
+          <div className="help">
+            <NavLink to="/help">Trợ giúp đăng nhập?</NavLink>
+          </div>
+          <Button className="logbutt" onClick={() => navigate("/AdminHome")}>
+            Đăng nhập
+          </Button>
+          <Outlet />
+        </div>
       </div>
-      <div className="contain2s">
-        <p className="notice1">Bạn cần dùng tài khoản admin để đăng nhập.</p>
-      </div>
-      <img className="pic" src={logo3} alt="picc" />
-      <div className="loginframe">
-        <span className="title">Nhập thông tin tài khoản</span>
-        <hr />
-      </div>
-      <input className="username" type="text" placeholder="Tên đăng nhập" />
-      <div className="pass">
-        <Password />
-      </div>
-      <div className="help">
-        <NavLink to="/help">Trợ giúp đăng nhập?</NavLink>
-      </div>
-      <Button className="logbutt" onClick={() => navigate("/AdminHome")}>
-        Đăng nhập
-      </Button>
-      <Outlet />
+
+      
+      
     </div>
   );
 };

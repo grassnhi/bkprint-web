@@ -8,9 +8,14 @@ import {
   getPrinterBuilding,
   getPrinterRoom,
   getPrinterStatus,
+  getPrinterPrintedPage,
 } from "../../../controllers/printer/getPrinter";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { updateAllocatedDate } from "../../../controllers/systemPolicy/updateSystemPolicy";
+import {
+  updatePrinterPrintedPages,
+} from "../../../controllers/printer/updatePrinter";
 
 const ChoosePrinter = (props) => {
   const {
@@ -60,7 +65,7 @@ const ChoosePrinter = (props) => {
     fetchPrinterData();
   }, []);
 
-  const handleRadioChange = (event) => {
+  const handleRadioChange = async (event) => {
     const [selectedPrinter, selectedLocation] = event.target.value.split("###");
     setChosenPrinter(selectedPrinter);
     setPrintingLocation(selectedLocation);
@@ -87,7 +92,7 @@ const ChoosePrinter = (props) => {
                     type="radio"
                     id={`radio${key}`}
                     name="options"
-                    value={`${val.mod}###${val.room}`}
+                    value={`${val.name}###${val.location}`}
                     onChange={(e) => handleRadioChange(e)}
                   />
                   <label htmlFor={`radio${key}`}></label>
@@ -97,7 +102,9 @@ const ChoosePrinter = (props) => {
           ))}
         </table>
       </div>
-      <div className="checkLocate">Xem vị trí máy in</div>
+      <div className="checkLocate" onClick={() => navigate("/PrintLocate")}>
+        Xem vị trí máy in
+      </div>
       <div className="btn-container">
         <Button id="finish" onClick={props.onClick} block>
           {props.text}

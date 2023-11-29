@@ -5,7 +5,31 @@ import logo3 from "../../assets/container.png";
 import page from "../../assets/43917 1.png";
 import Button from "react-bootstrap/Button";
 
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { ToastContainer, toast } from "react-toastify";
 const Successbuy = () => {
+  const [cookies, removeCookie] = useCookies([]);
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+  const verifyAuthentication = async () => {
+    if (!cookies.token) {
+      navigate("/Login1");
+    }
+    const { data } = await axios.post(
+      "http://localhost:3001/accounts",
+      {},
+      { withCredentials: true }
+    );
+    const { status, user } = data;
+    setUsername(user);
+    return status ? <></> : (removeCookie("token"), navigate("/Login1"));
+  };
+  useEffect(() => {
+    verifyAuthentication();
+  }, [cookies, navigate, removeCookie]);
+
   return (
     <div className="BB">
       <div className="wrapper">
@@ -40,10 +64,20 @@ const Successbuy = () => {
         QUÁ TRÌNH IN)
       </p>
       <div className="button-set20ac">
-        <Button className="master-primary-button1a">Tiếp tục in</Button>
+        <Button
+          className="master-primary-button1a"
+          onClick={() => navigate("/Upload")}
+        >
+          Tiếp tục in
+        </Button>
       </div>
       <div className="button-set22ac">
-        <Button className="master-secondary-button1a">Về trang chủ</Button>
+        <Button
+          className="master-secondary-button1a"
+          onClick={() => navigate("/Home")}
+        >
+          Về trang chủ
+        </Button>
       </div>
     </div>
   );

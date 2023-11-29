@@ -7,6 +7,32 @@
   overflow: hidden;
   color: #5d5a88;
 }
+#addPrinterBtn {
+  position: absolute;
+  top: 30px;
+  left: 300px;
+  width: 152px;
+  height: 61px;
+  margin-left: 10px;
+  align-items: center;
+  gap: 8px;
+
+  background: var(--neutral-colors-headings-black, #5d5a88);
+  border: none;
+  color: #fff;
+  font-family: Andika;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#addPrinterBtn:hover {
+  background-color: #443f86;
+}
+#addPrinterBtn:active {
+  background-color: #160e86;
+}
+
 .profileImg {
   position: absolute;
   top: 191px;
@@ -130,6 +156,11 @@
   left: 50px;
   background-color: #f7f6fe;
   border: 1px solid black;
+}
+.printHis1-container {
+  display: flex;
+  max-height: 600px;
+  overflow: auto;
 }
 .hea,
 .dat,

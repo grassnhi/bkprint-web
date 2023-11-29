@@ -9,7 +9,32 @@ import { UserContext } from "../../../../controllers/UserProvider";
 import Header from "../../utils/header";
 import Footer from "../../utils/footer";
 import { useSnackbar } from "notistack";
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 const Upload = () => {
+  const [cookies, removeCookie] = useCookies([]);
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+  const verifyAuthentication = async () => {
+    if (!cookies.token) {
+      navigate("/Login1");
+    }
+    const { data } = await axios.post(
+      "http://localhost:3001/accounts",
+      {},
+      { withCredentials: true }
+    );
+    const { status, user } = data;
+    setUsername(user);
+    return status ? <></> : (removeCookie("token"), navigate("/Login1"));
+  };
+  useEffect(() => {
+    verifyAuthentication();
+  }, [cookies, navigate, removeCookie]);
+
   const { enqueueSnackbar } = useSnackbar();
   const [comp, setComp] = useState(false);
   const [comp1, setComp1] = useState(false);
@@ -54,7 +79,6 @@ const Upload = () => {
       </div>
       <Footer></Footer>
     </div>
-    
   );
 };
 

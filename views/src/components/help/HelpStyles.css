@@ -110,3 +110,39 @@
   color: var(--neutral-colors-headings-black);
   font-family: var(--font-andika);
 }
+
+@media screen and (max-width: 1800px) {
+  .intro {
+    top: 30%;
+    left: 60%;
+    transform: translate(-20%, -100%);
+  }
+  .outro {
+    top: 33%;
+    left: 60%;
+    transform: translate(-20%, -30%);
+  }
+  .bea {
+    top: 12%;
+    left: 10%;
+    transform: translate(-10%, -10%);
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .intro {
+    top: 62%;
+    left: 45%;
+    transform: translate(-40%, -100%);
+  }
+  .outro {
+    top: 66%;
+    left: 45%;
+    transform: translate(-40%, -30%);
+  }
+  .bea {
+    top: 12%;
+    left: 44%;
+    transform: translate(-40%, -10%);
+  }
+}

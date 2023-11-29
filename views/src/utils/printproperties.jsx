@@ -101,6 +101,7 @@ const Printproperties = () => {
       (await getStudentRemainingPages(parseInt(stdID))) >= fileNumberofPages
     ) {
       // Add to PrintingHistory
+      navigate("/Completeprint");
       let x;
       if (numberOfSided == "In một mặt") {
         x = 1;
@@ -135,14 +136,16 @@ const Printproperties = () => {
       );
       enqueueSnackbar("Printing successfully", { variant: "success" });
       // Update printed pages in the printers
-      for (let i = 0; i < (await getPrinterCount()); i++) {
-        if (chosenPrinter == getPrinterName(i)) {
-          const recent = getPrinterPrintedPage(i);
-          await updatePrinterPrintedPages(parseInt(stdID));
+      const count = await getPrinterCount();
+      console.log("COUNT" + count);
+      for (let i = 0; i < count; i++) {
+        const printerName = await getPrinterName(i);
+        if (chosenPrinter == printerName) {
+          const oldNum = await getPrinterPrintedPage(i);
+          await updatePrinterPrintedPages(i, oldNum + fileNumberofPages);
           break;
         }
       }
-      navigate("/Completeprint");
     } else {
       // GO TO TRANSACTION PAGES
       navigate("/Payment");

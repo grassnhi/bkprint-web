@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const AdminHome = () => {
   const navigate = useNavigate();
   return (
-    <div className="trang-da-dang-nhap-student">
+    <div className="trang-da-dang-nhap-admin">
       <Header></Header>
       <div className="welcome-container">
         <img className="chm-1-icon-student" alt="" src={logo1} />

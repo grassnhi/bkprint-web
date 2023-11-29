@@ -10,6 +10,7 @@ import { UserContext } from "../../../../controllers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { getStudentRemainingPages } from "../../../../controllers/student/getFromStudent";
 import { updateRemainingPages } from "../../../../controllers/student/updateStudent";
+import { useCookies } from "react-cookie";
 const Payment = () => {
   const { stdID, convertTime } = useContext(UserContext);
   const [chosenPaperType, setChosenPaperType] = useState("");
@@ -17,6 +18,7 @@ const Payment = () => {
   const [totalMoney, setTotalMoney] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
+  const [cookies, removeCookie] = useCookies([]);
   const handleConfirmTransaction = async () => {
     let oldList = await getStudentTransactionHistory(parseInt(stdID));
     console.log(oldList);
@@ -40,12 +42,23 @@ const Payment = () => {
       enqueueSnackbar("Thanh toán thành công", { variant: "success" });
       let addedPagesNum = 0;
       const recentRM = await getStudentRemainingPages(parseInt(stdID));
+
       if (chosenPaperType[1] == "3") {
-        await updateRemainingPages(parseInt(stdID), recentRM + 2 * pageNum);
+        await updateRemainingPages(
+          parseInt(stdID),
+          parseInt(recentRM) + 2 * parseInt(pageNum)
+        );
       } else if (chosenPaperType[1] == "4") {
-        await updateRemainingPages(parseInt(stdID), recentRM + pageNum);
+        console.log("PAGE" + parseInt(recentRM) + parseInt(pageNum));
+        await updateRemainingPages(
+          parseInt(stdID),
+          parseInt(recentRM) + parseInt(pageNum)
+        );
       } else if (chosenPaperType[1] == "5") {
-        await updateRemainingPages(parseInt(stdID), recentRM + 0.5 * pageNum);
+        await updateRemainingPages(
+          parseInt(stdID),
+          parseInt(recentRM) + 0.5 * parseInt(pageNum)
+        );
       }
     }
   };
@@ -61,7 +74,21 @@ const Payment = () => {
     }
     setTotalMoney(`${money} VND`);
   }, [pageNum, chosenPaperType]);
-
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) {
+        navigate("/Login");
+      }
+      const { data } = await axios.post(
+        "http://localhost:3001/accounts",
+        {},
+        { withCredentials: true }
+      );
+      const { status, user } = data;
+      return status ? <></> : (removeCookie("token"), navigate("/Login1"));
+    };
+    verifyCookie();
+  }, [cookies, navigate, removeCookie]);
   return (
     <div className="paymentContainer">
       <Footer></Footer>
@@ -109,7 +136,6 @@ const Payment = () => {
                 min={10}
                 onChange={(e) => {
                   setPageNum(e.target.value);
-                  handleGetTotalMoney();
                 }}
               />
               <br />

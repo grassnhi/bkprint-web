@@ -79,52 +79,63 @@ const Login1 = () => {
     //setPassword("");
   };
   return (
-    <div className="biggestcontainer">
-      <div className="header">
-        <img className="bklogo" src={logo2} alt="bklogo" />
-        <div className="name">BK Fast Automated Printing Service </div>
+    <div className="biggestcontainer-login">
+      <div className="header-choose-login">
+        <img className="bklogo-choose-login" src={logo2} alt="bklogo" />
+        <div className="name-choose-login">
+          BK Fast Automated Printing Service{" "}
+        </div>
       </div>
 
-      <div className="contain1v">
-        <span className="textv">Dịch vụ xác thực tập trung</span>
-        <span className="text1v">BKPrint</span>
-      </div>
-      <div className="contain2">
-        <p className="notice1">
-          Bạn cần dùng tài khoản HCMUT để đăng nhập. Tài khoản HCMUT cho phép
-          truy cập đến nhiều tài nguyên bao gồm hệ thống thông tin, thư điện tử,
-          ...
-        </p>
-        <p className="notice2">
-          Vì lý do an ninh, bạn hãy Thoát khỏi trình duyệt Web khi bạn kết thúc
-          việc truy cập các dịch vụ đòi hỏi xác thực!
-        </p>
-      </div>
-      <img className="pic" src={logo3} alt="picc" />
+      <div className="login-container">
+        <div className="left-section-login-stu">
+          <div className="contain1v">
+            <span className="textv">Dịch vụ xác thực tập trung</span>
+            <span className="text1v">BKPrint</span>
+          </div>
 
-      <div className="loginframe">
-        <span className="title">Nhập thông tin tài khoản</span>
-        <hr />
+          <div className="column-stu">
+            <div className="contain2">
+              <p className="notice1">
+                Bạn cần dùng tài khoản HCMUT để đăng nhập. Tài khoản HCMUT cho
+                phép truy cập đến nhiều tài nguyên bao gồm hệ thống thông tin,
+                thư điện tử, ...
+              </p>
+              <p className="notice2">
+                Vì lý do an ninh, bạn hãy Thoát khỏi trình duyệt Web khi bạn kết
+                thúc việc truy cập các dịch vụ đòi hỏi xác thực!
+              </p>
+            </div>
+            <img className="pic-login" src={logo3} alt="picc" />
+          </div>
+        </div>
+
+        <div className="right-section-login-stu">
+          <div className="loginframe-stu">
+            <span className="title">Nhập thông tin tài khoản</span>
+            <hr />
+          </div>
+          <form onSubmit={handleSubmit}>
+            <input
+              className="username-stu"
+              type="text"
+              placeholder="Tên đăng nhập"
+              onChange={handleOnChange}
+              value={username}
+            />
+            <div className="pass-stu">
+              <Password value={password} onChange={handleOnChange1} />
+            </div>
+            <div className="help-stu">
+              <NavLink to="/help">Trợ giúp đăng nhập?</NavLink>{" "}
+            </div>
+            <Button className="logbutt-stu" type="submit">
+              Đăng nhập
+            </Button>
+          </form>
+          <ToastContainer />
+        </div>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="username"
-          type="email"
-          placeholder="Tên đăng nhập"
-          onChange={handleOnChange}
-          value={username}
-        />
-        <div className="pass">
-          <Password value={password} onChange={handleOnChange1} />
-        </div>
-        <div className="help">
-          <NavLink to="/help">Trợ giúp đăng nhập?</NavLink>
-        </div>
-        <Button className="logbutt" type="submit">
-          Đăng nhập
-        </Button>
-      </form>
-      <ToastContainer />
     </div>
   );
 };

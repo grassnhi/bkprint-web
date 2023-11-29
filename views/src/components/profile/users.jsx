@@ -4,6 +4,7 @@ import profileImg from "../../assets/N 1.png";
 import { useNavigate } from "react-router-dom";
 import Header from "../../utils/header";
 import Footer from "../../utils/footer";
+import { Button } from "react-bootstrap";
 import { useState } from "react";
 import {
   getStudentEmail,
@@ -16,22 +17,9 @@ import {
 import { useContext } from "react";
 import { UserContext } from "../../../../controllers/UserProvider";
 import { useEffect } from "react";
-let printHistory = [
-  {
-    time: "",
-    fileName: "",
-    quantity: "",
-    place: "",
-    status1: "",
-  },
-  { time: "", fileName: "", quantity: "", place: "", status1: "" },
-  { time: "", fileName: "", quantity: "", place: "", status1: "" },
-];
-let buyHistory = [
-  { times: "", amount: "", quantity1: "" },
-  { times: "", amount: "", quantity1: "" },
-  { times: "", amount: "", quantity1: "" },
-];
+import { useCookies } from "react-cookie";
+import { ToastContainer, toast } from "react-toastify";
+
 const Users = () => {
   const [A3Printed, setA3Printed] = useState(0);
   const [A4Printed, setA4Printed] = useState(0);
@@ -43,6 +31,29 @@ const Users = () => {
   const [tranList, setTranList] = useState([]);
   const [remainingPages, setRemainingPages] = useState(0);
   const { stdID } = useContext(UserContext);
+
+  const [cookies, removeCookie] = useCookies([]);
+  const [username, setUsername] = useState("");
+
+  const navigate = useNavigate();
+
+  const verifyAuthentication = async () => {
+    if (!cookies.token) {
+      navigate("/Login1");
+    }
+    const { data } = await axios.post(
+      "http://localhost:3001/accounts",
+      {},
+      { withCredentials: true }
+    );
+    const { status, user } = data;
+    setUsername(user);
+    return status ? <></> : (removeCookie("token"), navigate("/Login1"));
+  };
+  useEffect(() => {
+    verifyAuthentication();
+  }, [cookies, navigate, removeCookie]);
+
   useEffect(() => {
     const fetchData = async () => {
       const name = await getStudentName(parseInt(stdID));
@@ -83,10 +94,8 @@ const Users = () => {
     fetchData();
   }, [stdID]);
 
-  const navigate = useNavigate();
   return (
     <div className="userContainer">
-      <Footer></Footer>
       <Header></Header>
       <img className="profileImg" src={profileImg} alt="" />
       <div className="information">
@@ -107,34 +116,37 @@ const Users = () => {
         <span className="printHisTex">Lịch sử in</span>
         <span className="datePrint">Từ ngày ../../... đến ngày ../../....</span>
       </div>
-      <table className="printHis1">
-        <tr className="row">
+      <div className="printHis1-container">
+        <table className="printHis1">
           <tr className="row">
-            <th className="hea">Thời gian</th>
-            <th className="hea">Tên file</th>
-            <th className="hea">Số tờ</th>
-            <th className="hea">Loại giấy</th>
-            <th className="hea">Số mặt</th>
-            <th className="hea">Địa điểm</th>
-            <th className="hea">Trạng thái</th>
+            <tr className="row">
+              <th className="hea">Thời gian</th>
+              <th className="hea">Tên file</th>
+              <th className="hea">Số tờ</th>
+              <th className="hea">Loại giấy</th>
+              <th className="hea">Số mặt</th>
+              <th className="hea">Địa điểm</th>
+              <th className="hea">Trạng thái</th>
+            </tr>
+            {printList.map((val, key) => {
+              return (
+                <tr className="row" key={key}>
+                  <td className="dat">{val.time}</td>
+                  <td className="dat">{val.filename}</td>
+                  <td className="dat">{val.printedPages}</td>
+                  <td className="dat">{val.paperType}</td>
+                  <td className="dat">
+                    {val.sided == 1 ? "In một mặt" : "In hai mặt"}
+                  </td>
+                  <td className="dat">{val.location}</td>
+                  <td className="dat">Đã hoàn tất</td>
+                </tr>
+              );
+            })}
           </tr>
-          {printList.map((val, key) => {
-            return (
-              <tr className="row" key={key}>
-                <td className="dat">{val.time}</td>
-                <td className="dat">{val.filename}</td>
-                <td className="dat">{val.printedPages}</td>
-                <td className="dat">{val.paperType}</td>
-                <td className="dat">
-                  {val.sided == 1 ? "In một mặt" : "In hai mặt"}
-                </td>
-                <td className="dat">{val.location}</td>
-                <td className="dat">Đã hoàn tất</td>
-              </tr>
-            );
-          })}
-        </tr>
-      </table>
+        </table>
+      </div>
+
       <div className="sum1">
         <span>Số tờ </span>
         <div className="sum1Tex">
@@ -148,6 +160,9 @@ const Users = () => {
       <hr className="secondBreak" />
       <div className="buyHis">
         <span className="buyHisTex">Lịch sử mua</span>
+        <Button id="addPrinterBtn" onClick={() => navigate("/Payment")}>
+          Mua thêm giấy
+        </Button>
         <span className="datePrint">Từ ngày ../../... đến ngày ../../....</span>
       </div>
       <table className="buyHis1">
@@ -171,6 +186,8 @@ const Users = () => {
         </tr>
       </table>
       <span className="sum2">Số tờ còn lại: {remainingPages}(A4)</span>
+      <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 };

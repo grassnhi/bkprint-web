@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
+import { useCookies } from "react-cookie";
 
 export const UserContext = createContext({}); // Define UserContext outside of UserProvider
 
@@ -41,7 +42,13 @@ export const UserProvider = ({ children }) => {
   const [printingLocation, setPrintingLocation] = useState("");
   const [printerAdmin, setPrinterAdmin] = useState([]);
   const [status, setStatus] = useState(false);
-  const [stdID, setStdID] = useState("");
+  const [stdID, setMyLocalVariable] = useState(
+    localStorage.getItem("stdID") || ""
+  );
+  const setStdID = (id) => {
+    setMyLocalVariable(id);
+    localStorage.setItem("stdID", id);
+  };
   const [auth, setAuth] = useState(false);
   const contextValue = {
     fileName,

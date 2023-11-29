@@ -68,6 +68,7 @@ printerAPI.get("/:printerID", async (request, response) => {
 printerAPI.put("/:printerID", async (request, response) => {
   try {
     const { printerID } = request.params;
+    console.log(request.body.printedPages);
     const updatedStatus = request.body.status;
     const updatedPrintedPages = request.body.printedPages;
     const printer = await Printer.findOne({ printerID });

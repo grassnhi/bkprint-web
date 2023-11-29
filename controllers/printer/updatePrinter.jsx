@@ -18,6 +18,7 @@ export const updatePrinter = async (printerID, newStatus) => {
 };
 
 export const updatePrinterPrintedPages = async (printerID, newPrintedPages) => {
+  console.log(newPrintedPages);
   const newData = { printedPages: newPrintedPages };
   await updatePrinterData(printerID, newData);
 };

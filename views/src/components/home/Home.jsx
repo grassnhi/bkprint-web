@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-        navigate("/Login");
+        navigate("/Login1");
       }
       const { data } = await axios.post(
         "http://localhost:3001/accounts",
@@ -31,11 +31,7 @@ const Home = () => {
       );
       const { status, user } = data;
       setUsername(user);
-      return status
-        ? toast(`Hello ${user}`, {
-            position: "top-right",
-          })
-        : (removeCookie("token"), navigate("/Login1"));
+      return status ? <></> : (removeCookie("token"), navigate("/Login1"));
     };
     verifyCookie();
   }, [cookies, navigate, removeCookie]);
@@ -44,7 +40,7 @@ const Home = () => {
     navigate("/Login1");
   };
   return (
-    <div className="trang-da-dang-nhap-student">
+    <div className="trang-da-dang-nhap-student-home">
       <Header></Header>
       <div className="welcome-container">
         <img className="chm-1-icon-student" alt="" src={logo1} />
@@ -59,7 +55,7 @@ const Home = () => {
 
         <div className="wrapper1-student">
           <div className="column-1">
-            <div className="printer-img-container">
+            <div className="printer-img-container-student">
               <img className="printer-img-student" alt="" src={logo} />
             </div>
           </div>

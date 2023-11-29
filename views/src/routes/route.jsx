@@ -13,7 +13,7 @@ import Printlocate from "../components/printlocate/Printlocate";
 import Help from "../components/help/Help";
 import Payment from "../components/payment/payment";
 import AdminHome from "../components/home/AdminHome";
-
+import Successbuy from "../components/announcement/successbuy";
 const Routing = () => {
   return (
     <Routes>
@@ -30,6 +30,7 @@ const Routing = () => {
       <Route path="/AdminHome" element={<AdminHome />} /> {/* TODO */}
       <Route path="/AdminUsers" element={<Adminusers />} /> {/* TODO */}
       <Route path="help" element={<Help />} /> {/* TODO */}
+      <Route path="/successbuy" element={<Successbuy />} /> {/* TODO */}
     </Routes>
   );
 };

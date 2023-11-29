@@ -48,7 +48,7 @@ const Adminusers = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleChangePrinterStatus = async (key, newStatus) => {
-    console.log(key, newStatus)
+    console.log(key, newStatus);
     await updatePrinter(key, newStatus);
     const updatedPrinterAdmin = [...printerAdmin];
     updatedPrinterAdmin[key].status = newStatus;
@@ -172,7 +172,7 @@ const Adminusers = () => {
                   <td className="dat">{val.fileName}</td>
                   <td className="dat">{val.printerName}</td>
                   <td className="dat">{val.building}</td>
-                  <td className="dat">Đã Hoàn Thành</td>
+                  <td className="dat on">Đã Hoàn Thành</td>
                 </tr>
               );
             })}
@@ -205,12 +205,12 @@ const Adminusers = () => {
                 <td className="dat1">{val.location.building}</td>
                 <td className="dat1">{val.location.room}</td>
                 <td
-                  className="dat1"
+                  className={val.status ? "off" : "on"}
                   onClick={() => handleChangePrinterStatus(key, !val.status)}
                 >
                   {val.status ? "Buộc dừng" : "Khởi động"}
                 </td>
-                <td className="dat1">
+                <td className={val.status ? "on" : "off"}>
                   {val.status ? "Đang hoạt động" : "Ngừng hoạt động"}
                 </td>
                 <td className="dat1">{val.printedPages}</td>

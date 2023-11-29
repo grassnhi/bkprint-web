@@ -19,7 +19,7 @@ const Password = (props) => {
         minLength={4}
         onChange={props.onChange}
       />
-      <img onClick={togglePassword} src={logo} />
+      <img class="togglePassword" onClick={togglePassword} src={logo} />
     </div>
   );
 };

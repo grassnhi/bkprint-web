@@ -65,10 +65,10 @@
   font-weight: 400;
   line-height: normal;
 }
-.printingHistoryList{
+.printingHistoryList {
   width: 1000px;
   height: 500px;
-  overflow-y:  scroll;
+  overflow-y: scroll;
 }
 .thirdBreak {
   position: absolute;
@@ -164,6 +164,33 @@
   border-radius: 22px;
   background: #b3ffd4;
   color: #1f9254;
+}
+
+.on {
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 22px;
+  background: #b3ffd4;
+  color: #1f9254;
+  cursor: pointer;
+}
+.on:hover {
+  background-color: rgb(0, 231, 100);
+}
+.off {
+  padding: 4px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 22px;
+  background: #fcaaaa;
+  color: #cd6200;
+  cursor: pointer;
+}
+.off:hover {
+  background-color: #f78282;
 }
 .cButton {
   padding: 13px 12px;
