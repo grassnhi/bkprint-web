@@ -4,11 +4,12 @@ import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import page from "../../assets/43917 1.png";
 import Button from "react-bootstrap/Button";
-
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
+
 const Successbuy = () => {
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");

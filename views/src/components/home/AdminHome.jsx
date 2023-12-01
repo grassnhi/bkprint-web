@@ -6,14 +6,14 @@ import logo1 from "../../assets/chôm2 1.png";
 import logo2 from "../../assets/oisp-official-logo01-1@2x.png";
 import logo3 from "../../assets/container.png";
 import logo4 from "../../assets/375756243-688982619370253-4579776695205593531-n-1@2x.png";
-import Header from "../../utils/header";
+import AdminHeader from "../../utils/adminHeader";
 import Footer from "../../utils/footer";
 import { useNavigate } from "react-router-dom";
 const AdminHome = () => {
   const navigate = useNavigate();
   return (
     <div className="trang-da-dang-nhap-admin">
-      <Header></Header>
+      <AdminHeader></AdminHeader>
       <div className="welcome-container">
         <img className="chm-1-icon-student" alt="" src={logo1} />
         <div className="welcome-student">

@@ -45,12 +45,25 @@ export const UserProvider = ({ children }) => {
   const [stdID, setMyLocalVariable] = useState(
     localStorage.getItem("stdID") || ""
   );
+
+  const [adminEmail, setLocalAdminEmail] = useState(
+    localStorage.getItem("adminEmail") || ""
+  );
+
   const setStdID = (id) => {
     setMyLocalVariable(id);
     localStorage.setItem("stdID", id);
   };
+
+  const setAdminEmail = (email) => {
+    setLocalAdminEmail(email);
+    localStorage.setItem("adminEmail", email);
+  };
+
   const [auth, setAuth] = useState(false);
   const contextValue = {
+    adminEmail,
+    setAdminEmail,
     fileName,
     setFileName,
     chosenPrinter,

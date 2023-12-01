@@ -66,8 +66,20 @@
   line-height: normal;
 }
 .printingHistoryList {
-  width: 1000px;
+  position: absolute;
+  top: 650px;
+  left: 50px;
+  max-height: 400px;
+  border-bottom: 1px solid black;
   height: 500px;
+  overflow-y: scroll;
+}
+.printscroll {
+  position: absolute;
+  top: 1190px;
+  left: 50px;
+  max-height: 400px;
+  border-bottom: 1px solid black;
   overflow-y: scroll;
 }
 .thirdBreak {
@@ -97,6 +109,10 @@
   line-height: normal;
 }
 .op1Cons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   color: #000;
   font-family: Andika;
   font-size: 30px;
@@ -105,15 +121,12 @@
   line-height: normal;
 }
 .upd {
-  position: relative;
-  left: 76px;
-  top: -5px;
-  width: 102px;
-  height: 41px;
+  width: 10%;
+  height: 100%;
   margin-left: 10px;
   align-items: center;
   gap: 8px;
-
+  border-radius: 47.273px;
   background: var(--neutral-colors-headings-black, #5d5a88);
   border: none;
   color: #fff;
@@ -155,7 +168,10 @@
   font-weight: 400;
   line-height: normal;
 }
-.dat23 {
+.dat23Color {
+  height: 80%;
+  width: 60%;
+  align-content: center;
   border-radius: 22px;
   background: #fcaaaa;
   color: #cd6200;
@@ -165,8 +181,30 @@
   background: #b3ffd4;
   color: #1f9254;
 }
+.datG {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+.big-container {
+  background-color: var(--neutral-colors-white);
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--neutral-colors-headings-black);
+  font-family: var(--font-andika);
+  height: 100%;
+}
+.container {
+  width: 300px;
+  height: 80px;
+  margin-left: 40px;
+}
 
 .on {
+  height: 40%;
+  width: 50%;
   padding: 8px 12px;
   justify-content: center;
   align-items: center;
@@ -175,12 +213,15 @@
   background: #b3ffd4;
   color: #1f9254;
   cursor: pointer;
+  margin-left: 60px;
 }
 .on:hover {
   background-color: rgb(0, 231, 100);
 }
 .off {
-  padding: 4px 6px;
+  height: 40%;
+  width: 50%;
+  padding: 8px 12px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -188,10 +229,12 @@
   background: #fcaaaa;
   color: #cd6200;
   cursor: pointer;
+  margin-left: 60px;
 }
 .off:hover {
   background-color: #f78282;
 }
+
 .cButton {
   padding: 13px 12px;
   width: 200px;
@@ -272,7 +315,7 @@
   position: absolute;
   top: 290px;
 }
-#addPrinterBtn {
+#addPrinterBtn1 {
   position: absolute;
   top: 1540px;
   left: 1000px;
@@ -291,10 +334,10 @@
   font-weight: 400;
   line-height: normal;
 }
-#addPrinterBtn:hover {
+#addPrinterBtn1:hover {
   background-color: #443f86;
 }
-#addPrinterBtn:active {
+#addPrinterBtn1:active {
   background-color: #160e86;
 }
 #pageNum {

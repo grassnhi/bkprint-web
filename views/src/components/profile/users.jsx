@@ -6,6 +6,7 @@ import Header from "../../utils/header";
 import Footer from "../../utils/footer";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
+import axios from "axios";
 import {
   getStudentEmail,
   getStudentFaculty,
@@ -95,99 +96,115 @@ const Users = () => {
   }, [stdID]);
 
   return (
-    <div className="userContainer">
+    <div
+      style={{
+        background: "var(--neutral-colors-white)",
+        fontSize: "var(--font-size-lg)",
+        color: "var(--neutral-colors-headings-black)",
+        fontFamily: "var(--font-andika)",
+      }}
+    >
       <Header></Header>
-      <img className="profileImg" src={profileImg} alt="" />
-      <div className="information">
-        <span className="texx">{name}</span>
-        <span className="ID">{stdID}</span>
-        <span className="logout" onClick={() => navigate("/Home")}>
-          Thoát
-        </span>
-      </div>
-      <div className="info2">
-        <div className="mail1">Địa chỉ email</div>
-        <div className="mail2">{email}</div>
-        <div className="falcuty1">Ngành học</div>
-        <div className="falcuty2">{faculty}</div>
-      </div>
-      <hr className="firstBreak" />
-      <div className="printHis">
-        <span className="printHisTex">Lịch sử in</span>
-        <span className="datePrint">Từ ngày ../../... đến ngày ../../....</span>
-      </div>
-      <div className="printHis1-container">
-        <table className="printHis1">
-          <tr className="row">
-            <tr className="row">
-              <th className="hea">Thời gian</th>
-              <th className="hea">Tên file</th>
-              <th className="hea">Số tờ</th>
-              <th className="hea">Loại giấy</th>
-              <th className="hea">Số mặt</th>
-              <th className="hea">Địa điểm</th>
-              <th className="hea">Trạng thái</th>
-            </tr>
-            {printList.map((val, key) => {
-              return (
-                <tr className="row" key={key}>
-                  <td className="dat">{val.time}</td>
-                  <td className="dat">{val.filename}</td>
-                  <td className="dat">{val.printedPages}</td>
-                  <td className="dat">{val.paperType}</td>
-                  <td className="dat">
-                    {val.sided == 1 ? "In một mặt" : "In hai mặt"}
-                  </td>
-                  <td className="dat">{val.location}</td>
-                  <td className="dat">Đã hoàn tất</td>
-                </tr>
-              );
-            })}
-          </tr>
-        </table>
-      </div>
-
-      <div className="sum1">
-        <span>Số tờ </span>
-        <div className="sum1Tex">
-          A3 đã in: {A3Printed}
-          <br />
-          A4 đã in: {A4Printed}
-          <br />
-          A5 đã in: {A5Printed}
+      <div className="userContainer">
+        <img className="profileImg" src={profileImg} alt="" />
+        <div className="information">
+          <span className="texx">{name}</span>
+          <span className="ID">{stdID}</span>
+          <span className="logout" onClick={() => navigate("/Home")}>
+            Thoát
+          </span>
         </div>
-      </div>
-      <hr className="secondBreak" />
-      <div className="buyHis">
-        <span className="buyHisTex">Lịch sử mua</span>
-        <Button id="addPrinterBtn" onClick={() => navigate("/Payment")}>
-          Mua thêm giấy
-        </Button>
-        <span className="datePrint">Từ ngày ../../... đến ngày ../../....</span>
-      </div>
-      <table className="buyHis1">
-        <tr className="row1">
-          <tr className="row1">
-            <th className="hea1">Thời gian</th>
-            <th className="hea1">Số tiền</th>
-            <th className="hea1">Số tờ</th>
-            <th className="hea1">Loại giấy</th>
-          </tr>
-          {tranList.map((val, key) => {
-            return (
-              <tr className="row1" key={key}>
-                <td className="dat1">{val.time}</td>
-                <td className="dat1">{val.price}</td>
-                <td className="dat1">{val.purchasedPages}</td>
-                <td className="dat1">{val.purchasedPaperType}</td>
+        <div className="info2">
+          <div className="mail1">Địa chỉ email</div>
+          <div className="mail2">{email}</div>
+          <div className="falcuty1">Ngành học</div>
+          <div className="falcuty2">{faculty}</div>
+        </div>
+        <hr className="firstBreak" />
+        <div className="printHis">
+          <span className="printHisTex">Lịch sử in</span>
+          <span className="datePrint">
+            Từ ngày ../../... đến ngày ../../....
+          </span>
+        </div>
+        <div className="printHis1-container">
+          <table className="printHis1">
+            <tr className="row">
+              <tr className="row">
+                <th className="hea">Thời gian</th>
+                <th className="hea">Tên file</th>
+                <th className="hea">Số tờ</th>
+                <th className="hea">Loại giấy</th>
+                <th className="hea">Số mặt</th>
+                <th className="hea">Địa điểm</th>
+                <th className="hea">Trạng thái</th>
               </tr>
-            );
-          })}
-        </tr>
-      </table>
-      <span className="sum2">Số tờ còn lại: {remainingPages}(A4)</span>
+              {printList.map((val, key) => {
+                return (
+                  <tr className="row" key={key}>
+                    <td className="dat">{val.time}</td>
+                    <td className="dat">{val.filename}</td>
+                    <td className="dat">{val.printedPages}</td>
+                    <td className="dat">{val.paperType}</td>
+                    <td className="dat">
+                      {val.sided == 1 ? "In một mặt" : "In hai mặt"}
+                    </td>
+                    <td className="dat">{val.location}</td>
+                    <td className="dat2">
+                      <div className="finish">Đã hoàn tất</div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tr>
+          </table>
+        </div>
+
+        <div className="sum1">
+          <span>Số tờ </span>
+          <div className="sum1Tex">
+            A3 đã in: {A3Printed}
+            <br />
+            A4 đã in: {A4Printed}
+            <br />
+            A5 đã in: {A5Printed}
+          </div>
+        </div>
+        <hr className="secondBreak" />
+        <div className="buyHis">
+          <span className="buyHisTex">Lịch sử mua</span>
+          <Button id="addPrinterBtn" onClick={() => navigate("/Payment")}>
+            Mua thêm giấy
+          </Button>
+          <span className="datePrint">
+            Từ ngày ../../... đến ngày ../../....
+          </span>
+        </div>
+        <div className="buyHis1-container">
+          <table className="buyHis1">
+            <tr className="row1">
+              <tr className="row1">
+                <th className="hea1">Thời gian</th>
+                <th className="hea1">Số tiền</th>
+                <th className="hea1">Số tờ</th>
+                <th className="hea1">Loại giấy</th>
+              </tr>
+              {tranList.map((val, key) => {
+                return (
+                  <tr className="row1" key={key}>
+                    <td className="dat1">{val.time}</td>
+                    <td className="dat1">{val.price}</td>
+                    <td className="dat1">{val.purchasedPages}</td>
+                    <td className="dat1">{val.purchasedPaperType}</td>
+                  </tr>
+                );
+              })}
+            </tr>
+          </table>
+        </div>
+        <span className="sum2">Số tờ còn lại: {remainingPages}(A4)</span>
+      </div>
       <Footer></Footer>
-      <ToastContainer />
     </div>
   );
 };

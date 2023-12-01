@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 const Printlocate = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
