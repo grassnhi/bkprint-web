@@ -131,7 +131,7 @@ const Adminusers = () => {
           <div className="falcuty2">SPSO</div>
         </div>
         <hr className="firstBreak" />
-        <div className="printHis">
+        <div className="printHis01">
           <span className="printHisTex">Quản lý người dùng - Lịch sử in</span>
           <div className="datePrint">
             <div className="datePickerContainer">
@@ -141,6 +141,7 @@ const Adminusers = () => {
               <input type="date" id="endDate" name="endDate" />
             </div>
             <div
+              id="fixxing"
               style={{
                 display: "flex",
                 flexDirection: "row",
@@ -152,7 +153,7 @@ const Adminusers = () => {
               <input
                 type="text"
                 style={{
-                  width: "50%",
+                  width: "46%",
                 }}
               ></input>
               <Button className="upd"> Tìm kiếm </Button>

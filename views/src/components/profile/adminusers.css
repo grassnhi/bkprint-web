@@ -44,7 +44,7 @@
   left: 50px;
   position: absolute;
   display: flex;
-  top: 1087px;
+  top: 1095px;
   justify-content: space-between;
   align-items: center;
   width: 1740px;
@@ -67,7 +67,7 @@
 }
 .printingHistoryList {
   position: absolute;
-  top: 650px;
+  top: 661px;
   left: 50px;
   max-height: 400px;
   border-bottom: 1px solid black;
@@ -119,14 +119,16 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  position: relative;
+  left: -23px;
 }
 .upd {
-  width: 10%;
+  width: 12%;
   height: 100%;
   margin-left: 10px;
   align-items: center;
   gap: 8px;
-  border-radius: 47.273px;
+  border-radius: 10px;
   background: var(--neutral-colors-headings-black, #5d5a88);
   border: none;
   color: #fff;
@@ -149,12 +151,14 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  position: relative;
+  left: 49px;
 }
 .typeOfFiles {
   border: 1px solid black;
   position: absolute;
   top: 1800px;
-  left: 50px;
+  left: 100px;
 }
 .hehe,
 .dat2,
@@ -163,7 +167,7 @@
   height: 40px;
   text-align: center;
   font-family: var(--font-andika);
-
+  align-items: center;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -171,10 +175,11 @@
 .dat23Color {
   height: 80%;
   width: 60%;
-  align-content: center;
   border-radius: 22px;
   background: #fcaaaa;
+  text-align: center;
   color: #cd6200;
+  display: inline-block;
 }
 .dat231 {
   border-radius: 22px;
@@ -317,14 +322,14 @@
 }
 #addPrinterBtn1 {
   position: absolute;
-  top: 1540px;
-  left: 1000px;
+  top: 1532px;
+  left: 800px;
   width: 102px;
   height: 41px;
   margin-left: 10px;
   align-items: center;
   gap: 8px;
-
+  border-radius: 10px;
   background: var(--neutral-colors-headings-black, #5d5a88);
   border: none;
   color: #fff;
@@ -354,7 +359,7 @@
 }
 .sum3 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 50px;
   color: #000;
   font-family: Andika;
@@ -365,63 +370,68 @@
 }
 .addPrinter-input1 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 200px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .addPrinter-input2 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 350px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .addPrinter-input3 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 500px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .addPrinter-input4 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 650px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .addPrinter-input5 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 800px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .datePickerContainer {
   width: 500px;
@@ -430,8 +440,25 @@
 #startDate {
   height: 20px;
   width: 100px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
 }
 #endDate {
   height: 20px;
   width: 100px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.printHis01 {
+  margin: 10px;
+  left: 50px;
+  position: absolute;
+  display: flex;
+  top: 548px;
+  justify-content: space-between;
+  align-items: center;
+  width: 1740px;
+}
+#fixxing {
+  font-size: 30px;
 }
