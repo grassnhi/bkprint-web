@@ -8,6 +8,8 @@ import { useSnackbar } from "notistack";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 dayjs.extend(utc);
 
 import {
@@ -47,6 +49,8 @@ let fileType = [
 const Adminusers = () => {
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [loading2, setLoading2] = useState(true);
   const navigate = useNavigate();
   const verifyAuthentication = async () => {
     if (!cookies.token) {
@@ -75,6 +79,7 @@ const Adminusers = () => {
   const [printAdminHis, setPrintAdminHis] = useState([]);
   const [printerAdmin, setPrinterAdmin] = useState([]);
   const [printerStatus, setPrinterStatus] = useState(false);
+
   const [filterName, setFilterName] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const [filterConfirm, setFilterConfirm] = useState("");
@@ -113,14 +118,26 @@ const Adminusers = () => {
     setPrintAdminHis(printingListData);
   };
 
+  const fetchDataAndFilter = async () => {
+    await Promise.all([fetchData(), fetchPrintingHistData()]);
+    setFilterConfirm(filterName);
+    setBefore(value.format("HH:mm:ss, DD/MM/YYYY"));
+    setAfter(value2.format("HH:mm:ss, DD/MM/YYYY"));
+  };
+  async function fetchPrinterData() {
+    const printerNum = await getPrinterCount();
+    const promises = [];
+    for (let i = 0; i < printerNum; i++) {
+      promises.push(getPrinterData(i));
+    }
+    const printerData = await Promise.all(promises);
+    setPrinterAdmin(printerData);
+  }
   useEffect(() => {
-    const fetchDataAndFilter = async () => {
-      await Promise.all([fetchData(), fetchPrintingHistData()]);
-      setFilterConfirm(filterName);
-      setBefore(value.format("HH:mm:ss, DD/MM/YYYY"));
-      setAfter(value2.format("HH:mm:ss, DD/MM/YYYY"));
-    };
     fetchDataAndFilter();
+    fetchPrinterData();
+    setLoading2(false);
+    setLoading(false);
   }, []);
 
   const handleChangePrinterStatus = async (key, newStatus) => {
@@ -130,19 +147,6 @@ const Adminusers = () => {
     updatedPrinterAdmin[key].status = newStatus;
     setPrinterAdmin(updatedPrinterAdmin);
   };
-
-  useEffect(() => {
-    async function fetchPrinterData() {
-      const printerNum = await getPrinterCount();
-      const promises = [];
-      for (let i = 0; i < printerNum; i++) {
-        promises.push(getPrinterData(i));
-      }
-      const printerData = await Promise.all(promises);
-      setPrinterAdmin(printerData);
-    }
-    fetchPrinterData();
-  }, []);
 
   const handleChangeDefaultNumber = async () => {
     await updateDefaultPage(parseInt(newDefaultPage));
@@ -225,53 +229,56 @@ const Adminusers = () => {
           </div>
         </div>
         <div className="printingHistoryList">
-          <table className="printHis1">
-            <tr className="row">
-              <tr
-                className="row"
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <th className="hea">Tên</th>
-                <th className="hea">MSSV</th>
-                <th className="hea">Thời gian</th>
-                <th className="hea">Tên file</th>
-                <th className="hea">Kiểu máy</th>
-                <th className="hea">Địa điểm</th>
-                <th className="hea">Trạng thái</th>
+          {loading ? (
+            <div
+              sx={{ display: "flex", flexDirection: "center", width: "100%" }}
+            >
+              <CircularProgress />
+              <div>Loading ... </div>
+            </div>
+          ) : (
+            <table className="printHis1">
+              <tr className="row">
+                <tr className="row">
+                  <th className="hea">Tên</th>
+                  <th className="hea">MSSV</th>
+                  <th className="hea">Thời gian</th>
+                  <th className="hea">Tên file</th>
+                  <th className="hea">Kiểu máy</th>
+                  <th className="hea">Địa điểm</th>
+                  <th className="hea">Trạng thái</th>
+                </tr>
+                {printAdminHis
+                  .filter((val) => {
+                    const a = compareTimes(
+                      String(before),
+                      String(val.printingTime)
+                    );
+                    const b = compareTimes(
+                      String(after),
+                      String(val.printingTime)
+                    );
+                    return a <= 0 && b >= 0;
+                  })
+                  .filter((val) => val.studentName.includes(filterConfirm))
+                  .map((val, key) => {
+                    return (
+                      <tr className="row" key={key}>
+                        <td className="dat">{val.studentName}</td>
+                        <td className="dat">{val.studentID}</td>
+                        <td className="dat">{val.printingTime}</td>
+                        <td className="dat">{val.fileName}</td>
+                        <td className="dat">{val.printerName}</td>
+                        <td className="dat">{val.building}</td>
+                        <td className="dat">
+                          <div className="on">Đã Hoàn Thành</div>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tr>
-              {printAdminHis
-                .filter((val) => {
-                  const a = compareTimes(
-                    String(before),
-                    String(val.printingTime)
-                  );
-                  const b = compareTimes(
-                    String(after),
-                    String(val.printingTime)
-                  );
-                  return a <= 0 && b >= 0;
-                })
-                .filter((val) => val.studentName.includes(filterConfirm))
-                .map((val, key) => {
-                  return (
-                    <tr className="row" key={key}>
-                      <td className="dat">{val.studentName}</td>
-                      <td className="dat">{val.studentID}</td>
-                      <td className="dat">{val.printingTime}</td>
-                      <td className="dat">{val.fileName}</td>
-                      <td className="dat">{val.printerName}</td>
-                      <td className="dat">{val.building}</td>
-                      <td className="dat">
-                        <div className="on">Đã Hoàn Thành</div>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tr>
-          </table>
+            </table>
+          )}
         </div>
 
         <hr className="secondBreak" />
@@ -279,77 +286,88 @@ const Adminusers = () => {
           <span className="buyHisTex2">Quản lý hệ thống - Máy in</span>
         </div>
         <div className="printscroll">
-          <table className="buyHis1">
-            <tr className="row1">
+          {loading2 ? (
+            <div
+              sx={{ display: "flex", flexDirection: "center", width: "100%" }}
+            >
+              <CircularProgress />
+              <div>Loading ... </div>
+            </div>
+          ) : (
+            <table className="buyHis1">
               <tr className="row1">
-                <th className="hea1">Mã ID</th>
-                <th className="hea1">Thương Hiệu</th>
-                <th className="hea1">Kiểu máy</th>
-                <th className="hea1">Tòa nhà</th>
-                <th className="hea1">Phòng</th>
-                <th className="hea1">Tùy chọn </th>
-                <th className="hea1">Trạng thái</th>
-                <th className="hea1">Số tờ đã in</th>
+                <tr className="row1">
+                  <th className="hea1">Mã ID</th>
+                  <th className="hea1">Thương Hiệu</th>
+                  <th className="hea1">Kiểu máy</th>
+                  <th className="hea1">Tòa nhà</th>
+                  <th className="hea1">Phòng</th>
+                  <th className="hea1">Tùy chọn </th>
+                  <th className="hea1">Trạng thái</th>
+                  <th className="hea1">Số tờ đã in</th>
+                </tr>
+                {printerAdmin.map((val, key) => {
+                  return (
+                    <tr className="row1" key={key}>
+                      <td className="dat1">{val.printerID}</td>
+                      <td className="dat1">{val.printerBrand}</td>
+                      <td className="dat1">{val.printerName}</td>
+                      <td className="dat1">{val.location.building}</td>
+                      <td className="dat1">{val.location.room}</td>
+                      <td className="dat1">
+                        <div
+                          onClick={() =>
+                            handleChangePrinterStatus(key, !val.status)
+                          }
+                          className={val.status ? "off" : "on"}
+                        >
+                          {val.status ? "Buộc dừng" : "Khởi động"}
+                        </div>
+                      </td>
+                      <td className="dat1">
+                        <div className={val.status ? "on" : "off"}>
+                          {val.status ? "Đang hoạt động" : "Ngừng hoạt động"}
+                        </div>
+                      </td>
+                      <td className="dat1">{val.printedPages}</td>
+                    </tr>
+                  );
+                })}
               </tr>
-              {printerAdmin.map((val, key) => {
-                return (
-                  <tr className="row1" key={key}>
-                    <td className="dat1">{val.printerID}</td>
-                    <td className="dat1">{val.printerBrand}</td>
-                    <td className="dat1">{val.printerName}</td>
-                    <td className="dat1">{val.location.building}</td>
-                    <td className="dat1">{val.location.room}</td>
-                    <td className="dat1">
-                      <div
-                        onClick={() =>
-                          handleChangePrinterStatus(key, !val.status)
-                        }
-                        className={val.status ? "off" : "on"}
-                      >
-                        {val.status ? "Buộc dừng" : "Khởi động"}
-                      </div>
-                    </td>
-                    <td className="dat1">
-                      <div className={val.status ? "on" : "off"}>
-                        {val.status ? "Đang hoạt động" : "Ngừng hoạt động"}
-                      </div>
-                    </td>
-                    <td className="dat1">{val.printedPages}</td>
-                  </tr>
-                );
-              })}
-            </tr>
-          </table>
+            </table>
+          )}
         </div>
-        <Button id="addPrinterBtn1" onClick={() => handleAddPrinter()}>
-          Thêm máy in
-        </Button>
-        <span className="sum3">Số tờ còn lại:</span>
-        {/* ADD PRINTER IN HERE */}
-        <input
-          className="addPrinter-input1"
-          placeholder="Thương hiệu"
-          type="text"
-          onChange={(e) => setPrinterBrand(e.target.value)}
-        />
-        <input
-          className="addPrinter-input2"
-          placeholder="Kiểu máy"
-          type="text"
-          onChange={(e) => setPrinterName(e.target.value)}
-        />
-        <input
-          className="addPrinter-input3"
-          placeholder="Tòa nhà"
-          type="text"
-          onChange={(e) => setPrinterBuilding(e.target.value)}
-        />
-        <input
-          className="addPrinter-input4"
-          placeholder="Phòng"
-          type="text"
-          onChange={(e) => setPrinterRoom(e.target.value)}
-        />
+        <div>
+          <Button id="addPrinterBtn1" onClick={() => handleAddPrinter()}>
+            Thêm máy in
+          </Button>
+          <span className="sum3">Số tờ còn lại:</span>
+          {/* ADD PRINTER IN HERE */}
+          <input
+            className="addPrinter-input1"
+            placeholder="Thương hiệu"
+            type="text"
+            onChange={(e) => setPrinterBrand(e.target.value)}
+          />
+          <input
+            className="addPrinter-input2"
+            placeholder="Kiểu máy"
+            type="text"
+            onChange={(e) => setPrinterName(e.target.value)}
+          />
+          <input
+            className="addPrinter-input3"
+            placeholder="Tòa nhà"
+            type="text"
+            onChange={(e) => setPrinterBuilding(e.target.value)}
+          />
+          <input
+            className="addPrinter-input4"
+            placeholder="Phòng"
+            type="text"
+            onChange={(e) => setPrinterRoom(e.target.value)}
+          />
+        </div>
 
         <hr className="thirdBreak" />
         <div className="op1">

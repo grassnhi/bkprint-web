@@ -44,7 +44,7 @@
   left: 50px;
   position: absolute;
   display: flex;
-  top: 1095px;
+  top: 1125px;
   justify-content: space-between;
   align-items: center;
   width: 1740px;
@@ -67,18 +67,27 @@
 }
 .printingHistoryList {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   top: 720px;
   left: 50px;
-  max-height: 350px;
+  max-height: 400px;
   border-bottom: 1px solid black;
-  height: 450px;
   overflow-y: scroll;
+}
+.secondBreak {
 }
 .printscroll {
   position: absolute;
-  top: 1190px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 1260px;
   left: 50px;
-  max-height: 300px;
+  max-height: 330px;
   border-bottom: 1px solid black;
   overflow-y: scroll;
 }
