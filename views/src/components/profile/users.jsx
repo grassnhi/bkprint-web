@@ -22,7 +22,7 @@ import { UserContext } from "../../../../controllers/UserProvider";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
-
+import { getStudentRemainingMoney } from "../../../../controllers/student/getFromStudent";
 const Users = () => {
   /* FILTERING VARIABLE */
   const [value, setValue] = useState(dayjs("2003-03-10"));
@@ -48,6 +48,7 @@ const Users = () => {
   const { to, setTo } = useState("");
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
+  const [balance, setBalance] = useState(0);
 
   const navigate = useNavigate();
   const handleFilteringPrint = () => {
@@ -87,6 +88,8 @@ const Users = () => {
       setAfterPrint(value2.format("HH:mm:ss, DD/MM/YYYY"));
       setBeforeTran(value3.format("HH:mm:ss, DD/MM/YYYY"));
       setAfterTran(value4.format("HH:mm:ss, DD/MM/YYYY"));
+      const x = await getStudentRemainingMoney(parseInt(stdID));
+      setBalance(x);
     };
     fetchData();
   }, [stdID]);
@@ -99,15 +102,22 @@ const Users = () => {
       );
       setPrintList(printingHistory.reverse());
       setTranList(transactionHistory.reverse());
-      printingHistory.forEach((item) => {
+      let a3 = 0;
+      let a4 = 0;
+      let a5 = 0;
+      for (let i = 0; i < printingHistory.length; i++) {
+        const item = printingHistory[i];
         if (item.paperType[1] === "3") {
-          setA3Printed((prevA3Printed) => prevA3Printed + item.printedPages);
+          a3 += item.printedPages;
         } else if (item.paperType[1] === "4") {
-          setA4Printed((prevA4Printed) => prevA4Printed + item.printedPages);
+          a4 += item.printedPages;
         } else if (item.paperType[1] === "5") {
-          setA5Printed((prevA5Printed) => prevA5Printed + item.printedPages);
+          a5 += item.printedPages;
         }
-      });
+      }
+      setA3Printed(a3);
+      setA4Printed(a4);
+      setA5Printed(a5);
     };
     fetchData();
   }, [stdID]);
@@ -227,6 +237,7 @@ const Users = () => {
             }}
           >
             <div className="buyHisTex">Lịch sử mua</div>
+            <div>Balance: {balance} VND</div>
             <Button id="addPrinterBtn" onClick={() => navigate("/Payment")}>
               Mua thêm giấy
             </Button>

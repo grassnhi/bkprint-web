@@ -24,6 +24,7 @@ const studentSchema = mongoose.Schema({
   remainingPages: { type: Number, required: true },
   transactionHistory: [transactionHistorySchema],
   printingHistory: [printingHistorySchema],
+  remainingMoney: { type: Number },
 });
 
 export const Student = mongoose.model("Student", studentSchema);

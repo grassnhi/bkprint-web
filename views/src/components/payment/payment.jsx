@@ -5,14 +5,17 @@ import Header from "../../utils/header";
 import Footer from "../../utils/footer";
 import { useSnackbar } from "notistack";
 import { getStudentTransactionHistory } from "../../../../controllers/student/getFromStudent";
-import { updateTransactionHistory } from "../../../../controllers/student/updateStudent";
+import {
+  updateTransactionHistory,
+  updateRemainingMoney,
+} from "../../../../controllers/student/updateStudent";
 import { UserContext } from "../../../../controllers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { getStudentRemainingPages } from "../../../../controllers/student/getFromStudent";
 import { updateRemainingPages } from "../../../../controllers/student/updateStudent";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-
+import { getStudentRemainingMoney } from "../../../../controllers/student/getFromStudent";
 const Payment = () => {
   const { stdID, convertTime } = useContext(UserContext);
   const [chosenPaperType, setChosenPaperType] = useState("");
@@ -23,7 +26,15 @@ const Payment = () => {
   const [cookies, removeCookie] = useCookies([]);
   const handleConfirmTransaction = async () => {
     let oldList = await getStudentTransactionHistory(parseInt(stdID));
-    console.log(oldList);
+    const recentMoney = await getStudentRemainingMoney(parseInt(stdID));
+    if (recentMoney < parseInt(totalMoney)) {
+      navigate("/cantbuy");
+      return;
+    }
+    // Update balance
+    const newBalance = parseInt(recentMoney) - parseInt(totalMoney);
+    await updateRemainingMoney(parseInt(stdID), newBalance);
+    // Add to transaction history
     const newItem = {
       time: await convertTime(),
       price: totalMoney,
@@ -41,10 +52,9 @@ const Payment = () => {
     } else {
       oldList.push(newItem);
       await updateTransactionHistory(parseInt(stdID), oldList);
+      navigate("/successbuy");
       enqueueSnackbar("Thanh toán thành công", { variant: "success" });
-      let addedPagesNum = 0;
       const recentRM = await getStudentRemainingPages(parseInt(stdID));
-
       if (chosenPaperType[1] == "3") {
         await updateRemainingPages(
           parseInt(stdID),

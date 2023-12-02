@@ -19,6 +19,7 @@ studentAPI.post("/", async (request, response) => {
       remainingPages: request.body.remainingPages || 0,
       transactionHistory: request.body.transactionHistory || [],
       printingHistory: request.body.printingHistory || [],
+      remainingMoney: request.body.remainingMoney || 0,
     };
 
     const student = await Student.create(newStudent);
@@ -64,8 +65,12 @@ studentAPI.get("/:studentID", async (request, response) => {
 studentAPI.put("/:studentID", async (request, response) => {
   try {
     const { studentID } = request.params;
-    const { printingHistory, transactionHistory, remainingPages } =
-      request.body;
+    const {
+      printingHistory,
+      transactionHistory,
+      remainingPages,
+      remainingMoney,
+    } = request.body;
     const student = await Student.findOne({ studentID });
     if (!student) {
       return response.status(404).json({ message: "Student not found" });
@@ -78,6 +83,9 @@ studentAPI.put("/:studentID", async (request, response) => {
     }
     if (remainingPages !== undefined) {
       student.remainingPages = remainingPages;
+    }
+    if (remainingMoney !== undefined) {
+      student.remainingMoney = remainingMoney;
     }
     const updatedStudent = await student.save();
     return response.status(200).json(updatedStudent);
