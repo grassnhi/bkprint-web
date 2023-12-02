@@ -7,6 +7,8 @@ import Footer from "../../utils/footer";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
+import dayjs, { Dayjs } from "dayjs";
+import { DatePicker } from "@mui/x-date-pickers";
 import {
   getStudentEmail,
   getStudentFaculty,
@@ -32,12 +34,16 @@ const Users = () => {
   const [tranList, setTranList] = useState([]);
   const [remainingPages, setRemainingPages] = useState(0);
   const { stdID } = useContext(UserContext);
-
+  const { from, setFrom } = useState("");
+  const { to, setTo } = useState("");
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
 
   const navigate = useNavigate();
-
+  const handleFiltering = () => {
+    console.log(from);
+    console.log(to);
+  };
   const verifyAuthentication = async () => {
     if (!cookies.token) {
       navigate("/Login1");
@@ -123,9 +129,24 @@ const Users = () => {
         <hr className="firstBreak" />
         <div className="printHis">
           <span className="printHisTex">Lịch sử in</span>
-          <span className="datePrint">
-            Từ ngày ../../... đến ngày ../../....
-          </span>
+          <div className="datePrint">
+            <div className="datePickerContainer">
+              <DatePicker
+                label="Từ ngày"
+                value={from}
+                onChange={(e) => setFrom(String(e))}
+              />
+              <DatePicker
+                label="Đến ngày"
+                value={to}
+                onChange={(e) => setTo(String(e))}
+              />
+              <Button className="upd" onClick={handleFiltering}>
+                {" "}
+                Tìm kiếm{" "}
+              </Button>
+            </div>
+          </div>
         </div>
         <div className="printHis1-container">
           <table className="printHis1">
@@ -172,13 +193,27 @@ const Users = () => {
         </div>
         <hr className="secondBreak" />
         <div className="buyHis">
-          <span className="buyHisTex">Lịch sử mua</span>
-          <Button id="addPrinterBtn" onClick={() => navigate("/Payment")}>
-            Mua thêm giấy
-          </Button>
-          <span className="datePrint">
-            Từ ngày ../../... đến ngày ../../....
-          </span>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "30px",
+            }}
+          >
+            <div className="buyHisTex">Lịch sử mua</div>
+            <Button id="addPrinterBtn" onClick={() => navigate("/Payment")}>
+              Mua thêm giấy
+            </Button>
+          </div>
+          <div className="datePrint">
+            <div className="datePickerContainer">
+              <DatePicker label="Từ ngày" />
+              <DatePicker label="Đến ngày" />
+              <Button className="upd"> Tìm kiếm </Button>
+            </div>
+          </div>
         </div>
         <div className="buyHis1-container">
           <table className="buyHis1">

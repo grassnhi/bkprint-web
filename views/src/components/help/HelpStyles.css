@@ -99,6 +99,16 @@
   font-weight: 400;
   line-height: normal;
 }
+.biggestcontainer-help {
+  background-color: var(--neutral-colors-white);
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--neutral-colors-headings-black);
+  font-family: var(--font-andika);
+  height: 100%;
+  width: 100vw;
+}
+
 .biggestcontainer {
   position: relative;
   background-color: var(--neutral-colors-white);

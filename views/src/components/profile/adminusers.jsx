@@ -5,6 +5,8 @@ import logo3 from "../../assets/container.png";
 import profileImg from "../../assets/N 1.png";
 import { Button } from "react-bootstrap";
 import { useSnackbar } from "notistack";
+import { DatePicker } from "@mui/x-date-pickers";
+
 import {
   getDefaultPage,
   getPermittedFileType,
@@ -48,9 +50,43 @@ const Adminusers = () => {
   const [printAdminHis, setPrintAdminHis] = useState([]);
   const [printerAdmin, setPrinterAdmin] = useState([]);
   const [printerStatus, setPrinterStatus] = useState(false);
-  const [from, setFrom] = useState("0");
-  const [to, setTo] = useState("0");
+  const [filterName, setFilterName] = useState("");
   const { enqueueSnackbar } = useSnackbar();
+  const [filterConfirm, setFilterConfirm] = useState("");
+
+  const handleFiltering = () => {
+    setFilterConfirm(filterName);
+  };
+  const fetchData = async () => {
+    const x = await getDefaultPage();
+    setApprovedNum(x);
+
+    const printerNum = await getPrinterCount();
+    const printerPromises = [];
+    for (let i = 0; i < printerNum; i++) {
+      printerPromises.push(getPrinterData(i));
+    }
+    const printerData = await Promise.all(printerPromises);
+    setPrinterAdmin(printerData);
+  };
+
+  const fetchPrintingHistData = async () => {
+    const printinglistNum = await getTotalPrintingActivity();
+    const promises = [];
+    for (let i = 0; i < printinglistNum; i++) {
+      promises.push(getPrintingActivityData(i));
+    }
+    const printingListData = await Promise.all(promises);
+    setPrintAdminHis(printingListData);
+  };
+
+  useEffect(() => {
+    const fetchDataAndFilter = async () => {
+      await Promise.all([fetchData(), fetchPrintingHistData()]);
+      handleFiltering();
+    };
+    fetchDataAndFilter();
+  }, []);
 
   const handleChangePrinterStatus = async (key, newStatus) => {
     console.log(key, newStatus);
@@ -59,14 +95,6 @@ const Adminusers = () => {
     updatedPrinterAdmin[key].status = newStatus;
     setPrinterAdmin(updatedPrinterAdmin);
   };
-
-  useEffect(() => {
-    async function fetchData() {
-      const x = await getDefaultPage();
-      setApprovedNum(x);
-    }
-    fetchData();
-  }, []);
 
   useEffect(() => {
     async function fetchPrinterData() {
@@ -79,19 +107,6 @@ const Adminusers = () => {
       setPrinterAdmin(printerData);
     }
     fetchPrinterData();
-  }, []);
-
-  useEffect(() => {
-    async function fetchPrintingHistData() {
-      const printinglistNum = await getTotalPrintingActivity();
-      const promises = [];
-      for (let i = 0; i < printinglistNum; i++) {
-        promises.push(getPrintingActivityData(i));
-      }
-      const printingListData = await Promise.all(promises);
-      setPrintAdminHis(printingListData);
-    }
-    fetchPrintingHistData();
   }, []);
 
   const handleChangeDefaultNumber = async () => {
@@ -118,7 +133,7 @@ const Adminusers = () => {
       <div className="adminUserContainer">
         <img className="profileImg" src={profileImg} alt="" />
         <div className="information">
-          <span className="texx">Admin THO</span>
+          <span className="texx">Thay Giao Ba</span>
           <span className="ID">Admin</span>
           <span className="logout" onClick={() => navigate("/AdminHome")}>
             Thoát
@@ -135,10 +150,12 @@ const Adminusers = () => {
           <span className="printHisTex">Quản lý người dùng - Lịch sử in</span>
           <div className="datePrint">
             <div className="datePickerContainer">
-              <label htmlFor="startDate">Từ ngày:</label>
-              <input type="date" id="startDate" name="startDate" />
-              <label htmlFor="endDate">đến ngày:</label>
-              <input type="date" id="endDate" name="endDate" />
+              <DatePicker label="Từ ngày" />
+              <DatePicker
+                label="Đến ngày"
+                /*                 value={value}
+                onChange={(newValue) => setValue(newValue)} */
+              />
             </div>
             <div
               id="fixxing"
@@ -151,12 +168,18 @@ const Adminusers = () => {
             >
               <div>Tên sinh viên: </div>
               <input
+                onChange={(e) => setFilterName(e.target.value)}
                 type="text"
                 style={{
+                  marginLeft: "5px",
+                  borderRadius: "10px",
                   width: "46%",
                 }}
               ></input>
-              <Button className="upd"> Tìm kiếm </Button>
+              <Button className="upd" onClick={() => handleFiltering()}>
+                {" "}
+                Tìm kiếm{" "}
+              </Button>
             </div>
           </div>
         </div>
@@ -178,21 +201,23 @@ const Adminusers = () => {
                 <th className="hea">Địa điểm</th>
                 <th className="hea">Trạng thái</th>
               </tr>
-              {printAdminHis.map((val, key) => {
-                return (
-                  <tr className="row" key={key}>
-                    <td className="dat">{val.studentName}</td>
-                    <td className="dat">{val.studentID}</td>
-                    <td className="dat">{val.printingTime}</td>
-                    <td className="dat">{val.fileName}</td>
-                    <td className="dat">{val.printerName}</td>
-                    <td className="dat">{val.building}</td>
-                    <td className="dat">
-                      <div className="on">Đã Hoàn Thành</div>
-                    </td>
-                  </tr>
-                );
-              })}
+              {printAdminHis
+                .filter((val) => val.studentName.includes(filterConfirm))
+                .map((val, key) => {
+                  return (
+                    <tr className="row" key={key}>
+                      <td className="dat">{val.studentName}</td>
+                      <td className="dat">{val.studentID}</td>
+                      <td className="dat">{val.printingTime}</td>
+                      <td className="dat">{val.fileName}</td>
+                      <td className="dat">{val.printerName}</td>
+                      <td className="dat">{val.building}</td>
+                      <td className="dat">
+                        <div className="on">Đã Hoàn Thành</div>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tr>
           </table>
         </div>

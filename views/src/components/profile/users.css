@@ -8,15 +8,12 @@
   color: #5d5a88;
 }
 #addPrinterBtn {
-  position: absolute;
-  top: 10px;
-  left: 300px;
   width: 152px;
   height: 61px;
   margin-left: 10px;
   align-items: center;
   gap: 8px;
-
+  border-radius: 22px;
   background: var(--neutral-colors-headings-black, #5d5a88);
   border: none;
   color: #fff;
@@ -158,7 +155,7 @@
   position: absolute;
   top: 650px;
   left: 50px;
-  max-height: 340px;
+  max-height: 350px;
   overflow-y: scroll;
   border-bottom: 1px solid black;
 }
@@ -240,7 +237,7 @@
 }
 .buyHis1-container {
   position: absolute;
-  top: 1190px;
+  top: 1200px;
   left: 50px;
   max-height: 340px;
   overflow-y: scroll;
