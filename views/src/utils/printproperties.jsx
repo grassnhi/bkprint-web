@@ -108,6 +108,7 @@ const Printproperties = () => {
       } else if (numberOfSided == "In hai mặt") {
         x = 2;
       }
+
       await addPrintingActivity(
         index,
         stdID,
@@ -150,6 +151,9 @@ const Printproperties = () => {
       chosenPrinter("");
       setChosenPrinter("");
       setPrintingLocation("");
+      setNumberOfCopy(0);
+      setNumberOfSided(0);
+      setPaperType("");
     } else {
       // GO TO TRANSACTION PAGES
       navigate("/Payment");

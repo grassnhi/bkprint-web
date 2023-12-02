@@ -50,10 +50,20 @@ const Cantbuy = () => {
           cũng có thể trở về trang chủ (HỦY TOÀN BỘ QUÁ TRÌNH IN).
         </p>
         <div className="button-set20a">
-          <Button className="master-primary-button1a">Thanh toán lại</Button>
+          <Button
+            className="master-primary-button1a"
+            onClick={() => navigate("/payment")}
+          >
+            Thanh toán lại
+          </Button>
         </div>
         <div className="button-set22a">
-          <Button className="master-secondary-button1a">Về trang chủ</Button>
+          <Button
+            className="master-secondary-button1a"
+            onClick={() => navigate("/Home")}
+          >
+            Về trang chủ
+          </Button>
         </div>
       </div>
       <Footer></Footer>
