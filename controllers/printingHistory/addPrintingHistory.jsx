@@ -8,7 +8,7 @@ export const addPrintingActivity = async (
   fileName,
   printingTime,
   printerName,
-  building,
+  building
 ) => {
   const data = {
     index,
@@ -19,6 +19,7 @@ export const addPrintingActivity = async (
     printerName,
     building,
   };
+  console.log(data);
   axios
     .post("http://localhost:3001/printingHistory", data)
     .then(() => {})

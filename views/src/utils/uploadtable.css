@@ -1,14 +1,25 @@
+h2 {
+  margin-block-start: 0.53em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+p {
+  display: block;
+  margin-block-start: 0.2em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
 .upTable {
+  margin-top: 40px;
   width: 526px;
-  height: 799px;
+  height: 80vh;
   border: 2px solid #483ea8;
   font-family: var(--font-andika);
 }
 .tableTitle {
   color: #0f0f0f;
-  position: absolute;
-  top: 20px;
-  left: 164px;
   text-align: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: Andika;
@@ -16,42 +27,33 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 10px;
 }
 .intruc {
-  position: absolute;
-  padding-top: 5px;
-  top: 84px;
-  left: 134px;
-  width: 259px;
-  height: 39px;
   color: #b80000;
   text-align: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-family: Andika;
-  font-size: 20px;
+  font-size: 20px;  
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
 }
 .iconBox {
-  position: absolute;
-  top: 154px;
-  left: 46.22px;
-  width: 433px;
-  height: 260px;
+  margin-left: 40px;
+  margin-right: 40px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 4px;
   border: 1px dashed rgba(56, 78, 183, 0.3);
   background: #f8f8ff;
 }
 .cloud {
-  position: absolute;
-  top: 31px;
-  left: 147px;
   width: 139px;
-  overflow: cover;
   height: 119px;
-}
+} 
 .dtext {
   color: #483ea8;
 }
@@ -60,22 +62,16 @@
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  position: absolute;
-  top: 174px;
-  left: 110px;
   color: #0f0f0f;
+  padding-top: 30px;
 }
 .text2 {
-  position: absolute;
-  top: 208px;
-  left: 25px;
+  padding-top: 10px;
 }
 .form {
-  position: absolute;
-  top: 441px;
-  left: 46px;
-  width: 433px;
-  height: 319px;
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 .loading {
   color: #676767;
@@ -97,20 +93,18 @@
   font-family: var(--font-andika);
 }
 .complete {
-  position: absolute;
-  top: 115px;
   color: #676767;
   text-align: center;
   font-family: Andika;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: normal;  
 }
 .c1 {
-  position: absolute;
   width: 430px;
-  top: 150px;
+  margin-top: 5px;
+  margin-bottom: 50px;
   border-radius: 4px;
   border: 0.5px solid #9a9a9a;
   background: #fff;
@@ -118,11 +112,16 @@
   font-family: var(--font-andika);
   height: 30px;
 }
+
+.upTable-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 #finish1 {
   position: absolute;
-  top: 250px;
-  display: flex;
-  width: 433px;
+  bottom: 60px;
+  width: 20%;
   height: 58px;
   padding: 9px 14px;
   justify-content: center;

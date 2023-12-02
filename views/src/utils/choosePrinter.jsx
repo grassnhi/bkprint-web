@@ -8,9 +8,17 @@ import {
   getPrinterBuilding,
   getPrinterRoom,
   getPrinterStatus,
+  getPrinterPrintedPage,
 } from "../../../controllers/printer/getPrinter";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+<<<<<<< HEAD
+=======
+import { updateAllocatedDate } from "../../../controllers/systemPolicy/updateSystemPolicy";
+import {
+  updatePrinterPrintedPages,
+} from "../../../controllers/printer/updatePrinter";
+>>>>>>> Tho
 
 const ChoosePrinter = (props) => {
   const {
@@ -60,7 +68,7 @@ const ChoosePrinter = (props) => {
     fetchPrinterData();
   }, []);
 
-  const handleRadioChange = (event) => {
+  const handleRadioChange = async (event) => {
     const [selectedPrinter, selectedLocation] = event.target.value.split("###");
     setChosenPrinter(selectedPrinter);
     setPrintingLocation(selectedLocation);
@@ -70,13 +78,19 @@ const ChoosePrinter = (props) => {
     <div className="chooseP">
       <h2 className="chooseTitle">Chọn máy in</h2>
       <p className="instruc1">(Chỉ chọn MỘT máy in)</p>
+<<<<<<< HEAD
       <table className="choosePrinters">
         <thead>
+=======
+      <div className="table-container">
+        <table className="choosePrinters">
+>>>>>>> Tho
           <tr>
             <th>Kiểu máy</th>
             <th>Phòng</th>
             <th>Chọn</th>
           </tr>
+<<<<<<< HEAD
         </thead>
         <tbody>
           {loading ? (
@@ -110,11 +124,36 @@ const ChoosePrinter = (props) => {
         </tbody>
       </table>
       <span className="checkLocate" onClick={() => navigate("/PrintLocate")}>
+=======
+          {printerList.map((val, key) => (
+            <tr key={key}>
+              <td>{val.name}</td>
+              <td>{val.location}</td>
+              <td>
+                <div class="custom-radio">
+                  <input
+                    type="radio"
+                    id={`radio${key}`}
+                    name="options"
+                    value={`${val.name}###${val.location}`}
+                    onChange={(e) => handleRadioChange(e)}
+                  />
+                  <label htmlFor={`radio${key}`}></label>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </table>
+      </div>
+      <div className="checkLocate" onClick={() => navigate("/PrintLocate")}>
+>>>>>>> Tho
         Xem vị trí máy in
-      </span>
-      <Button id="finish" onClick={props.onClick} block>
-        {props.text}
-      </Button>
+      </div>
+      <div className="btn-container">
+        <Button id="finish" onClick={props.onClick} block>
+          {props.text}
+        </Button>
+      </div>
     </div>
   );
 };

@@ -1,127 +1,32 @@
-import { createSecretToken } from "../auth/secretToken.js";
 import { userVerification } from "../auth/middleware.js";
 import bcrypt from "bcrypt";
 import express from "express";
-import Account from "../models/account.js";
+import { Account } from "../models/account.js";
 
 const accountAPI = express.Router();
 /*module.exports.Signup = async (req, res, next) => {
   try {
-    const { username, password, id, role } = req.body;
-    const existingUser = await Account.findOne({ username });
-    if (existingUser) {
-      return res.json({ message: "User already exists" });
-    }
-    const user = await Account.create({ username, password, id, role });
-    const token = createSecretToken(user._id);
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-    res
-      .status(201)
-      .json({ message: "User signed in successfully", success: true, user });
-    next();
-  } catch (error) {
-    console.error(error);
-  }
-};*/
-/*module.exports.Signup = async (req, res, next) => {
-  try {
-    const { username, password, id, role } = req.body;
-    const existingUser = await Account.findOne({ username });
-    if (existingUser) {
-      return res.json({ message: "User already exists" });
-    }
-    const user = await Account.create({ username, password, id, role });
-    const token = createSecretToken(user._id);
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-    res
-      .status(201)
-      .json({ message: "User signed in successfully", success: true, user });
-    next();
-  } catch (error) {
-    console.error(error);
-  }
-};*/
-const Login = async (req, res, next) => {
-  try {
-    const { username, password } = req.body;
-    if (!username || !password) {
-      console.log("Username" + username);
-      console.log("Pass" + password);
-      return res.json({ message: "All fields are required" });
-    }
-
-    const user = await Account.findOne({ username });
-    if (!user) {
-      return res.json({ message: "Incorrect username" });
-    }
-
-    //let auth = await bcrypt.compare(password, user.password);
-    //console.log(password);
-    //console.log(user.password);
-    // console.log(auth);
-    let auth = false;
-    if (password === user.password) {
-      auth = true;
-    }
-    if (!auth) {
-      return res.json({ message: "Incorrect password " });
-    }
-
-    const token = createSecretToken;
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-    res
-      .status(201)
-      .json({ message: "User logged in successfully", success: true });
-    next();
-  } catch (error) {
-    console.error(error);
-  }
-};
-const Login1 = async (req, res, next) => {
-  try {
-    const { username, password, role } = req.body;
-    if (!username || !password) {
-      return res.json({ message: "All fields are required" });
-    }
-    const user = await Account.findOne({ username });
-    if (!user) {
-      return res.json({ message: "Incorrect username" });
-    }
-
-    //let auth = await bcrypt.compare(password, user.password);
-    //console.log(password);
-    //console.log(user.password);
-    // console.log(auth);
-    let auth = false;
-    if (password === user.password) {
-      auth = true;
-    }
-    if (!auth) {
-      return res.json({ message: "Incorrect password " });
-    }
-    if (user.role != "admin") {
-      return res.json({
-        message: "This account is not permitted to this segment ",
+    if (
+      !request.body.username ||
+      !request.body.password ||
+      !request.body.id ||
+      !request.body.role
+    ) {
+      return response.status(400).send({
+        message: "Send all required fields: username, password, id, role",
       });
     }
-    const token = createSecretToken;
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
-    res
-      .status(201)
-      .json({ message: "User logged in successfully", success: true });
-    next();
+
+    const newAccountEntry = {
+      username: request.body.username,
+      password: request.body.password,
+      id: request.body.id,
+      role: request.body.role,
+    };
+
+    const accountEntry = await Account.create(newAccountEntry);
+
+    return response.status(201).send(accountEntry);
   } catch (error) {
     console.error(error);
   }

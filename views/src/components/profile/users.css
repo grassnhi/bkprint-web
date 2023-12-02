@@ -7,6 +7,29 @@
   overflow: hidden;
   color: #5d5a88;
 }
+#addPrinterBtn {
+  width: 152px;
+  height: 61px;
+  margin-left: 10px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 22px;
+  background: var(--neutral-colors-headings-black, #5d5a88);
+  border: none;
+  color: #fff;
+  font-family: Andika;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#addPrinterBtn:hover {
+  background-color: #443f86;
+}
+#addPrinterBtn:active {
+  background-color: #160e86;
+}
+
 .profileImg {
   position: absolute;
   top: 191px;
@@ -125,16 +148,22 @@
   line-height: normal;
 }
 .printHis1 {
+  background-color: #f7f6fe;
+  border: 1px solid black;
+}
+.printHis1-container {
   position: absolute;
   top: 650px;
   left: 50px;
-  background-color: #f7f6fe;
-  border: 1px solid black;
+  max-height: 350px;
+  overflow-y: scroll;
+  border-bottom: 1px solid black;
 }
 .hea,
 .dat,
 .hea1,
-.dat1 {
+.dat1,
+.dat2 {
   height: 80px;
   text-align: center;
   font-family: var(--font-andika);
@@ -144,17 +173,21 @@
   line-height: normal;
 }
 .hea,
-.dat {
-  width: 345px;
+.dat,
+.dat2 {
+  width: 300px;
 }
 .hea,
 .hea1 {
   font-size: 30px;
   background-color: white;
   border: 2px solid #000;
+  position: sticky;
+  top: 0;
 }
 .dat,
-.dat1 {
+.dat1,
+.dat2 {
   font-size: 15px;
 }
 .sum1 {
@@ -199,15 +232,33 @@
   line-height: normal;
 }
 .buyHis1 {
-  position: absolute;
-  top: 1190px;
-  left: 50px;
   background-color: #f7f6fe;
   border: 1px solid black;
+}
+.buyHis1-container {
+  position: absolute;
+  top: 1200px;
+  left: 50px;
+  max-height: 340px;
+  overflow-y: scroll;
+  border-bottom: 1px solid black;
 }
 .hea1,
 .dat1 {
   width: 580px;
+}
+.dat2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.finish {
+  width: 50%;
+  height: 40%;
+  border-radius: 22px;
+  background: #b3ffd4;
+  color: #1f9254;
+  text-align: center;
 }
 .sum2 {
   position: absolute;
