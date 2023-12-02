@@ -9,8 +9,29 @@ import logo4 from "../../assets/375756243-688982619370253-4579776695205593531-n-
 import AdminHeader from "../../utils/adminHeader";
 import Footer from "../../utils/footer";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { useState, useEffect } from "react";
+import axios from "axios";
 const AdminHome = () => {
+  const [cookies, removeCookie] = useCookies([]);
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
+  const verifyAuthentication = async () => {
+    if (!cookies.token) {
+      navigate("/Login1");
+    }
+    const { data } = await axios.post(
+      "http://localhost:3001/accounts",
+      {},
+      { withCredentials: true }
+    );
+    const { status, user } = data;
+    setUsername(user);
+    return status ? <></> : (removeCookie("token"), navigate("/AdminLogin1"));
+  };
+  useEffect(() => {
+    verifyAuthentication();
+  }, [cookies, navigate, removeCookie]);
   return (
     <div className="trang-da-dang-nhap-admin">
       <AdminHeader></AdminHeader>

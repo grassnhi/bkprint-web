@@ -10,7 +10,9 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 import { UserContext } from "../../../../controllers/UserProvider";
+
 const AdminLogin1 = () => {
   const { setAdminEmail } = useContext(UserContext);
   const navigate = useNavigate();

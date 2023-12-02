@@ -24,6 +24,16 @@ import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
 
 const Users = () => {
+  /* FILTERING VARIABLE */
+  const [value, setValue] = useState(dayjs("2003-03-10"));
+  const [value2, setValue2] = useState(dayjs("2024-1-1"));
+  const [beforePrint, setBeforePrint] = useState(dayjs("2003-03-10"));
+  const [afterPrint, setAfterPrint] = useState(dayjs("2024-1-1"));
+  const [value3, setValue3] = useState(dayjs("2003-03-10"));
+  const [value4, setValue4] = useState(dayjs("2024-1-1"));
+  const [beforeTran, setBeforeTran] = useState(dayjs("2003-03-10"));
+  const [afterTran, setAfterTran] = useState(dayjs("2024-1-1"));
+
   const [A3Printed, setA3Printed] = useState(0);
   const [A4Printed, setA4Printed] = useState(0);
   const [A5Printed, setA5Printed] = useState(0);
@@ -33,16 +43,20 @@ const Users = () => {
   const [printList, setPrintList] = useState([]);
   const [tranList, setTranList] = useState([]);
   const [remainingPages, setRemainingPages] = useState(0);
-  const { stdID } = useContext(UserContext);
+  const { stdID, compareTimes } = useContext(UserContext);
   const { from, setFrom } = useState("");
   const { to, setTo } = useState("");
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
 
   const navigate = useNavigate();
-  const handleFiltering = () => {
-    console.log(from);
-    console.log(to);
+  const handleFilteringPrint = () => {
+    setBeforePrint(value.format("HH:mm:ss, DD/MM/YYYY"));
+    setAfterPrint(value2.format("HH:mm:ss, DD/MM/YYYY"));
+  };
+  const handleFilteringTran = () => {
+    setBeforeTran(value3.format("HH:mm:ss, DD/MM/YYYY"));
+    setAfterTran(value4.format("HH:mm:ss, DD/MM/YYYY"));
   };
   const verifyAuthentication = async () => {
     if (!cookies.token) {
@@ -69,6 +83,10 @@ const Users = () => {
       setName(name);
       setEmail(email);
       setFaculty(faculty);
+      setBeforePrint(value.format("HH:mm:ss, DD/MM/YYYY"));
+      setAfterPrint(value2.format("HH:mm:ss, DD/MM/YYYY"));
+      setBeforeTran(value3.format("HH:mm:ss, DD/MM/YYYY"));
+      setAfterTran(value4.format("HH:mm:ss, DD/MM/YYYY"));
     };
     fetchData();
   }, [stdID]);
@@ -133,15 +151,15 @@ const Users = () => {
             <div className="datePickerContainer">
               <DatePicker
                 label="Từ ngày"
-                value={from}
-                onChange={(e) => setFrom(String(e))}
+                value={value}
+                onChange={(newValue) => setValue(newValue)}
               />
               <DatePicker
                 label="Đến ngày"
-                value={to}
-                onChange={(e) => setTo(String(e))}
+                value={value2}
+                onChange={(newValue) => setValue2(newValue)}
               />
-              <Button className="upd" onClick={handleFiltering}>
+              <Button className="upd" onClick={() => handleFilteringPrint()}>
                 {" "}
                 Tìm kiếm{" "}
               </Button>
@@ -160,23 +178,29 @@ const Users = () => {
                 <th className="hea">Địa điểm</th>
                 <th className="hea">Trạng thái</th>
               </tr>
-              {printList.map((val, key) => {
-                return (
-                  <tr className="row" key={key}>
-                    <td className="dat">{val.time}</td>
-                    <td className="dat">{val.filename}</td>
-                    <td className="dat">{val.printedPages}</td>
-                    <td className="dat">{val.paperType}</td>
-                    <td className="dat">
-                      {val.sided == 1 ? "In một mặt" : "In hai mặt"}
-                    </td>
-                    <td className="dat">{val.location}</td>
-                    <td className="dat2">
-                      <div className="finish">Đã hoàn tất</div>
-                    </td>
-                  </tr>
-                );
-              })}
+              {printList
+                .filter((val) => {
+                  const a = compareTimes(String(beforePrint), String(val.time));
+                  const b = compareTimes(String(afterPrint), String(val.time));
+                  return a <= 0 && b >= 0;
+                })
+                .map((val, key) => {
+                  return (
+                    <tr className="row" key={key}>
+                      <td className="dat">{val.time}</td>
+                      <td className="dat">{val.filename}</td>
+                      <td className="dat">{val.printedPages}</td>
+                      <td className="dat">{val.paperType}</td>
+                      <td className="dat">
+                        {val.sided == 1 ? "In một mặt" : "In hai mặt"}
+                      </td>
+                      <td className="dat">{val.location}</td>
+                      <td className="dat2">
+                        <div className="finish">Đã hoàn tất</div>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tr>
           </table>
         </div>
@@ -209,8 +233,16 @@ const Users = () => {
           </div>
           <div className="datePrint">
             <div className="datePickerContainer">
-              <DatePicker label="Từ ngày" />
-              <DatePicker label="Đến ngày" />
+              <DatePicker
+                label="Từ ngày"
+                value={value3}
+                onChange={(newValue) => setValue3(newValue)}
+              />
+              <DatePicker
+                label="Đến ngày"
+                value={value4}
+                onChange={(newValue) => setValue4(newValue)}
+              />
               <Button className="upd"> Tìm kiếm </Button>
             </div>
           </div>
@@ -224,16 +256,24 @@ const Users = () => {
                 <th className="hea1">Số tờ</th>
                 <th className="hea1">Loại giấy</th>
               </tr>
-              {tranList.map((val, key) => {
-                return (
-                  <tr className="row1" key={key}>
-                    <td className="dat1">{val.time}</td>
-                    <td className="dat1">{val.price}</td>
-                    <td className="dat1">{val.purchasedPages}</td>
-                    <td className="dat1">{val.purchasedPaperType}</td>
-                  </tr>
-                );
-              })}
+              {tranList
+                .filter((val) => {
+                  const a = compareTimes(String(beforeTran), String(val.time));
+                  const b = compareTimes(String(afterTran), String(val.time));
+                  return a <= 0 && b >= 0;
+                })
+                .map((val, key) => {
+                  return (
+                    <tr className="row1" key={key}>
+                      <td className="dat1">
+                        {val.time /* .format("HH:mm:ss, DD/MM/YYYY") */}
+                      </td>
+                      <td className="dat1">{val.price}</td>
+                      <td className="dat1">{val.purchasedPages}</td>
+                      <td className="dat1">{val.purchasedPaperType}</td>
+                    </tr>
+                  );
+                })}
             </tr>
           </table>
         </div>

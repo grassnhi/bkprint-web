@@ -146,6 +146,10 @@ const Printproperties = () => {
           break;
         }
       }
+      setFileName("");
+      chosenPrinter("");
+      setChosenPrinter("");
+      setPrintingLocation("");
     } else {
       // GO TO TRANSACTION PAGES
       navigate("/Payment");
@@ -155,7 +159,10 @@ const Printproperties = () => {
   const {
     convertTime,
     fileName,
+    setFileName,
     chosenPrinter,
+    setChosenPrinter,
+    setPrintingLocation,
     printingLocation,
     stdID,
     status,

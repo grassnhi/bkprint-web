@@ -6,6 +6,9 @@ import profileImg from "../../assets/N 1.png";
 import { Button } from "react-bootstrap";
 import { useSnackbar } from "notistack";
 import { DatePicker } from "@mui/x-date-pickers";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+dayjs.extend(utc);
 
 import {
   getDefaultPage,
@@ -33,6 +36,8 @@ import AdminHeader from "../../utils/adminHeader";
 import Footer from "../../utils/footer";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../../controllers/UserProvider";
+import { useCookies } from "react-cookie";
+import axios from "axios";
 let fileType = [
   { fileT: "Excel", staT: "Cần tải lên", sta: 0, oP: "Cho phép" },
   { fileT: "Word", staT: "Cần tải lên", sta: 0, oP: "Cho phép" },
@@ -40,7 +45,27 @@ let fileType = [
 ];
 
 const Adminusers = () => {
-  const { adminEmail } = useContext(UserContext);
+  const [cookies, removeCookie] = useCookies([]);
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+  const verifyAuthentication = async () => {
+    if (!cookies.token) {
+      navigate("/Login1");
+    }
+    const { data } = await axios.post(
+      "http://localhost:3001/accounts",
+      {},
+      { withCredentials: true }
+    );
+    const { status, user } = data;
+    setUsername(user);
+    return status ? <></> : (removeCookie("token"), navigate("/AdminLogin1"));
+  };
+  useEffect(() => {
+    verifyAuthentication();
+  }, [cookies, navigate, removeCookie]);
+
+  const { adminEmail, parseTime, compareTimes } = useContext(UserContext);
   const [approvedNum, setApprovedNum] = useState(0);
   const [newDefaultPage, setNewDefaultPage] = useState(0);
   const [printerBrand, setPrinterBrand] = useState("");
@@ -53,9 +78,17 @@ const Adminusers = () => {
   const [filterName, setFilterName] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const [filterConfirm, setFilterConfirm] = useState("");
+  const [value, setValue] = useState(dayjs("2003-03-10"));
+  const [value2, setValue2] = useState(dayjs("2024-1-1"));
+  const [before, setBefore] = useState(dayjs("2003-03-10"));
+  const [after, setAfter] = useState(dayjs("2024-1-1"));
 
-  const handleFiltering = () => {
+  const handleFiltering = async (date) => {
     setFilterConfirm(filterName);
+    setBefore(value.format("HH:mm:ss, DD/MM/YYYY"));
+    setAfter(value2.format("HH:mm:ss, DD/MM/YYYY"));
+    const x = compareTimes(String(before), String(after));
+    console.log("TEST" + x);
   };
   const fetchData = async () => {
     const x = await getDefaultPage();
@@ -83,7 +116,9 @@ const Adminusers = () => {
   useEffect(() => {
     const fetchDataAndFilter = async () => {
       await Promise.all([fetchData(), fetchPrintingHistData()]);
-      handleFiltering();
+      setFilterConfirm(filterName);
+      setBefore(value.format("HH:mm:ss, DD/MM/YYYY"));
+      setAfter(value2.format("HH:mm:ss, DD/MM/YYYY"));
     };
     fetchDataAndFilter();
   }, []);
@@ -126,7 +161,6 @@ const Adminusers = () => {
     );
     window.location.reload();
   };
-  const navigate = useNavigate();
   return (
     <div className="big-container">
       <AdminHeader></AdminHeader>
@@ -150,11 +184,15 @@ const Adminusers = () => {
           <span className="printHisTex">Quản lý người dùng - Lịch sử in</span>
           <div className="datePrint">
             <div className="datePickerContainer">
-              <DatePicker label="Từ ngày" />
+              <DatePicker
+                label="Từ ngày"
+                value={value}
+                onChange={(newValue) => setValue(newValue)}
+              />
               <DatePicker
                 label="Đến ngày"
-                /*                 value={value}
-                onChange={(newValue) => setValue(newValue)} */
+                value={value2}
+                onChange={(newValue) => setValue2(newValue)}
               />
             </div>
             <div
@@ -176,7 +214,10 @@ const Adminusers = () => {
                   width: "46%",
                 }}
               ></input>
-              <Button className="upd" onClick={() => handleFiltering()}>
+              <Button
+                className="upd"
+                onClick={async () => await handleFiltering()}
+              >
                 {" "}
                 Tìm kiếm{" "}
               </Button>
@@ -202,6 +243,17 @@ const Adminusers = () => {
                 <th className="hea">Trạng thái</th>
               </tr>
               {printAdminHis
+                .filter((val) => {
+                  const a = compareTimes(
+                    String(before),
+                    String(val.printingTime)
+                  );
+                  const b = compareTimes(
+                    String(after),
+                    String(val.printingTime)
+                  );
+                  return a <= 0 && b >= 0;
+                })
                 .filter((val) => val.studentName.includes(filterConfirm))
                 .map((val, key) => {
                   return (
