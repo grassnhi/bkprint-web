@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.1.0](https://github.com/grassnhi/bkprint-web/compare/v2.0.0...v2.1.0) (2023-12-03)
+
+
+### Features
+
+* log in ([c821c14](https://github.com/grassnhi/bkprint-web/commit/c821c14a1644e1c51c95312cbdd0aecd42752194))
+* log in ([dc2a8ff](https://github.com/grassnhi/bkprint-web/commit/dc2a8ff6a90eec51242de8c575a446fa7b35b6ff))
+* log in ([c4f2d3b](https://github.com/grassnhi/bkprint-web/commit/c4f2d3b0814f275787dfa8cc8e927f5c9deb30dd))
+* Student Login ( add cookie ) ([2dc85c7](https://github.com/grassnhi/bkprint-web/commit/2dc85c7ecb9ed9065f6cff86d2046a77e287c8ef))
+
+
+### Bug Fixes
+
+* **completeprint:** Responsive ([011ae4a](https://github.com/grassnhi/bkprint-web/commit/011ae4abbc48566e26e38ff43c5e935eea2bf513))
+* **css:** Choose, Login, Home, Help ([1bfa1bd](https://github.com/grassnhi/bkprint-web/commit/1bfa1bd70a12d958cdf41445d7cd80a71d6ed93f))
+* **css:** continuing ([17133f4](https://github.com/grassnhi/bkprint-web/commit/17133f4a1e3b656c5e1a658eb11fac4d006a68e5))
+* **css:** printing document ([3da38e7](https://github.com/grassnhi/bkprint-web/commit/3da38e781ab2c13abcba04709eb5ba02daca86cf))
+* **css:** printing document ([8f0aeae](https://github.com/grassnhi/bkprint-web/commit/8f0aeae527b468603cc55091bc7d193b96ab6a22))
+* **css:** printing document ([749d596](https://github.com/grassnhi/bkprint-web/commit/749d59669e0b650afa2a0c75461253a544b1245d))
+* **css:** Responsive for some pages. ([57a53a7](https://github.com/grassnhi/bkprint-web/commit/57a53a7df70a438f9889586092dd87c45e632da3))
+* updating... ([c962fb1](https://github.com/grassnhi/bkprint-web/commit/c962fb1f50ead0d9ffb11d67c50c5a5f88e66c3a))
+
 ## [2.0.0](https://github.com/grassnhi/bkprint-web/compare/v1.4.0...v2.0.0) (2023-11-17)
 
 
