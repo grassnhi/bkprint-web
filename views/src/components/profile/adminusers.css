@@ -44,7 +44,7 @@
   left: 50px;
   position: absolute;
   display: flex;
-  top: 1125px;
+  top: 1055px;
   justify-content: space-between;
   align-items: center;
   width: 1740px;
@@ -67,27 +67,24 @@
 }
 .printingHistoryList {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  top: 720px;
+  top: 713px;
   left: 50px;
-  max-height: 400px;
+  max-height: 335px;
   border-bottom: 1px solid black;
   overflow-y: scroll;
 }
 .secondBreak {
+  position: relative;
+  top: 80px;
 }
 .printscroll {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   width: 100%;
-  top: 1260px;
+  top: 1170px;
   left: 50px;
-  max-height: 330px;
+  max-height: 338px;
   border-bottom: 1px solid black;
   overflow-y: scroll;
 }
@@ -444,10 +441,10 @@
 }
 .datePickerContainer {
   display: flex;
-  margin: 20px;
+  margin: 15px;
   gap: 10px;
   width: 500px;
-  overflow: auto;
+  overflow: visible;
 }
 #startDate {
   height: 20px;
@@ -466,7 +463,7 @@
   left: 50px;
   position: absolute;
   display: flex;
-  top: 548px;
+  top: 550px;
   justify-content: space-between;
   align-items: center;
   width: 1740px;

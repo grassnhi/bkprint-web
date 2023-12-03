@@ -231,57 +231,60 @@ const Adminusers = () => {
         <div className="printingHistoryList">
           {loading ? (
             <div
-              sx={{ display: "flex", flexDirection: "center", width: "100%" }}
+              sx={{
+                display: "contents",
+                flexDirection: "center",
+                width: "100%",
+              }}
             >
               <CircularProgress />
               <div>Loading ... </div>
             </div>
           ) : (
             <table className="printHis1">
+              {/*<tr className="row">*/}
               <tr className="row">
-                <tr className="row">
-                  <th className="hea">Tên</th>
-                  <th className="hea">MSSV</th>
-                  <th className="hea">Thời gian</th>
-                  <th className="hea">Tên file</th>
-                  <th className="hea">Kiểu máy</th>
-                  <th className="hea">Địa điểm</th>
-                  <th className="hea">Trạng thái</th>
-                </tr>
-                {printAdminHis
-                  .filter((val) => {
-                    const a = compareTimes(
-                      String(before),
-                      String(val.printingTime)
-                    );
-                    const b = compareTimes(
-                      String(after),
-                      String(val.printingTime)
-                    );
-                    return a <= 0 && b >= 0;
-                  })
-                  .filter((val) => val.studentName.includes(filterConfirm))
-                  .map((val, key) => {
-                    return (
-                      <tr className="row" key={key}>
-                        <td className="dat">{val.studentName}</td>
-                        <td className="dat">{val.studentID}</td>
-                        <td className="dat">{val.printingTime}</td>
-                        <td className="dat">{val.fileName}</td>
-                        <td className="dat">{val.printerName}</td>
-                        <td className="dat">{val.building}</td>
-                        <td className="dat">
-                          <div className="on">Đã Hoàn Thành</div>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                <th className="hea">Tên</th>
+                <th className="hea">MSSV</th>
+                <th className="hea">Thời gian</th>
+                <th className="hea">Tên file</th>
+                <th className="hea">Kiểu máy</th>
+                <th className="hea">Địa điểm</th>
+                <th className="hea">Trạng thái</th>
               </tr>
+              {printAdminHis
+                .filter((val) => {
+                  const a = compareTimes(
+                    String(before),
+                    String(val.printingTime)
+                  );
+                  const b = compareTimes(
+                    String(after),
+                    String(val.printingTime)
+                  );
+                  return a <= 0 && b >= 0;
+                })
+                .filter((val) => val.studentName.includes(filterConfirm))
+                .map((val, key) => {
+                  return (
+                    <tr className="row" key={key}>
+                      <td className="dat">{val.studentName}</td>
+                      <td className="dat">{val.studentID}</td>
+                      <td className="dat">{val.printingTime}</td>
+                      <td className="dat">{val.fileName}</td>
+                      <td className="dat">{val.printerName}</td>
+                      <td className="dat">{val.building}</td>
+                      <td className="dat">
+                        <div className="on">Đã Hoàn Thành</div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              {/*</tr>*/}
             </table>
           )}
         </div>
-
-        <hr className="secondBreak" />
+        {/*<hr className="secondBreak" />*/}
         <div className="buyHis2">
           <span className="buyHisTex2">Quản lý hệ thống - Máy in</span>
         </div>
