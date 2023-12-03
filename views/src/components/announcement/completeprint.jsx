@@ -35,31 +35,40 @@ const Completeprint = () => {
     verifyAuthentication();
   }, [cookies, navigate, removeCookie]);
   return (
-    <div className="BB">
+    <div
+      style={{
+        background: "var(--neutral-colors-white)",
+        fontSize: "var(--font-size-lg)",
+        color: "var(--neutral-colors-headings-black)",
+        fontFamily: "var(--font-andika)",
+      }}
+    >
       <Header></Header>
-      <img className="page1" src={page1} alt="" />
-      <div className="somethingwrong">
-        Tài liệu của bạn đang được in tại máy in...
-      </div>
-      <p className="wrongtext1">
-        Hãy đến ngay máy in nhận tài liệu để tránh thất lạc.
-      </p>
-      <div className="button-scale">
-        <div className="button-set20ab">
-          <Button
-            className="master-primary-button1a"
-            onClick={() => navigate("/Upload")}
-          >
-            Tải lên và in tiếp
-          </Button>
+      <div className="BB">
+        <img className="page1" src={page1} alt="" />
+        <div className="somethingwrong">
+          Tài liệu của bạn đang được in tại máy in...
         </div>
-        <div className="button-set22ab">
-          <Button
-            className="master-secondary-button1a"
-            onClick={() => navigate("/Home")}
-          >
-            Về trang chủ
-          </Button>
+        <p className="wrongtext1">
+          Hãy đến ngay máy in nhận tài liệu để tránh thất lạc.
+        </p>
+        <div className="button-scale">
+          <div className="button-set20ab">
+            <Button
+              className="master-primary-button1a"
+              onClick={() => navigate("/Upload")}
+            >
+              Tải lên và in tiếp
+            </Button>
+          </div>
+          <div className="button-set22ab">
+            <Button
+              className="master-secondary-button1a"
+              onClick={() => navigate("/Home")}
+            >
+              Về trang chủ
+            </Button>
+          </div>
         </div>
       </div>
       <Footer></Footer>
