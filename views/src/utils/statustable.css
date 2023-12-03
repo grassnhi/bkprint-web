@@ -21,6 +21,14 @@ td {
   gap: 10px;
   border-radius: 22px;
 }
+.loading {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 10px;
+}
 .de {
   font-size: 15px;
   font-family: var(--font-andika);

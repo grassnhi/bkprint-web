@@ -116,6 +116,8 @@ const Adminusers = () => {
     }
     const printingListData = await Promise.all(promises);
     setPrintAdminHis(printingListData);
+
+    setLoading(false);
   };
 
   const fetchDataAndFilter = async () => {
@@ -132,12 +134,11 @@ const Adminusers = () => {
     }
     const printerData = await Promise.all(promises);
     setPrinterAdmin(printerData);
+    setLoading2(false);
   }
   useEffect(() => {
     fetchDataAndFilter();
     fetchPrinterData();
-    setLoading2(false);
-    setLoading(false);
   }, []);
 
   const handleChangePrinterStatus = async (key, newStatus) => {
@@ -230,19 +231,12 @@ const Adminusers = () => {
         </div>
         <div className="printingHistoryList">
           {loading ? (
-            <div
-              sx={{
-                display: "contents",
-                flexDirection: "center",
-                width: "100%",
-              }}
-            >
+            <div className="loading">
               <CircularProgress />
               <div>Loading ... </div>
             </div>
           ) : (
             <table className="printHis1">
-              {/*<tr className="row">*/}
               <tr className="row">
                 <th className="hea">Tên</th>
                 <th className="hea">MSSV</th>
@@ -265,34 +259,30 @@ const Adminusers = () => {
                   return a <= 0 && b >= 0;
                 })
                 .filter((val) => val.studentName.includes(filterConfirm))
-                .map((val, key) => {
-                  return (
-                    <tr className="row" key={key}>
-                      <td className="dat">{val.studentName}</td>
-                      <td className="dat">{val.studentID}</td>
-                      <td className="dat">{val.printingTime}</td>
-                      <td className="dat">{val.fileName}</td>
-                      <td className="dat">{val.printerName}</td>
-                      <td className="dat">{val.building}</td>
-                      <td className="dat">
-                        <div className="on">Đã Hoàn Thành</div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              {/*</tr>*/}
+                .map((val, key) => (
+                  <tr className="row" key={key}>
+                    <td className="dat">{val.studentName}</td>
+                    <td className="dat">{val.studentID}</td>
+                    <td className="dat">{val.printingTime}</td>
+                    <td className="dat">{val.fileName}</td>
+                    <td className="dat">{val.printerName}</td>
+                    <td className="dat">{val.building}</td>
+                    <td className="dat">
+                      <div className="on">Đã Hoàn Thành</div>
+                    </td>
+                  </tr>
+                ))}
             </table>
           )}
         </div>
+
         {/*<hr className="secondBreak" />*/}
         <div className="buyHis2">
           <span className="buyHisTex2">Quản lý hệ thống - Máy in</span>
         </div>
         <div className="printscroll">
           {loading2 ? (
-            <div
-              sx={{ display: "flex", flexDirection: "center", width: "100%" }}
-            >
+            <div className="loading">
               <CircularProgress />
               <div>Loading ... </div>
             </div>

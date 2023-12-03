@@ -11,11 +11,10 @@ import {
   getPrinterPrintedPage,
 } from "../../../controllers/printer/getPrinter";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
 import { useSnackbar } from "notistack";
 import { updateAllocatedDate } from "../../../controllers/systemPolicy/updateSystemPolicy";
-import {
-  updatePrinterPrintedPages,
-} from "../../../controllers/printer/updatePrinter";
+import { updatePrinterPrintedPages } from "../../../controllers/printer/updatePrinter";
 
 const ChoosePrinter = (props) => {
   const {
@@ -76,32 +75,46 @@ const ChoosePrinter = (props) => {
       <h2 className="chooseTitle">Chọn máy in</h2>
       <p className="instruc1">(Chỉ chọn MỘT máy in)</p>
       <div className="table-container">
-        <table className="choosePrinters">
-          <tr>
-            <th>Kiểu máy</th>
-            <th>Phòng</th>
-            <th>Chọn</th>
-          </tr>
-          {printerList.map((val, key) => (
-            <tr key={key}>
-              <td>{val.name}</td>
-              <td>{val.location}</td>
-              <td>
-                <div class="custom-radio">
-                  <input
-                    type="radio"
-                    id={`radio${key}`}
-                    name="options"
-                    value={`${val.name}###${val.location}`}
-                    onChange={(e) => handleRadioChange(e)}
-                  />
-                  <label htmlFor={`radio${key}`}></label>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </table>
+        {loading ? (
+          <div className="loading">
+            <CircularProgress />
+            <div>Loading ... </div>
+          </div>
+        ) : (
+          <React.Fragment>
+            {printerList.length === 0 ? (
+              <div> No printer available. Please come back later</div>
+            ) : (
+              <table className="choosePrinters">
+                <tr>
+                  <th>Kiểu máy</th>
+                  <th>Phòng</th>
+                  <th>Chọn</th>
+                </tr>
+                {printerList.map((val, key) => (
+                  <tr key={key}>
+                    <td>{val.name}</td>
+                    <td>{val.location}</td>
+                    <td>
+                      <div className="custom-radio">
+                        <input
+                          type="radio"
+                          id={`radio${key}`}
+                          name="options"
+                          value={`${val.name}###${val.location}`}
+                          onChange={(e) => handleRadioChange(e)}
+                        />
+                        <label htmlFor={`radio${key}`}></label>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </table>
+            )}
+          </React.Fragment>
+        )}
       </div>
+
       <div className="checkLocate" onClick={() => navigate("/PrintLocate")}>
         Xem vị trí máy in
       </div>

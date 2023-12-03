@@ -78,6 +78,15 @@
   position: relative;
   top: 80px;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 10px;
+}
 .printscroll {
   position: absolute;
 

@@ -32,7 +32,7 @@ const Statustable = () => {
   return (
     <>
       {loading ? (
-        <div sx={{ display: "flex", flexDirection: "center", width: "100%" }}>
+        <div className="loading">
           <CircularProgress />
           <div>Loading ... </div>
         </div>
