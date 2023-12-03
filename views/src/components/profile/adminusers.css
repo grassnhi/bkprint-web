@@ -2,7 +2,7 @@
   position: relative;
   background-color: var(--neutral-colors-white);
   font-family: Andika;
-  height: 2506px;
+  height: 2100px;
   width: 100vw;
   overflow: hidden;
   color: #5d5a88;
@@ -44,7 +44,7 @@
   left: 50px;
   position: absolute;
   display: flex;
-  top: 1087px;
+  top: 1095px;
   justify-content: space-between;
   align-items: center;
   width: 1740px;
@@ -65,10 +65,22 @@
   font-weight: 400;
   line-height: normal;
 }
-.printingHistoryList{
-  width: 1000px;
-  height: 500px;
-  overflow-y:  scroll;
+.printingHistoryList {
+  position: absolute;
+  top: 720px;
+  left: 50px;
+  max-height: 350px;
+  border-bottom: 1px solid black;
+  height: 450px;
+  overflow-y: scroll;
+}
+.printscroll {
+  position: absolute;
+  top: 1190px;
+  left: 50px;
+  max-height: 300px;
+  border-bottom: 1px solid black;
+  overflow-y: scroll;
 }
 .thirdBreak {
   position: absolute;
@@ -97,23 +109,26 @@
   line-height: normal;
 }
 .op1Cons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   color: #000;
   font-family: Andika;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  position: relative;
+  left: -23px;
 }
 .upd {
-  position: relative;
-  left: 76px;
-  top: -5px;
-  width: 102px;
-  height: 41px;
+  width: 12%;
+  height: 100%;
   margin-left: 10px;
   align-items: center;
   gap: 8px;
-
+  border-radius: 10px;
   background: var(--neutral-colors-headings-black, #5d5a88);
   border: none;
   color: #fff;
@@ -136,12 +151,14 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  position: relative;
+  left: 49px;
 }
 .typeOfFiles {
   border: 1px solid black;
   position: absolute;
   top: 1800px;
-  left: 50px;
+  left: 100px;
 }
 .hehe,
 .dat2,
@@ -150,21 +167,79 @@
   height: 40px;
   text-align: center;
   font-family: var(--font-andika);
-
+  align-items: center;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-.dat23 {
+.dat23Color {
+  height: 80%;
+  width: 60%;
   border-radius: 22px;
   background: #fcaaaa;
+  text-align: center;
   color: #cd6200;
+  display: inline-block;
 }
 .dat231 {
   border-radius: 22px;
   background: #b3ffd4;
   color: #1f9254;
 }
+.datG {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+.big-container {
+  background-color: var(--neutral-colors-white);
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--neutral-colors-headings-black);
+  font-family: var(--font-andika);
+  height: 100%;
+}
+.container {
+  width: 300px;
+  height: 80px;
+  margin-left: 40px;
+}
+
+.on {
+  height: 40%;
+  width: 50%;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 22px;
+  background: #b3ffd4;
+  color: #1f9254;
+  cursor: pointer;
+  margin-left: 60px;
+}
+.on:hover {
+  background-color: rgb(0, 231, 100);
+}
+.off {
+  height: 40%;
+  width: 50%;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 22px;
+  background: #fcaaaa;
+  color: #cd6200;
+  cursor: pointer;
+  margin-left: 60px;
+}
+.off:hover {
+  background-color: #f78282;
+}
+
 .cButton {
   padding: 13px 12px;
   width: 200px;
@@ -245,16 +320,16 @@
   position: absolute;
   top: 290px;
 }
-#addPrinterBtn {
+#addPrinterBtn1 {
   position: absolute;
-  top: 1540px;
-  left: 1000px;
+  top: 1532px;
+  left: 800px;
   width: 102px;
   height: 41px;
   margin-left: 10px;
   align-items: center;
   gap: 8px;
-
+  border-radius: 10px;
   background: var(--neutral-colors-headings-black, #5d5a88);
   border: none;
   color: #fff;
@@ -264,10 +339,10 @@
   font-weight: 400;
   line-height: normal;
 }
-#addPrinterBtn:hover {
+#addPrinterBtn1:hover {
   background-color: #443f86;
 }
-#addPrinterBtn:active {
+#addPrinterBtn1:active {
   background-color: #160e86;
 }
 #pageNum {
@@ -284,7 +359,7 @@
 }
 .sum3 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 50px;
   color: #000;
   font-family: Andika;
@@ -295,73 +370,98 @@
 }
 .addPrinter-input1 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 200px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .addPrinter-input2 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 350px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .addPrinter-input3 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 500px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .addPrinter-input4 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 650px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .addPrinter-input5 {
   position: absolute;
-  top: 1565px;
+  top: 1540px;
   left: 800px;
   width: 100px;
   background-color: white;
   font-family: Andika;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border-radius: 10px;
 }
 .datePickerContainer {
+  display: flex;
+  margin: 20px;
+  gap: 10px;
   width: 500px;
   overflow: auto;
 }
 #startDate {
   height: 20px;
   width: 100px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
 }
 #endDate {
   height: 20px;
   width: 100px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.printHis01 {
+  margin: 10px;
+  left: 50px;
+  position: absolute;
+  display: flex;
+  top: 548px;
+  justify-content: space-between;
+  align-items: center;
+  width: 1740px;
+}
+#fixxing {
+  font-size: 30px;
 }

@@ -1,6 +1,7 @@
 import Account from "../models/account.js";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
+import { TOKEN_KEY } from "../config.js";
 
 dotenv.config();
 
@@ -9,11 +10,11 @@ export const userVerification = (req, res) => {
   if (!token) {
     return res.json({ status: false });
   }
-  jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
+  jwt.verify(token, TOKEN_KEY, async (err, data) => {
     if (err) {
-      return res.json({ status: "true123" });
+      return res.json({ status: false });
     } else {
-      const user = await Account.findById(data.id);
+      const user = await Account.findById(data._id);
       if (user) return res.json({ status: true, user: user.username });
       else return res.json({ status: false });
     }

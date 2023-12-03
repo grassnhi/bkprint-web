@@ -1,76 +1,44 @@
-.copyright {
-  position: absolute;
-  top: 59.56px;
-  left: 109px;
-  line-height: 18px;
-  display: inline-block;
-  width: 374.67px;
-  height: 14.89px;
-}
-.span {
-  font-family: var(--text-single-300-regular);
-}
-.phat-trien-boi-thieu-nhi-cc02 {
-  line-height: 18px;
-}
-.policy {
-  text-decoration: underline;
-  line-height: 30px;
-  color: var(--color-lightsteelblue);
-}
-.span1 {
-  line-height: 18px;
-  font-family: var(--text-single-300-regular);
-}
-.footer-right {
-  top: 54.59px;
-  left: 1197px;
-  text-align: right;
-  display: inline-block;
-  width: 641.33px;
-  height: 24.81px;
-}
-.footer-right,
-.wrapper {
-  position: absolute;
-}
-.wrapper {
-  top: 1580px;
-  left: 0;
-  width: 100%;
-  height: 134px;
-  box-shadow: 5px -1.5px #9795b5;
-}
-.header {
-  position: absolute;
+.header-choose-login {
   width: 100%;
   height: 122px;
-  flex-shrink: 0;
   box-shadow: 5px 1.5px #9795b5;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
-.bklogo {
-  position: absolute;
-  top: 19px;
-  left: 28px;
+.bklogo-choose-login {
+  padding-left: 20px;
   width: 83px;
   height: 84px;
 }
-.name {
-  position: absolute;
-  top: 47px;
-  left: 139px;
+.name-choose-login {
+  margin-left: 20px;
   font-size: 30px;
   line-height: 30px;
   text-align: right;
   display: inline-block;
   height: 29px;
 }
+.login-container {
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  height: 80vh;
+}
+.left-section-login-stu {
+  padding-left: 10vh;
+  display: flex;
+  height: 80vh;
+  flex: 2.5;
+  flex-direction: column;
+}
+.right-section-login-stu {
+  margin-right: 10vh;
+  height: 80vh;
+  flex: 1.5;
+}
 .contain1v {
-  position: absolute;
   width: fit-content;
-  height: 374px;
-  left: 134px;
-  top: 263px;
 }
 .textv {
   font-size: 50px;
@@ -81,12 +49,15 @@
   font-size: 35px;
   line-height: 56.4px;
 }
+.column-stu {
+  display: flex;
+  flex-direction: row;
+}
 .contain2 {
-  position: absolute;
-  width: 375px;
+  display: block;
+  width: 25vw;
+  margin-top: 30px;
   height: 158px;
-  top: 479px;
-  left: 134px;
 }
 .notice1 {
   font-size: 20px;
@@ -96,34 +67,27 @@
   font-size: 20px;
   line-height: 24px;
 }
-.pic {
-  position: absolute;
-  width: 491px;
-  height: 488px;
-  top: 384px;
-  left: 550px;
+.pic-login {
+  width: 50%;
   flex-shrink: 0;
 }
-.loginframe {
-  position: absolute;
-  left: 1135px;
-  top: 263px;
-  width: 580px;
+.loginframe-stu {
+  width: 100%;
   height: fit-content;
   font-size: 40px;
   color: black;
 }
-.username {
-  position: absolute;
-  top: 397px;
-  left: 1146px;
+.username-stu {
+  background-color: #F2F1FA;
+  border: none;
+  padding-left: 10px;
   border-radius: 10px;
-  display: block;
-  width: 544px;
+  width: 100%;
   height: 97px;
   font-size: 25px;
+  margin-bottom: 60px;
 }
-.username::placeholder {
+.username-stu::placeholder {
   color: rgba(93, 90, 136, 0.5);
   font-family: Andika;
   font-size: 25px;
@@ -131,29 +95,24 @@
   font-weight: 400;
   line-height: normal;
 }
-.pass {
-  position: absolute;
-  top: 553px;
-  left: 1146px;
+.pass-stu {
   display: block;
+  width: 100%;
 }
-.help {
-  position: absolute;
-  top: 679px;
-  left: 1473px;
-  width: 222px;
+.help-stu {
+  margin-top: 20px;
+  width: 100%;
   height: 33px;
   flex-shrink: 0;
   color: #b0b0b0;
   font-size: 23px;
   font-style: normal;
   line-height: normal;
+  text-align: right;
 }
-.logbutt {
-  position: absolute;
-  top: 780px;
-  left: 1146px;
-  width: 544px;
+.logbutt-stu {
+  margin-top: 80px;
+  width: 100%;
   height: 92px;
   border-radius: 10px;
   background-color: #5d5a88;
@@ -161,23 +120,39 @@
   transition: background-color 0.5s;
   font-size: 25px;
   color: #fff;
+  transition: box-shadow 0.4s ease;
 }
-.logbutt:hover {
-  background-color: #1ea9e9;
-  color: #fff;
+.logbutt-stu:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
 }
-.logbutt:active {
+.logbutt-stu:active {
   background-color: #12a86e42;
   transition: background-color 0s;
 }
-.biggestcontainer {
-  position: relative;
+.biggestcontainer-login {
   background-color: var(--neutral-colors-white);
   width: 100%;
+<<<<<<< HEAD
   height: 1714px;
+=======
+  height: 100vh;
+>>>>>>> Tho
   overflow: hidden;
   text-align: left;
   font-size: var(--font-size-lg);
   color: var(--neutral-colors-headings-black);
   font-family: var(--font-andika);
+}
+
+@media screen and (max-width: 1800px) {
+  .text{
+    transform: translate(-6%, -10%);
+  }
+  .loginframe, .username, .pass, .logbutt{
+    transform: translate(-16%, -10%);
+  }
+  .help{
+    transform: translate(-40%, -10%);
+  }
 }

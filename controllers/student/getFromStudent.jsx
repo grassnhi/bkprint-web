@@ -52,6 +52,16 @@ export const getStudentRemainingPages = async (studentID) => {
   }
 };
 
+export const getStudentRemainingMoney = async (studentID) => {
+  try {
+    const studentData = await getStudentInformation(studentID);
+    return studentData ? studentData.remainingMoney : 0;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 export const getStudentEmail = async (studentID) => {
   try {
     const studentData = await getStudentInformation(studentID);

@@ -101,12 +101,14 @@ const Printproperties = () => {
       (await getStudentRemainingPages(parseInt(stdID))) >= fileNumberofPages
     ) {
       // Add to PrintingHistory
+      navigate("/Completeprint");
       let x;
       if (numberOfSided == "In một mặt") {
         x = 1;
       } else if (numberOfSided == "In hai mặt") {
         x = 2;
       }
+
       await addPrintingActivity(
         index,
         stdID,
@@ -135,6 +137,7 @@ const Printproperties = () => {
       );
       enqueueSnackbar("Printing successfully", { variant: "success" });
       // Update printed pages in the printers
+<<<<<<< HEAD
       for (let i = 0; i < (await getPrinterCount()); i++) {
         if (chosenPrinter == getPrinterName(i)) {
           const recent = getPrinterPrintedPage(i);
@@ -143,6 +146,24 @@ const Printproperties = () => {
         }
       }
       navigate("/Completeprint");
+=======
+      const count = await getPrinterCount();
+      console.log("COUNT" + count);
+      for (let i = 0; i < count; i++) {
+        const printerName = await getPrinterName(i);
+        if (chosenPrinter == printerName) {
+          const oldNum = await getPrinterPrintedPage(i);
+          await updatePrinterPrintedPages(i, oldNum + fileNumberofPages);
+          break;
+        }
+      }
+      setFileName("");
+      chosenPrinter("");
+      setChosenPrinter("");
+      setPrintingLocation("");
+      setNumberOfCopy(0);
+      setNumberOfSided(0);
+      setPaperType("");
     } else {
       // GO TO TRANSACTION PAGES
       navigate("/Payment");
@@ -152,7 +173,13 @@ const Printproperties = () => {
   const {
     convertTime,
     fileName,
+<<<<<<< HEAD
+=======
+    setFileName,
+>>>>>>> Tho
     chosenPrinter,
+    setChosenPrinter,
+    setPrintingLocation,
     printingLocation,
     stdID,
     status,
@@ -208,9 +235,11 @@ const Printproperties = () => {
           onChange={(e) => handleChange(e)}
         />
       </div>
-      <Button id="finish2" block onClick={() => handlePrintingDocument()}>
-        HOÀN THÀNH
-      </Button>
+      <div className="properties-btn-container">
+        <Button id="finish2" block onClick={() => handlePrintingDocument()}>
+          HOÀN THÀNH
+        </Button>
+      </div>
     </div>
   );
 };

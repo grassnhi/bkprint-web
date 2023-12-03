@@ -18,26 +18,20 @@ BKPrint maintains several critical documents that are stored within the [**docum
 
 ## Features
 ### For students:
-- Easy Document Submission: Quickly upload your documents for printing, eliminating the need for USB drives or email attachments.
-
-- Printer Selection: Choose from a network of conveniently located printers across HCMUT campuses. Each printer is identified by its unique ID, brand, model, and precise location details.
-
-- Print Customization: Tailor your print job to your preferences. Specify paper size, select specific pages for printing, choose between one-sided or double-sided printing, and indicate the desired number of copies.
-
-- File Type Compatibility: BKPrint supports various file types, with the list of permitted formats managed by our Student Printing Service Officers (SPSOs).
-
-- Comprehensive Printing Logs: Our system maintains a detailed log of all printing actions, including student IDs, printer IDs, file names, start and end times of printing, and the number of pages printed for each page size.
-
-- Printing History Access: Easily access your personal printing history for specific time periods and receive a summary of the number of pages printed for different page sizes.
-
-- Page Balance Management: Each semester, students receive a default allocation of A4-sized pages for printing. You can purchase additional pages through the "Buy Printing Pages" feature, with secure online payment via the BKPay system.
+- File uploading
+- Printer choosing
+- Printing configuration
+- Checking printing log
+- Checking payment log
+- Checking printing balance
+- Checking printing status
 
 ### For SPSOs (Student Printing Service Officers):
-- Printer Management: Empower SPSOs with the ability to manage printers efficiently. This includes adding, enabling, or disabling printers as needed.
-
-- System Configuration: SPSOs can customize system settings, such as default page allocations, dates for granting default pages to students, and the list of permitted file types accepted by the system.
-
-- Automated Reporting: Automatic generation of monthly and annual reports provides valuable insights into system usage, enabling informed decision-making.
+- File type management
+- Printer management
+- System configuration management
+- Viewing reports
+- Viewing printing log
 
 ## Usage
 ### For students:
@@ -68,3 +62,8 @@ BKPrint maintains several critical documents that are stored within the [**docum
 - Enter your login credentials, including your username and password, into the designated fields.
 - Click the **Đăng nhập** button to log in to your account.
 - Click **Quản lý người dùng** or **Quản lý hệ thống** button for navigate to the management dashboard.
+- The management dashboard appears.
+    - The **Quản lý người dùng - Lịch sử in** section displays the general printing history of the students. Click **Xem thêm** to view more history.
+    - In **Quản lý hệ thống - Máy in** section, click **Thêm máy in** and fill in the blank to add a new printer and/ or click on the current printers' status to change their status.
+    - In the **Tùy chỉnh** section, click **Cập nhật** to change the number of pages given to each student and/ or click on the file types' status to change the permission of each file type.
+    - In the **Báo cáo** section, click **Xem kho lưu trũ báo cáo** to view or download the reports that are automatically generated.

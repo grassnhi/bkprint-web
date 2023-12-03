@@ -10,10 +10,37 @@ import { useNavigate } from "react-router-dom";
 import Login1 from "../login1/Login1";
 import Header from "../../utils/header";
 import Footer from "../../utils/footer";
+import { ToastContainer, toast } from "react-toastify";
+import { useCookies } from "react-cookie";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 const Home = () => {
   const navigate = useNavigate();
+  const [cookies, removeCookie] = useCookies([]);
+  const [username, setUsername] = useState("");
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) {
+        navigate("/Login1");
+      }
+      const { data } = await axios.post(
+        "http://localhost:3001/accounts",
+        {},
+        { withCredentials: true }
+      );
+      const { status, user } = data;
+      setUsername(user);
+      return status ? <></> : (removeCookie("token"), navigate("/Login1"));
+    };
+    verifyCookie();
+  }, [cookies, navigate, removeCookie]);
+  const Logout = () => {
+    removeCookie("token");
+    navigate("/Login1");
+  };
   return (
-    <div className="trang-da-dang-nhap-student">
+    <div className="trang-da-dang-nhap-student-home">
       <Header></Header>
       <div className="welcome-container">
         <img className="chm-1-icon-student" alt="" src={logo1} />
@@ -24,12 +51,12 @@ const Home = () => {
       </div>
 
       <div className="intro-container">
-        <div className="white-space-left"></div>
+        <div className="white-space-left-student"></div>
 
         <div className="wrapper1-student">
           <div className="column-1">
-            <div className="printer-img-container">
-              <img className="printer-img" alt="" src={logo} />
+            <div className="printer-img-container-student">
+              <img className="printer-img-student" alt="" src={logo} />
             </div>
           </div>
 
@@ -64,9 +91,10 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="white-space-right"></div>
+        <div className="white-space-right-student"></div>
       </div>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 };

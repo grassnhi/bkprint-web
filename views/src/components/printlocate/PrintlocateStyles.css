@@ -110,3 +110,29 @@
   color: var(--neutral-colors-headings-black);
   font-family: var(--font-andika);
 }
+
+@media screen and (max-width: 1800px) {
+  .mappic {
+    top: 41%;
+    left: 40%;
+    transform: translate(-41%, -59%);
+  }
+  .sttable {
+    top: 82%;
+    left: 40%;
+    transform: translate(-41%, -59%);
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .mappic {
+    top: 41%;
+    left: 40%;
+    transform: translate(-41%, -59%);
+  }
+  .sttable {
+    top: 86%;
+    left: 40%;
+    transform: translate(-40%, -60%);
+  }
+}

@@ -7,16 +7,9 @@ const accountSchema = mongoose.Schema({
   id: { type: String },
   role: { type: String, enum: ["student", "admin"], required: true },
 });
-accountSchema.pre("save", async function (next) {
-  try {
-    // Hash the password only if it's modified or a new account
-    if (this.isModified("password") || this.isNew) {
-      this.password = await bcrypt.hash(this.password, 12);
-    }
-    next();
-  } catch (error) {
-    next(error);
-  }
+
+accountSchema.pre("save", async function () {
+  this.password = await bcrypt.hash(this.password, 12);
 });
 
 const Account = mongoose.model("Account", accountSchema);
