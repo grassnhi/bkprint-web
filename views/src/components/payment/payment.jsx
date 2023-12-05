@@ -16,6 +16,7 @@ import { updateRemainingPages } from "../../../../controllers/student/updateStud
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { getStudentRemainingMoney } from "../../../../controllers/student/getFromStudent";
+import ScrollToTop from "../../routes/scrollToTop";
 const Payment = () => {
   const { stdID, convertTime } = useContext(UserContext);
   const [chosenPaperType, setChosenPaperType] = useState("");
@@ -165,6 +166,7 @@ const Payment = () => {
         </table>
       </div>
       <Footer></Footer>
+      <ScrollToTop />
     </div>
   );
 };

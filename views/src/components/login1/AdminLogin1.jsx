@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { UserContext } from "../../../../controllers/UserProvider";
+import Footer from "../../utils/footer";
 
 const AdminLogin1 = () => {
   const { setAdminEmail } = useContext(UserContext);
@@ -110,6 +111,10 @@ const AdminLogin1 = () => {
           </form>
           <ToastContainer />
         </div>
+      </div>
+      <div id="Login1Footer">
+       
+        <Footer />
       </div>
     </div>
   );
