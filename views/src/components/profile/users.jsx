@@ -8,6 +8,7 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import dayjs, { Dayjs } from "dayjs";
+import CircularProgress from "@mui/material/CircularProgress";
 import { DatePicker } from "@mui/x-date-pickers";
 import {
   getStudentEmail,
@@ -49,7 +50,7 @@ const Users = () => {
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
   const [balance, setBalance] = useState(0);
-
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const handleFilteringPrint = () => {
     setBeforePrint(value.format("HH:mm:ss, DD/MM/YYYY"));
@@ -118,6 +119,7 @@ const Users = () => {
       setA3Printed(a3);
       setA4Printed(a4);
       setA5Printed(a5);
+      setLoading(false);
     };
     fetchData();
   }, [stdID]);
@@ -139,85 +141,6 @@ const Users = () => {
       }}
     >
       <Header></Header>
-<<<<<<< HEAD
-      <img className="profileImg" src={profileImg} alt="" />
-      <div className="information">
-        <span className="texx">{name}</span>
-        <span className="ID">{stdID}</span>
-        <span className="logout" onClick={() => navigate("/Home")}>
-          Thoát
-        </span>
-      </div>
-      <div className="info2">
-        <div className="mail1">Địa chỉ email</div>
-        <div className="mail2">{email}</div>
-        <div className="falcuty1">Ngành học</div>
-        <div className="falcuty2">{faculty}</div>
-      </div>
-      <hr className="firstBreak" />
-      <div className="printHis">
-        <span className="printHisTex">Lịch sử in</span>
-        <span className="datePrint">Từ ngày ../../... đến ngày ../../....</span>
-      </div>
-      <table className="printHis1">
-        <tr className="row">
-          <tr className="row">
-            <th className="hea">Thời gian</th>
-            <th className="hea">Tên file</th>
-            <th className="hea">Số tờ</th>
-            <th className="hea">Loại giấy</th>
-            <th className="hea">Số mặt</th>
-            <th className="hea">Địa điểm</th>
-            <th className="hea">Trạng thái</th>
-          </tr>
-          {printList.map((val, key) => {
-            return (
-              <tr className="row" key={key}>
-                <td className="dat">{val.time}</td>
-                <td className="dat">{val.filename}</td>
-                <td className="dat">{val.printedPages}</td>
-                <td className="dat">{val.paperType}</td>
-                <td className="dat">
-                  {val.sided == 1 ? "In một mặt" : "In hai mặt"}
-                </td>
-                <td className="dat">{val.location}</td>
-                <td className="dat">Đã hoàn tất</td>
-              </tr>
-            );
-          })}
-        </tr>
-      </table>
-      <div className="sum1">
-        <span>Số tờ </span>
-        <div className="sum1Tex">
-          A3 đã in: {A3Printed}
-          <br />
-          A4 đã in: {A4Printed}
-          <br />
-          A5 đã in: {A5Printed}
-        </div>
-      </div>
-      <hr className="secondBreak" />
-      <div className="buyHis">
-        <span className="buyHisTex">Lịch sử mua</span>
-        <span className="datePrint">Từ ngày ../../... đến ngày ../../....</span>
-      </div>
-      <table className="buyHis1">
-        <tr className="row1">
-          <tr className="row1">
-            <th className="hea1">Thời gian</th>
-            <th className="hea1">Số tiền</th>
-            <th className="hea1">Số tờ</th>
-            <th className="hea1">Loại giấy</th>
-          </tr>
-          {tranList.map((val, key) => {
-            return (
-              <tr className="row1" key={key}>
-                <td className="dat1">{val.time}</td>
-                <td className="dat1">{val.price}</td>
-                <td className="dat1">{val.purchasedPages}</td>
-                <td className="dat1">{val.purchasedPaperType}</td>
-=======
       <div className="userContainer">
         <img className="profileImg" src={profileImg} alt="" />
         <div className="information">
@@ -256,43 +179,55 @@ const Users = () => {
           </div>
         </div>
         <div className="printHis1-container">
-          <table className="printHis1">
-            <tr className="row">
+          {loading ? (
+            <div className="loading">
+              <CircularProgress />
+              <div>Loading ... </div>
+            </div>
+          ) : (
+            <table className="printHis1">
               <tr className="row">
-                <th className="hea">Thời gian</th>
-                <th className="hea">Tên file</th>
-                <th className="hea">Số tờ</th>
-                <th className="hea">Loại giấy</th>
-                <th className="hea">Số mặt</th>
-                <th className="hea">Địa điểm</th>
-                <th className="hea">Trạng thái</th>
->>>>>>> Tho
+                <tr className="row">
+                  <th className="hea">Thời gian</th>
+                  <th className="hea">Tên file</th>
+                  <th className="hea">Số tờ</th>
+                  <th className="hea">Loại giấy</th>
+                  <th className="hea">Số mặt</th>
+                  <th className="hea">Địa điểm</th>
+                  <th className="hea">Trạng thái</th>
+                </tr>
+                {printList
+                  .filter((val) => {
+                    const a = compareTimes(
+                      String(beforePrint),
+                      String(val.time)
+                    );
+                    const b = compareTimes(
+                      String(afterPrint),
+                      String(val.time)
+                    );
+                    return a <= 0 && b >= 0;
+                  })
+                  .map((val, key) => {
+                    return (
+                      <tr className="row" key={key}>
+                        <td className="dat">{val.time}</td>
+                        <td className="dat">{val.filename}</td>
+                        <td className="dat">{val.printedPages}</td>
+                        <td className="dat">{val.paperType}</td>
+                        <td className="dat">
+                          {val.sided == 1 ? "In một mặt" : "In hai mặt"}
+                        </td>
+                        <td className="dat">{val.location}</td>
+                        <td className="dat2">
+                          <div className="finish">Đã hoàn tất</div>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tr>
-              {printList
-                .filter((val) => {
-                  const a = compareTimes(String(beforePrint), String(val.time));
-                  const b = compareTimes(String(afterPrint), String(val.time));
-                  return a <= 0 && b >= 0;
-                })
-                .map((val, key) => {
-                  return (
-                    <tr className="row" key={key}>
-                      <td className="dat">{val.time}</td>
-                      <td className="dat">{val.filename}</td>
-                      <td className="dat">{val.printedPages}</td>
-                      <td className="dat">{val.paperType}</td>
-                      <td className="dat">
-                        {val.sided == 1 ? "In một mặt" : "In hai mặt"}
-                      </td>
-                      <td className="dat">{val.location}</td>
-                      <td className="dat2">
-                        <div className="finish">Đã hoàn tất</div>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tr>
-          </table>
+            </table>
+          )}
         </div>
 
         <div className="sum1">
@@ -334,39 +269,52 @@ const Users = () => {
                 value={value4}
                 onChange={(newValue) => setValue4(newValue)}
               />
-              <Button className="upd"> Tìm kiếm </Button>
+              <Button className="upd" onClick={() => handleFilteringTran()}>
+                {" "}
+                Tìm kiếm{" "}
+              </Button>
             </div>
           </div>
         </div>
         <div className="buyHis1-container">
-          <table className="buyHis1">
-            <tr className="row1">
+          {loading ? (
+            <div className="loading">
+              <CircularProgress />
+              <div>Loading ... </div>
+            </div>
+          ) : (
+            <table className="buyHis1">
               <tr className="row1">
-                <th className="hea1">Thời gian</th>
-                <th className="hea1">Số tiền</th>
-                <th className="hea1">Số tờ</th>
-                <th className="hea1">Loại giấy</th>
+                <tr className="row1">
+                  <th className="hea1">Thời gian</th>
+                  <th className="hea1">Số tiền</th>
+                  <th className="hea1">Số tờ</th>
+                  <th className="hea1">Loại giấy</th>
+                </tr>
+                {tranList
+                  .filter((val) => {
+                    const a = compareTimes(
+                      String(beforeTran),
+                      String(val.time)
+                    );
+                    const b = compareTimes(String(afterTran), String(val.time));
+                    return a <= 0 && b >= 0;
+                  })
+                  .map((val, key) => {
+                    return (
+                      <tr className="row1" key={key}>
+                        <td className="dat1">
+                          {val.time /* .format("HH:mm:ss, DD/MM/YYYY") */}
+                        </td>
+                        <td className="dat1">{val.price}</td>
+                        <td className="dat1">{val.purchasedPages}</td>
+                        <td className="dat1">{val.purchasedPaperType}</td>
+                      </tr>
+                    );
+                  })}
               </tr>
-              {tranList
-                .filter((val) => {
-                  const a = compareTimes(String(beforeTran), String(val.time));
-                  const b = compareTimes(String(afterTran), String(val.time));
-                  return a <= 0 && b >= 0;
-                })
-                .map((val, key) => {
-                  return (
-                    <tr className="row1" key={key}>
-                      <td className="dat1">
-                        {val.time /* .format("HH:mm:ss, DD/MM/YYYY") */}
-                      </td>
-                      <td className="dat1">{val.price}</td>
-                      <td className="dat1">{val.purchasedPages}</td>
-                      <td className="dat1">{val.purchasedPaperType}</td>
-                    </tr>
-                  );
-                })}
-            </tr>
-          </table>
+            </table>
+          )}
         </div>
         <span className="sum2">Số tờ còn lại: {remainingPages}(A4)</span>
       </div>
