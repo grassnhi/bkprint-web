@@ -20,17 +20,19 @@ const Routing = () => {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="Choose" element={<Choose />} />
-      <Route path="Choose/Login1" element={<Login1 />} />
-      <Route path="Choose/Login1/Home" element={<Home />} />
-      <Route path="Choose/Login1/Upload" element={<Upload />} />
-      <Route path="Choose/Login1/Completeprint" element={<Completeprint />} />
-      <Route path="Choose/Login1/Profile" element={<Users />} />
-      <Route path="Choose/Login1/PrintLocate" element={<Printlocate />} />
-      <Route path="AdminLogin1" element={<AdminLogin1 />} />
-      <Route path="AdminLogin1/AdminHome" element={<AdminHome />} />
-      <Route path="AdminLogin1/AdminHome/AdminUsers" element={<Adminusers />} />
-      
-      <Route path="help" element={<Help />} />
+      <Route path="/Login1" element={<Login1 />} />
+      <Route path="/Home" element={<Home />} />
+      <Route path="/Upload" element={<Upload />} />
+      <Route path="/Completeprint" element={<Completeprint />} /> {/* TODO */}
+      <Route path="/Profile" element={<Users />} /> {/* TODO */}
+      <Route path="/PrintLocate" element={<Printlocate />} /> {/* TODO */}
+      <Route path="/Payment" element={<Payment />} /> {/* TODO */}
+      <Route path="/AdminLogin1" element={<AdminLogin1 />} /> {/* TODO */}
+      <Route path="/AdminHome" element={<AdminHome />} /> {/* TODO */}
+      <Route path="/AdminUsers" element={<Adminusers />} /> {/* TODO */}
+      <Route path="/help" element={<Help />} /> {/* TODO */}
+      <Route path="/successbuy" element={<Successbuy />} /> {/* TODO */}
+      <Route path="/cantbuy" element={<Cantbuy />} /> {/* TODO */}
     </Routes>
   );
 };

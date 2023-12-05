@@ -26,7 +26,7 @@ const Login = () => {
         <img className="bklogo-choose" src={logo2} alt="bklogo" />
         <div className="name-choose">BK Fast Automated Printing Service </div>
       </div>
-      
+
       <div className="welcome-container-pre">
         <img className="chm-1-icon-student" alt="" src={logo1} />
         <div className="welcome-student">
@@ -50,9 +50,9 @@ const Login = () => {
               Tải lên tài liệu và in tại máy in gần bạn!
             </div>
             <div className="paragraph-student-pre">
-              Đại học Bách Khoa TP.HCM có hệ thống máy in hiện đại nhất trong khối
-              Đại học Quốc gia. Bạn hoàn toàn có thể tải lên tập tin và chọn máy in
-              gần bạn để in trong vòng 5 phút.
+              Đại học Bách Khoa TP.HCM có hệ thống máy in hiện đại nhất trong
+              khối Đại học Quốc gia. Bạn hoàn toàn có thể tải lên tập tin và
+              chọn máy in gần bạn để in trong vòng 5 phút.
             </div>
             <div className="button-set-pre">
               <Button
@@ -62,18 +62,15 @@ const Login = () => {
                 Đăng nhập ngay
               </Button>
             </div>
-            
           </div>
-
         </div>
         <div className="white-space-right-pre"></div>
       </div>
 
-        
       <Footer></Footer>
       <ScrollToTop />
     </div>
   );
-};5
+};
 
 export default Login;

@@ -120,7 +120,10 @@
   color: var(--neutral-colors-headings-black);
   font-family: var(--font-andika);
 }
-
+#helpFoot {
+  position: relative;
+  top: 900px;
+}
 @media screen and (max-width: 1800px) {
   .intro {
     top: 30%;
