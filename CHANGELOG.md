@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1](https://github.com/grassnhi/bkprint-web/compare/v2.1.0...v2.1.1) (2023-12-05)
+
+
+### Bug Fixes
+
+* **announcement:** Fix footer ([bf4469b](https://github.com/grassnhi/bkprint-web/commit/bf4469bf3386a8b362ef2b244bc7b9b226d4e0fd))
+* **profile:** Fix filter ([68b9abb](https://github.com/grassnhi/bkprint-web/commit/68b9abb58151fac9cfa5f6d5d50b9f572ba9f978))
+
 ## [2.1.0](https://github.com/grassnhi/bkprint-web/compare/v2.0.0...v2.1.0) (2023-12-03)
 
 
