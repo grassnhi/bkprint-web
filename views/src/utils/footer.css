@@ -7,6 +7,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-top: 2px solid black;
   width: 100vw;
   height: 90px;
   color: var(--neutral-colors-text-gray);
@@ -27,7 +28,7 @@
 
 .left-footer {
   flex: 1.4;
-  padding-left: 70px; 
+  padding-left: 70px;
 }
 
 .span {

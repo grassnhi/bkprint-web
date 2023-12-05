@@ -31,19 +31,29 @@ const Printlocate = () => {
     verifyAuthentication();
   }, [cookies, navigate, removeCookie]);
   return (
-    <div className="mastercontainer">
+    <div
+      style={{
+        background: "var(--neutral-colors-white)",
+        fontSize: "var(--font-size-lg)",
+        color: "var(--neutral-colors-headings-black)",
+        fontFamily: "var(--font-andika)",
+      }}
+    >
       <Header></Header>
-      <div className="map1">
-        Bản đồ trường Đại học Bách Khoa TPHCM (cơ sở 1)
-      </div>
-      <img className="mappic" alt="this is a map" src={mapp} />
-      <hr className="sepline"></hr>
-      <div className="info">Thông tin về vị trí máy in (cơ sở 1) </div>
-      <div className="sttable">
-        <Statustable />
+      <div className="mastercontainer">
+        <div className="map1">
+          Bản đồ trường Đại học Bách Khoa TPHCM (cơ sở 1)
+        </div>
+        <img className="mappic" alt="this is a map" src={mapp} />
+        <hr className="sepline"></hr>
+        <div className="info">Thông tin về vị trí máy in (cơ sở 1) </div>
+        <div className="sttable">
+          <Statustable />
+        </div>
+
+        <ToastContainer />
       </div>
       <Footer></Footer>
-      <ToastContainer />
     </div>
   );
 };
