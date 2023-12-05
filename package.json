@@ -9,7 +9,7 @@
     "install-client": "cd client && npm install",
     "controller-client": "cd controllers && npm install",
     "build-client": "cd views && npm install",
-    "start-client": "cd views && vite build"
+    "start-client": "cd views && npm run dev"
   },
   "keywords": [],
   "author": "",
