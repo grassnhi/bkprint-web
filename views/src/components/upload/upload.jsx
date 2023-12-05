@@ -9,9 +9,6 @@ import { UserContext } from "../../../../controllers/UserProvider";
 import Header from "../../utils/header";
 import Footer from "../../utils/footer";
 import { useSnackbar } from "notistack";
-<<<<<<< HEAD
-const Upload = () => {
-=======
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
@@ -39,7 +36,6 @@ const Upload = () => {
     verifyAuthentication();
   }, [cookies, navigate, removeCookie]);
 
->>>>>>> Tho
   const { enqueueSnackbar } = useSnackbar();
   const [comp, setComp] = useState(false);
   const [comp1, setComp1] = useState(false);

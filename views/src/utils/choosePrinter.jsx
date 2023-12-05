@@ -13,8 +13,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useSnackbar } from "notistack";
-<<<<<<< HEAD
-=======
 import { updateAllocatedDate } from "../../../controllers/systemPolicy/updateSystemPolicy";
 import { updatePrinterPrintedPages } from "../../../controllers/printer/updatePrinter";
 
@@ -76,10 +74,6 @@ const ChoosePrinter = (props) => {
     <div className="chooseP">
       <h2 className="chooseTitle">Chọn máy in</h2>
       <p className="instruc1">(Chỉ chọn MỘT máy in)</p>
-<<<<<<< HEAD
-      <table className="choosePrinters">
-        <thead>
-=======
       <div className="table-container">
         {loading ? (
           <div className="loading">
@@ -126,7 +120,6 @@ const ChoosePrinter = (props) => {
       </div>
 
       <div className="checkLocate" onClick={() => navigate("/PrintLocate")}>
->>>>>>> Tho
         Xem vị trí máy in
       </div>
       <div className="btn-container">

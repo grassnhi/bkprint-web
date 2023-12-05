@@ -68,14 +68,6 @@ const Login1 = () => {
       console.log(error);
     }
     const id = await getAccountID(username);
-<<<<<<< HEAD
-    setStdID(String(id));
-    /* setInputValue({
-      ...inputValue,
-      username: "",
-      password: "",
-    });*/
-=======
     console.log(id);
     setStdID(String(id));
     /* setInputValue({
@@ -83,7 +75,6 @@ const Login1 = () => {
         username: "",
         password: "",
       });*/
->>>>>>> Tho
     //setUsername("");
     //setPassword("");
   };
@@ -145,45 +136,6 @@ const Login1 = () => {
           <ToastContainer />
         </div>
       </div>
-<<<<<<< HEAD
-      <div className="contain2">
-        <p className="notice1">
-          Bạn cần dùng tài khoản HCMUT để đăng nhập. Tài khoản HCMUT cho phép
-          truy cập đến nhiều tài nguyên bao gồm hệ thống thông tin, thư điện tử,
-          ...
-        </p>
-        <p className="notice2">
-          Vì lý do an ninh, bạn hãy Thoát khỏi trình duyệt Web khi bạn kết thúc
-          việc truy cập các dịch vụ đòi hỏi xác thực!
-        </p>
-      </div>
-      <img className="pic" src={logo3} alt="picc" />
-
-      <div className="loginframe">
-        <span className="title">Nhập thông tin tài khoản</span>
-        <hr />
-      </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="username"
-          type="email"
-          placeholder="Tên đăng nhập"
-          onChange={handleOnChange}
-          value={username}
-        />
-        <div className="pass">
-          <Password value={password} onChange={handleOnChange1} />
-        </div>
-        <div className="help">
-          <NavLink to="/help">Trợ giúp đăng nhập?</NavLink>
-        </div>
-        <Button className="logbutt" type="submit">
-          Đăng nhập
-        </Button>
-      </form>
-      <ToastContainer />
-=======
->>>>>>> Tho
     </div>
   );
 };

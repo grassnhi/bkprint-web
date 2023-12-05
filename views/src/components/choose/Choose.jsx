@@ -28,23 +28,7 @@ const Choose = () => {
           </Button>
         </div>
       </div>
-<<<<<<< HEAD
-      <div className="header">
-        <img className="bklogo" src={logo} alt="bklogo" />
-        <div className="name">BK Fast Automated Printing Service </div>
-      </div>
-      <img className="bklogo1" src={logo} alt="bklogo1" />
-      <div className="chosen">
-        <Button className="stu" onClick={() => navigate("/Login1")}>
-          Sinh viên trường Đại học Bách Khoa
-        </Button>
-        <Button className="admin" onClick={() => navigate("/AdminLogin1")}>
-          Quản trị viên BKPrint
-        </Button>
-      </div>
-=======
       <Footer></Footer>
->>>>>>> Tho
       <ScrollToTop />
       <Outlet />
     </div>

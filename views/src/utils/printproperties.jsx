@@ -137,16 +137,6 @@ const Printproperties = () => {
       );
       enqueueSnackbar("Printing successfully", { variant: "success" });
       // Update printed pages in the printers
-<<<<<<< HEAD
-      for (let i = 0; i < (await getPrinterCount()); i++) {
-        if (chosenPrinter == getPrinterName(i)) {
-          const recent = getPrinterPrintedPage(i);
-          await updatePrinterPrintedPages(parseInt(stdID));
-          break;
-        }
-      }
-      navigate("/Completeprint");
-=======
       const count = await getPrinterCount();
       console.log("COUNT" + count);
       for (let i = 0; i < count; i++) {
@@ -173,10 +163,7 @@ const Printproperties = () => {
   const {
     convertTime,
     fileName,
-<<<<<<< HEAD
-=======
     setFileName,
->>>>>>> Tho
     chosenPrinter,
     setChosenPrinter,
     setPrintingLocation,

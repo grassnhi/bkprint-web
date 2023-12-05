@@ -7,14 +7,6 @@ import page1 from "../../assets/18696 1.png";
 import Footer from "../../utils/footer";
 import Header from "../../utils/header";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-const Completeprint = () => {
-  const navigate = useNavigate();
-  return (
-    <div className="BB">
-      <Header></Header>
-      <Footer></Footer>
-=======
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
@@ -78,7 +70,6 @@ const Completeprint = () => {
             </Button>
           </div>
         </div>
->>>>>>> Tho
       </div>
       <Footer></Footer>
     </div>
