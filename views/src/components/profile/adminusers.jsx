@@ -172,7 +172,7 @@ const Adminusers = () => {
       <div className="adminUserContainer">
         <img className="profileImg" src={profileImg} alt="" />
         <div className="information">
-          <span className="texx">Thay Giao Ba</span>
+          <span className="texx">Nguyen Duc Anh</span>
           <span className="ID">Admin</span>
           <span className="logout" onClick={() => navigate("/AdminHome")}>
             Thoát
