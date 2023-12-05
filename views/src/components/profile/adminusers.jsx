@@ -334,7 +334,7 @@ const Adminusers = () => {
           <Button id="addPrinterBtn1" onClick={() => handleAddPrinter()}>
             Thêm máy in
           </Button>
-          <span className="sum3">Số tờ còn lại:</span>
+          <span className="sum3">Thông số:</span>
           {/* ADD PRINTER IN HERE */}
           <input
             className="addPrinter-input1"
