@@ -30,7 +30,7 @@ const Routing = () => {
       <Route path="/AdminLogin1" element={<AdminLogin1 />} /> {/* TODO */}
       <Route path="/AdminHome" element={<AdminHome />} /> {/* TODO */}
       <Route path="/AdminUsers" element={<Adminusers />} /> {/* TODO */}
-      <Route path="help" element={<Help />} /> {/* TODO */}
+      <Route path="/help" element={<Help />} /> {/* TODO */}
       <Route path="/successbuy" element={<Successbuy />} /> {/* TODO */}
       <Route path="/cantbuy" element={<Cantbuy />} /> {/* TODO */}
     </Routes>

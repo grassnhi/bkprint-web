@@ -115,6 +115,7 @@ input {
 .custom-radio input[type="radio"] {
   opacity: 0;
   cursor: pointer;
+  justify-content: center;
 }
 
 .custom-radio label {
@@ -147,4 +148,8 @@ input {
 
 .custom-radio input[type="radio"]:checked + label::after {
   display: flex;
+}
+#printing {
+  position: relative;
+  top: +15px;
 }

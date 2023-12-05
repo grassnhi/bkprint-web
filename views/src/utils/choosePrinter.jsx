@@ -93,8 +93,12 @@ const ChoosePrinter = (props) => {
                 </tr>
                 {printerList.map((val, key) => (
                   <tr key={key}>
-                    <td>{val.name}</td>
-                    <td>{val.location}</td>
+                    <td>
+                      <div id="printing">{val.name}</div>
+                    </td>
+                    <td>
+                      <div id="printing">{val.location}</div>
+                    </td>
                     <td>
                       <div className="custom-radio">
                         <input

@@ -61,7 +61,9 @@ const Header = () => {
           <div className="trang-chu-main" onClick={() => navigate("/Profile")}>
             Tài khoản
           </div>
-          <div className="trang-chu-main">Liên hệ</div>
+          <div className="trang-chu-main" onClick={() => navigate("/help")}>
+            Liên hệ
+          </div>
           <div className="trang-chu-main" onClick={() => handleLogout()}>
             Thoát
           </div>
