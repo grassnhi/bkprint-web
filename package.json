@@ -1,0 +1,16 @@
+{
+  "name": "bkprint-web",
+  "version": "1.0.0",
+  "description": "Welcome to the BKPrint - a Student Smart Printing Service website for students at Ho Chi Minh City University of Technology (HCMUT).",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node app.js",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
