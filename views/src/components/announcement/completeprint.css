@@ -156,6 +156,7 @@
   background-color: #0a617c;
   transition: background-color 0s;
 }
+
 @media screen and (max-width: 1580px) {
   .page1 {
     left: +150px;
