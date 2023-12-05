@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.3](https://github.com/grassnhi/bkprint-web/compare/v2.1.2...v2.1.3) (2023-12-05)
+
+
+### Bug Fixes
+
+* **all:** Run and test. ([4ce8551](https://github.com/grassnhi/bkprint-web/commit/4ce85516fd91a146e575bd2ff26a24d83b4f69a1))
+* **all:** Run and test. ([4bd6087](https://github.com/grassnhi/bkprint-web/commit/4bd6087eb6af5a5098f829f693de0b134280d102))
+
 ## [2.1.2](https://github.com/grassnhi/bkprint-web/compare/v2.1.1...v2.1.2) (2023-12-05)
 
 
