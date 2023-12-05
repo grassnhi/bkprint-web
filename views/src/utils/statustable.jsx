@@ -29,38 +29,6 @@ const Statustable = () => {
     fetchPrinterData();
   }, []);
 
-<<<<<<< HEAD
-        {printerAdmin.map((val, key) => {
-          return (
-            <tr key={key}>
-              <td>{val.printerID}</td>
-              <td>{val.printerBrand}</td>
-              <td>{val.printerName}</td>
-              <td>{val.location.building}</td>
-              <td>{val.location.room}</td>
-              <td
-                className="stt"
-                id={val.status ? "Avai" : "NoAvai"}
-                style={{ backgroundColor: val.status ? "#B3FFD4" : "#FCAAAA" }}
-              >
-                {val.status ? "Đang hoạt động" : "Ngưng hoạt động"}
-              </td>
-              {val.status === true ? (
-                <td>
-                  <Button
-                    className="de"
-                    id="Avai1"
-                    onClick={() => navigate("/Upload")}
-                  >
-                    In tại máy in này
-                  </Button>
-                </td>
-              ) : (
-                <td className="de1" id="NoAvai1">
-                  Không thể in tại đây
-                </td>
-              )}
-=======
   return (
     <>
       {loading ? (
@@ -79,7 +47,6 @@ const Statustable = () => {
               <th>Phòng</th>
               <th>Trạng thái</th>
               <th>In</th>
->>>>>>> Tho
             </tr>
           </thead>
           <tbody>

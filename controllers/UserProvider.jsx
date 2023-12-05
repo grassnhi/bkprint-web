@@ -70,12 +70,9 @@ export const UserProvider = ({ children }) => {
 
   const [auth, setAuth] = useState(false);
   const contextValue = {
-<<<<<<< HEAD
-=======
     adminEmail,
     setAdminEmail,
     compareTimes,
->>>>>>> Tho
     fileName,
     setFileName,
     chosenPrinter,

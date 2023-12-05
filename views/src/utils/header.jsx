@@ -50,37 +50,6 @@ const Header = () => {
           <div className="bkprint-header">BK Print</div>
         </div>
 
-<<<<<<< HEAD
-          <div className="middle-section"></div>
-
-          <div className="right-section">
-            <div
-              className="trang-chu-main"
-              onClick={() => navigate("/Home")}
-            >
-              Trang chủ
-            </div>
-
-            <div
-              className="trang-chu-main"
-              onClick={() => navigate("/Upload")}
-            >
-              In tài liệu
-            </div>
-
-            <div
-              className="trang-chu-main"
-              onClick={() => navigate("/Profile")}
-            >
-              Tài khoản
-            </div>
-
-            <div className="trang-chu-main">Liên hệ</div>
-
-            <div className="img-header">
-              <img className="n-1-icon-main" alt="" src={logo4} />
-            </div>
-=======
         <div className="middle-section"></div>
         <div className="right-section">
           <div className="trang-chu-main" onClick={() => navigate("/Home")}>
@@ -100,7 +69,6 @@ const Header = () => {
           </div>
           <div className="img-header">
             <img className="n-1-icon-main" alt="" src={logo4} />
->>>>>>> Tho
           </div>
         </div>
       </div>
