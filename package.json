@@ -8,7 +8,7 @@
     "start-server": "cd backend && node index.js",
     "install-client": "cd client && npm install",
     "controller-client": "cd controllers && npm install",
-    "build-client": "cd views && vite build",
+    "build-client": "cd views && npm install",
     "start-client": "cd views && vite build"
   },
   "keywords": [],
