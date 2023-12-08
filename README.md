@@ -6,7 +6,7 @@ Welcome to the BKPrint - a Student Smart Printing Service website for students a
 
 ## Version
 
-Current Version: v2.1.2
+Current Version: v2.1.3
 
 For a detailed history of changes and updates, please refer to the [CHANGELOG.md](https://github.com/grassnhi/bkprint-web/blob/main/CHANGELOG.md) file.
 
